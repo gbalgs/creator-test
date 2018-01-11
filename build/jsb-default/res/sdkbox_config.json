@@ -35,6 +35,14 @@
         }, 
         "Facebook": {
             "debug": false
+        }, 
+        "Review": {
+            "LaunchLimit": 3, 
+            "DayForReminding": 1, 
+            "tryPromptWhenInit": true, 
+            "DayLimit": 0, 
+            "LaunchForReminding": 2, 
+            "UserEventLimit": 0
         }
     }, 
     "ios": {
@@ -74,6 +82,26 @@
         }, 
         "Facebook": {
             "debug": true
+        }, 
+        "Review": {
+            "LaunchLimit": 3, 
+            "DayForReminding": 1, 
+            "tryPromptWhenInit": true, 
+            "AppID": "587767923", 
+            "DayLimit": 0, 
+            "LaunchForReminding": 2, 
+            "UserEventLimit": 0
+        }
+    }, 
+    "amazon": {
+        "Review": {
+            "LaunchLimit": 3, 
+            "DayForReminding": 1, 
+            "market": "amazon", 
+            "tryPromptWhenInit": true, 
+            "DayLimit": 0, 
+            "LaunchForReminding": 2, 
+            "UserEventLimit": 0
         }
     }
 }

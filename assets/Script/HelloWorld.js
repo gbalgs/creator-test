@@ -32,6 +32,7 @@ cc.Class({
     testSdkbox: function () {
         this.testFB();
         this.testAdMob();
+        this.testUnityAds();
     },
 
     // facebook begin
@@ -212,5 +213,26 @@ cc.Class({
         } else {
             self.showLog('unityads is not ready');
         }
+    },
+
+    // review
+    testReview: function () {
+        var self = this;
+        var plugin = sdkbox.PluginReview
+        plugin.setListener({
+          onDisplayAlert: function(data) {self.showLog("Review: didDisplayAlert")},
+          onDeclineToRate: function(data) { self.showLog("Review: didDeclineToRate") },
+          onRate: function(data) { self.showLog("Review: didToRate") },
+          onRemindLater: function(data) { self.showLog("Review: didToRemindLater") }
+        })
+        plugin.init()
+    },
+    clickReview: function () {
+        sdkbox.PluginReview.setTitle("custom title");
+        sdkbox.PluginReview.setMessage("custom message");
+        sdkbox.PluginReview.setCancelButtonTitle("custom cancel");
+        sdkbox.PluginReview.setRateButtonTitle("custom rate");
+        sdkbox.PluginReview.setRateLaterButtonTitle("custom rate later");
+        sdkbox.PluginReview.show();
     }
 });

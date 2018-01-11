@@ -8,3 +8,6 @@ project(':facebook_lib').projectDir = new File(settingsDir, '../../cocos2d-x/coc
 
 include ':gps'
 project(':gps').projectDir = new File(settingsDir, '../../cocos2d-x/cocos/platform/android/java/libs/gps')
+
+include ':libPluginReviewResource'
+project(':libPluginReviewResource').projectDir = new File(settingsDir, '../proj.android/plugin_review_res_project')
