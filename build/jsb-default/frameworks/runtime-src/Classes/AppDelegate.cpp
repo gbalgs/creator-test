@@ -24,6 +24,10 @@ USING_NS_CC;
 #include "PluginReviewJSHelper.h"
 #endif
 #ifdef SDKBOX_ENABLED
+#include "PluginAdMobJS.hpp"
+#include "PluginAdMobJSHelper.h"
+#endif
+#ifdef SDKBOX_ENABLED
 #include "PluginUnityAdsJS.hpp"
 #include "PluginUnityAdsJSHelper.h"
 #endif
@@ -47,7 +51,7 @@ AppDelegate::~AppDelegate()
 void AppDelegate::initGLContextAttrs()
 {
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
-    
+
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
@@ -67,7 +71,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 #endif
         director->setOpenGLView(glview);
     }
-    
+
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
@@ -97,6 +101,10 @@ bool AppDelegate::applicationDidFinishLaunching()
 #ifdef SDKBOX_ENABLED
     se->addRegisterCallback(register_all_PluginReviewJS);
     se->addRegisterCallback(register_all_PluginReviewJS_helper);
+#endif
+#ifdef SDKBOX_ENABLED
+    se->addRegisterCallback(register_all_PluginAdMobJS);
+    se->addRegisterCallback(register_all_PluginAdMobJS_helper);
 #endif
 #ifdef SDKBOX_ENABLED
     se->addRegisterCallback(register_all_PluginUnityAdsJS);

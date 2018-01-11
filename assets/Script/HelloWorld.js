@@ -8,7 +8,10 @@ cc.Class({
         },
         // defaults, set visually when attaching this script to the Canvas
         text: 'Hello, World!',
-        fbLoginText: 'login'
+        fbLoginText: {
+            default: null,
+            type: cc.Label
+        }
     },
 
     showLog: function (text) {
@@ -137,10 +140,24 @@ cc.Class({
     // AdMob
     testAdMob: function () {
         var self = this;
+        self.gameover = false;
+        self.next_level = false;
+        self.rewarded = false;
         sdkbox.PluginAdMob.init();
         sdkbox.PluginAdMob.setListener({
             adViewDidReceiveAd : function(name) {
                 self.showLog("AdMob adViewDidReceiveAd " + name);
+
+                if (name == "gameover") {
+                    if (self.gameover) return ;
+                    self.gameover = true;
+                } else if (name == "next_level") {
+                    if (self.next_level) return ;
+                    self.next_level = true;
+                } else if (name == "rewarded") {
+                    if (self.rewarded) return;
+                    self.rewarded = true;
+                }
 
                 sdkbox.PluginAdMob.show(name);
             },
@@ -227,15 +244,15 @@ cc.Class({
           onRate: function(data) { self.showLog("Review: didToRate") },
           onRemindLater: function(data) { self.showLog("Review: didToRemindLater") }
         })
-        plugin.init()
+        plugin.init();
     },
     clickReview: function () {
-        sdkbox.PluginReview.setTitle("custom title");
-        sdkbox.PluginReview.setMessage("custom message");
-        sdkbox.PluginReview.setCancelButtonTitle("custom cancel");
-        sdkbox.PluginReview.setRateButtonTitle("custom rate");
-        sdkbox.PluginReview.setRateLaterButtonTitle("custom rate later");
-        sdkbox.PluginReview.show();
+        // sdkbox.PluginReview.setTitle("custom title");
+        // sdkbox.PluginReview.setMessage("custom message");
+        // sdkbox.PluginReview.setCancelButtonTitle("custom cancel");
+        // sdkbox.PluginReview.setRateButtonTitle("custom rate");
+        // sdkbox.PluginReview.setRateLaterButtonTitle("custom rate later");
+        sdkbox.PluginReview.show(true);
     },
 
     // share
@@ -258,12 +275,12 @@ cc.Class({
         shareInfo.title = "sdkbox";
         //shareInfo.image = "path/to/image";
         shareInfo.link = "http://www.sdkbox.com";
-        info.showDialog = false; //if you want share with dialog，set the value true
+        shareInfo.showDialog = false; //if you want share with dialog，set the value true
 
         //sdkbox.SocialPlatform.Platform_Select will show platforms list, let user select which platform want to share
         //sdkbox.SocialPlatform.Platform_Twitter will share with twitter directly
         //sdkbox.SocialPlatform.Platform_Facebook will share with facebook directly
-        shareInfo.platform = sdkbox.SocialPlatform.Platform_Select;
+        shareInfo.platform = sdkbox.PluginShare.SocialPlatform.Platform_Select;
         plugin.share(shareInfo);
     },
     clickNativeShare: function () {
@@ -277,7 +294,7 @@ cc.Class({
         // the follow property will be ignored in nativeShare
         //shareInfo.showDialog = false;
         //shareInfo.platform = sdkbox.SocialPlatform.Platform_Select;
-        sdkbox.PluginShare.nativeShare(shareInfo);
+        // sdkbox.PluginShare.nativeShare(shareInfo);
     }
 
 
