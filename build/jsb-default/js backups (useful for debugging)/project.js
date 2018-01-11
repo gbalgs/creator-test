@@ -247,7 +247,7 @@ o.text = "#sdkbox(www.sdkbox.com) - the cure for sdk fatigue - from js - ";
 o.title = "sdkbox";
 o.link = "http://www.sdkbox.com";
 o.showDialog = !1;
-o.platform = sdkbox.PluginShare.SocialPlatform.Platform_Select;
+o.platform = sdkbox.SocialPlatform.Platform_Select;
 sdkbox.PluginShare.share(o);
 },
 clickNativeShare: function() {

@@ -280,7 +280,7 @@ cc.Class({
         //sdkbox.SocialPlatform.Platform_Select will show platforms list, let user select which platform want to share
         //sdkbox.SocialPlatform.Platform_Twitter will share with twitter directly
         //sdkbox.SocialPlatform.Platform_Facebook will share with facebook directly
-        shareInfo.platform = sdkbox.PluginShare.SocialPlatform.Platform_Select;
+        shareInfo.platform = sdkbox.SocialPlatform.Platform_Select;
         sdkbox.PluginShare.share(shareInfo);
     },
     clickNativeShare: function () {

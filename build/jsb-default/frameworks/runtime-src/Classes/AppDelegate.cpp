@@ -7,6 +7,7 @@
 #include "cocos/scripting/js-bindings/manual/jsb_global.h"
 #include "cocos/scripting/js-bindings/jswrapper/SeApi.h"
 
+#undef PACKAGE_AS
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS) && PACKAGE_AS
 #include "SDKManager.h"
 #include "jsb_anysdk_protocols_auto.hpp"

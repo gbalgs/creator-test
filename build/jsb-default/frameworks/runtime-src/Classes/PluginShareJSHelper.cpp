@@ -10,7 +10,7 @@ public:
 
     void onShareState(const sdkbox::SocialShareResponse& response) {
         MAKE_V8_HAPPY
-        
+
         cocos2d::ValueMap data;
         data["state"] = response.state;
         data["error"] = response.error;
@@ -146,7 +146,9 @@ bool register_all_PluginShareJS_helper(se::Object* obj)
     plugin->defineFunction("setListener", _SE(js_PluginShareJS_setListener));
     plugin->defineFunction("share", _SE(js_PluginShareJS_PluginShare_share));
     plugin->defineFunction("nativeShare", _SE(js_PluginShareJS_PluginShare_nativeShare));
-    share_register_constants(plugin);
+    
+    auto sdkboxValue = sdkbox::getPluginValue(obj, "sdkbox");
+    share_register_constants(sdkboxValue.toObject());
 
     se::ScriptEngine::getInstance()->clearException();
     return true;
