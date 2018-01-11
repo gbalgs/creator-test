@@ -14,7 +14,6 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
         this.label.string = this.text;
-        var self = this;
 
         if (cc.sys.isMobile) {
             this.testSdkbox();
@@ -28,8 +27,13 @@ cc.Class({
 
     testSdkbox: function () {
         this.testFB();
+        this.testAdMob();
     },
+
+    // facebook begin
     testFB: function () {
+        var self = this;
+
         sdkbox.PluginFacebook.init();
         sdkbox.PluginFacebook.setListener({
             onLogin: function(isLogin, msg) {
@@ -121,12 +125,51 @@ cc.Class({
         sdkbox.PluginFacebook.api("/me/friendlists", "GET", params, "/me/friendlists");
 
     },
+    // Facebook end
 
     // AdMob
-    clickShowAdMobBanner: function () {
+    testAdMob: function () {
+        var self = this;
+        sdkbox.PluginAdMob.init();
+        sdkbox.PluginAdMob.setListener({
+            adViewDidReceiveAd : function(name) {
+                self.label.string = "AdMob adViewDidReceiveAd " + name;
+
+                sdkbox.PluginAdMob.show(name);
+            },
+            adViewDidFailToReceiveAdWithError : function(name, msg) {
+                self.label.string = "AdMob adViewDidFailToReceiveAdWithError " + name;
+            },
+            adViewWillPresentScreen : function(name) {
+                self.label.string = "AdMob adViewWillPresentScreen " + name;
+            },
+            adViewDidDismissScreen : function(name) {
+                self.label.string = "AdMob adViewDidDismissScreen " + name;
+            },
+            adViewWillDismissScreen : function(name) {
+                self.label.string = "AdMob adViewWillDismissScreen " + name;
+            },
+            adViewWillLeaveApplication : function(name) {
+                self.label.string = "AdMob adViewWillLeaveApplication " + name;
+            }
+        });
     },
     clickShowAdMobBanner: function () {
+        sdkbox.PluginAdMob.show("home");
     },
-    clickShowAdMobBanner: function () {
+    clickShowAdMobInterstital: function () {
+        sdkbox.PluginAdMob.show("gameover");
+    },
+    clickShowAdMobVideo: function () {
+        sdkbox.PluginAdMob.show("rewarded");
+    },
+    clickHideAdMobBanner: function () {
+        sdkbox.PluginAdMob.hide("home");
+    },
+    clickHideAdMobInterstital: function () {
+        sdkbox.PluginAdMob.hide("gameover");
+    },
+    clickHideAdMobVideo: function () {
+        sdkbox.PluginAdMob.hide("rewarded");
     },
 });
