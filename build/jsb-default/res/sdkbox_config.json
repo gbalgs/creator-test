@@ -29,6 +29,10 @@
                 }
             }
         }, 
+        "UnityAds": {
+            "gameId": "1493045", 
+            "testMode": true
+        }, 
         "Facebook": {
             "debug": false
         }
@@ -63,6 +67,10 @@
                     "id": "ca-app-pub-1329374026572143/7991602916"
                 }
             }
+        }, 
+        "UnityAds": {
+            "gameId": "1493044", 
+            "testMode": true
         }, 
         "Facebook": {
             "debug": true

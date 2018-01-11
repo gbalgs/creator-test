@@ -16,6 +16,10 @@ using namespace anysdk::framework;
 
 USING_NS_CC;
 #ifdef SDKBOX_ENABLED
+#include "PluginUnityAdsJS.hpp"
+#include "PluginUnityAdsJSHelper.h"
+#endif
+#ifdef SDKBOX_ENABLED
 #include "PluginFacebookJS.hpp"
 #include "PluginFacebookJSHelper.h"
 #endif
@@ -78,6 +82,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     });
 
     jsb_register_all_modules();
+#ifdef SDKBOX_ENABLED
+    se->addRegisterCallback(register_all_PluginUnityAdsJS);
+    se->addRegisterCallback(register_all_PluginUnityAdsJS_helper);
+#endif
 #ifdef SDKBOX_ENABLED
     se->addRegisterCallback(register_all_PluginFacebookJS);
     se->addRegisterCallback(register_all_PluginFacebookJS_helper);
