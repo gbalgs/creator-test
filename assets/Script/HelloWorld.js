@@ -33,6 +33,8 @@ cc.Class({
         this.testFB();
         this.testAdMob();
         this.testUnityAds();
+        this.testReview();
+        this.testShare();
     },
 
     // facebook begin
@@ -234,5 +236,49 @@ cc.Class({
         sdkbox.PluginReview.setRateButtonTitle("custom rate");
         sdkbox.PluginReview.setRateLaterButtonTitle("custom rate later");
         sdkbox.PluginReview.show();
+    },
+
+    // share
+    testShare: function () {
+        var self = this;
+        var plugin = sdkbox.PluginShare
+        plugin.setListener({
+            onShareState: function(response) {
+                self.showLog("PluginShare onSharestate:" + response.state + " error:" + response.error)
+                if (response.state == sdkbox.SocialShareState.SocialShareStateSuccess) {
+                    self.showLog("post success")
+                }
+            }
+        })
+        plugin.init();
+    },
+    clickShare: function () {
+        var shareInfo = {};
+        shareInfo.text = "#sdkbox(www.sdkbox.com) - the cure for sdk fatigue - from js - ";
+        shareInfo.title = "sdkbox";
+        //shareInfo.image = "path/to/image";
+        shareInfo.link = "http://www.sdkbox.com";
+        info.showDialog = false; //if you want share with dialog，set the value true
+
+        //sdkbox.SocialPlatform.Platform_Select will show platforms list, let user select which platform want to share
+        //sdkbox.SocialPlatform.Platform_Twitter will share with twitter directly
+        //sdkbox.SocialPlatform.Platform_Facebook will share with facebook directly
+        shareInfo.platform = sdkbox.SocialPlatform.Platform_Select;
+        plugin.share(shareInfo);
+    },
+    clickNativeShare: function () {
+        var shareInfo = {};
+        shareInfo.text = "#sdkbox(www.sdkbox.com) - the cure for sdk fatigue ";
+        shareInfo.title = "sdkbox";
+        //shareInfo.image = "path/to/image"
+        shareInfo.link = "http://www.sdkbox.com";
+        sdkbox.PluginShare.nativeShare(shareInfo);
+
+        // the follow property will be ignored in nativeShare
+        //shareInfo.showDialog = false;
+        //shareInfo.platform = sdkbox.SocialPlatform.Platform_Select;
+        sdkbox.PluginShare.nativeShare(shareInfo);
     }
+
+
 });

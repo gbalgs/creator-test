@@ -26,6 +26,7 @@
 		1AFFCD861F7A5DCF00628F2C /* LaunchScreen.storyboard */ = {isa = PBXBuildFile; fileRef = 1AFFCD821F7A5DCC00628F2C /* LaunchScreen.storyboard */; };
 		1AFFCD871F7A5DCF00628F2C /* LaunchScreenBackground.png */ = {isa = PBXBuildFile; fileRef = 1AFFCD831F7A5DCD00628F2C /* LaunchScreenBackground.png */; };
 		1E3449B2AD0241FF9EB06133 /* PluginUnityAds.framework */ = {isa = PBXBuildFile; fileRef = B3374BF7902DE8C059117850 /* PluginUnityAds.framework */; };
+		1F49413BAAE38F1A5A183012 /* PluginShareJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = F35749B296D42F693C2DECDF /* PluginShareJSHelper.cpp */; };
 		1FE4486B93D54ED130E966EB /* FBSDKShareKit.framework */ = {isa = PBXBuildFile; fileRef = 1C0D4038A5EA8D278355DBCF /* FBSDKShareKit.framework */; };
 		25D14B858BB7955B20E04601 /* PluginAdMobJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = B516498FA070506E55B14442 /* PluginAdMobJSHelper.cpp */; };
 		294D7D7C1D0D667B002CE7B7 /* CoreText.framework */ = {isa = PBXBuildFile; fileRef = 294D7D7B1D0D667B002CE7B7 /* CoreText.framework */; };
@@ -38,6 +39,8 @@
 		4D3EB2581F8F4A6C007DA644 /* jsb_module_register.cpp */ = {isa = PBXBuildFile; fileRef = 4D3EB2571F8F4A6C007DA644 /* jsb_module_register.cpp */; };
 		4D3EB26B1F8F77C9007DA644 /* jsb_module_register.cpp */ = {isa = PBXBuildFile; fileRef = 4D3EB2571F8F4A6C007DA644 /* jsb_module_register.cpp */; };
 		4D697BDE1CBD303100A5AF29 /* libjs_static.a */ = {isa = PBXBuildFile; fileRef = 4D697BDC1CBD303100A5AF29 /* libjs_static.a */; };
+		4DFE4217BFF64A7E9FD2367D /* TwitterKit.framework */ = {isa = PBXBuildFile; fileRef = BF124212811FA44E443C1171 /* TwitterKit.framework */; };
+		4F314AE880C94B64CC5CEF76 /* Accounts.framework */ = {isa = PBXBuildFile; fileRef = 7B9148869498A3E277CD4D24 /* Accounts.framework */; };
 		502380DC17EBB88200990C9B /* libcurl.dylib */ = {isa = PBXBuildFile; fileRef = 502380DB17EBB88200990C9B /* libcurl.dylib */; };
 		509D4A8117EBB24E00697056 /* AppDelegate.cpp */ = {isa = PBXBuildFile; fileRef = D4545215156E28EF00887EB5 /* AppDelegate.cpp */; };
 		509D4A8817EBB24E00697056 /* libsqlite3.dylib */ = {isa = PBXBuildFile; fileRef = 1A82F5FA169AC92500C4B13A /* libsqlite3.dylib */; };
@@ -55,9 +58,13 @@
 		509D4AE717EBB81800697056 /* OpenGL.framework */ = {isa = PBXBuildFile; fileRef = 509D4AE617EBB81800697056 /* OpenGL.framework */; };
 		509D4AE917EBB82000697056 /* AppKit.framework */ = {isa = PBXBuildFile; fileRef = 509D4AE817EBB82000697056 /* AppKit.framework */; };
 		509D4AEB17EBB82600697056 /* IOKit.framework */ = {isa = PBXBuildFile; fileRef = 509D4AEA17EBB82600697056 /* IOKit.framework */; };
+		519A4BECA2297AF86643F90E /* Localizable.strings */ = {isa = PBXBuildFile; fileRef = EC0942E983A0280834261CD7 /* Localizable.strings */; };
+		5C53400A851A25CE5EC164E4 /* Social.framework */ = {isa = PBXBuildFile; fileRef = EA844FF8A9DBB9CD8AD28973 /* Social.framework */; };
 		735D423E8CC3CE687A2278F5 /* PluginAdMob.framework */ = {isa = PBXBuildFile; fileRef = 08AC4E6DAC73BC827E8F724F /* PluginAdMob.framework */; };
 		7EF74425A35FB7511487E4CB /* PluginFacebookJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = 07A342FEB5F4B782C6A86028 /* PluginFacebookJSHelper.cpp */; };
+		88FA42BD807D26FAE5856E47 /* PluginShare.framework */ = {isa = PBXBuildFile; fileRef = 754344B6BF78788AD785E126 /* PluginShare.framework */; };
 		8AC04E55AF5ED77DA9FAEF24 /* AdSupport.framework */ = {isa = PBXBuildFile; fileRef = 26DB4A12936430A681EF212E /* AdSupport.framework */; };
+		927945ACA381318E8B446687 /* TwitterCore.framework */ = {isa = PBXBuildFile; fileRef = 345943EDAF72BC6F438DED9F /* TwitterCore.framework */; };
 		9D6745388ADB9D2AFAA8C905 /* StoreKit.framework */ = {isa = PBXBuildFile; fileRef = A58644C6B0412346980BCB03 /* StoreKit.framework */; };
 		A6134DFB812559838D722183 /* Bolts.framework */ = {isa = PBXBuildFile; fileRef = E9224335A668E0282458D818 /* Bolts.framework */; };
 		A727484C81E2E824C3FFA3A3 /* MessageUI.framework */ = {isa = PBXBuildFile; fileRef = 65724FD4BE9F19DB3A92803D /* MessageUI.framework */; };
@@ -82,6 +89,7 @@
 		BAEE4D841AC40C11003BEB0F /* Security.framework */ = {isa = PBXBuildFile; fileRef = BAEE4D831AC40C11003BEB0F /* Security.framework */; };
 		BAF426FB19484B3E002B22EF /* script */ = {isa = PBXBuildFile; fileRef = BAF426FA19484B3E002B22EF /* script */; };
 		BAF426FC19484B3E002B22EF /* script */ = {isa = PBXBuildFile; fileRef = BAF426FA19484B3E002B22EF /* script */; };
+		BBBF434D937D24F0C05F0116 /* CoreData.framework */ = {isa = PBXBuildFile; fileRef = 6BF24C2A952BA7492FA8A29D /* CoreData.framework */; };
 		BD59499099562A72A447448D /* PluginUnityAdsJS.cpp */ = {isa = PBXBuildFile; fileRef = 9B5644F18A80ED8079968F87 /* PluginUnityAdsJS.cpp */; };
 		BEA340C58F13538DD220D7E1 /* FBSDKCoreKit.framework */ = {isa = PBXBuildFile; fileRef = ABB3413395BE21798A07BB7D /* FBSDKCoreKit.framework */; };
 		C03780EB18BEE0E400FE4F13 /* src */ = {isa = PBXBuildFile; fileRef = C03780EA18BEE0E400FE4F13 /* src */; };
@@ -91,6 +99,8 @@
 		C06E23CC18CEFE680093C81A /* main.cpp */ = {isa = PBXBuildFile; fileRef = C06E23CB18CEFE680093C81A /* main.cpp */; };
 		C0799CB918BAE62000E9C828 /* res */ = {isa = PBXBuildFile; fileRef = C0799CB518BAE62000E9C828 /* res */; };
 		C0799CBA18BAE62000E9C828 /* res */ = {isa = PBXBuildFile; fileRef = C0799CB518BAE62000E9C828 /* res */; };
+		C7B1438EBFA72DAA6AB852A5 /*  */ = {isa = PBXBuildFile; fileRef = 115740B1B2F0FD864A8BF388 /*  */; };
+		CEC44DBEBDAFFFF6A84DB5BD /* Fabric.framework */ = {isa = PBXBuildFile; fileRef = D43B4202B58C777A6268B0CE /* Fabric.framework */; };
 		D454520C156E22BD00887EB5 /* libz.dylib */ = {isa = PBXBuildFile; fileRef = D454520B156E22BD00887EB5 /* libz.dylib */; };
 		D4545227156E28EF00887EB5 /* AppDelegate.cpp */ = {isa = PBXBuildFile; fileRef = D4545215156E28EF00887EB5 /* AppDelegate.cpp */; };
 		D6B061241803AB9F0077942B /* CoreMotion.framework */ = {isa = PBXBuildFile; fileRef = D6B061231803AB9F0077942B /* CoreMotion.framework */; };
@@ -103,20 +113,27 @@
 		ED494E6EBC9D5B7D53C14DC5 /* CoreVideo.framework */ = {isa = PBXBuildFile; fileRef = 627B4308B55BBF676066449A /* CoreVideo.framework */; };
 		F06C458F8BB145D4C904DFB5 /* PluginUnityAdsJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = B12244F0B1AD1259A8E9BCEE /* PluginUnityAdsJSHelper.cpp */; };
 		F5034021975A4FA158560D1A /* CoreTelephony.framework */ = {isa = PBXBuildFile; fileRef = 3D604A548D9B7927E693B1BA /* CoreTelephony.framework */; };
+		F8A64300B9615C65B66DF71A /* PluginShareJS.cpp */ = {isa = PBXBuildFile; fileRef = 680B4770A10571A30044A50C /* PluginShareJS.cpp */; };
 		FA676C761C71AFA200E091E3 /* libiconv.dylib */ = {isa = PBXBuildFile; fileRef = FA676C751C71AFA200E091E3 /* libiconv.dylib */; };
 		FA676C781C71AFAB00E091E3 /* libiconv.dylib */ = {isa = PBXBuildFile; fileRef = FA676C771C71AFAB00E091E3 /* libiconv.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		005A4C27B0551F55012569E3 /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = plugin_review_res_bundle/sk.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		02694D068D5C93DDAAE70858 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/it.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		027D4D1A9C3165218C8A2DCD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/pt.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		02884DBEB1C7B974CECC35B7 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = UnityAds.framework; sourceTree = SOURCE_ROOT; };
 		044846A8BB32BCD9B6909649 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/EventKit.framework; sourceTree = DEVELOPER_DIR; };
 		05BE44DCA295667BF0045EB7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt-BR; path = plugin_review_res_bundle/pt-BR.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		07A342FEB5F4B782C6A86028 /* PluginFacebookJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginFacebookJSHelper.cpp; path = ../Classes/PluginFacebookJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		07D8452ABAE1C7447ACF4C1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = plugin_review_res_bundle/fr.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		08AC4E6DAC73BC827E8F724F /* PluginAdMob.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginAdMob.framework; path = PluginAdMob.framework; sourceTree = SOURCE_ROOT; };
+		0C63449E8CDE8FAA7E44A425 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ru.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		0D3642C38AF02012CFC28031 /* PluginReviewJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginReviewJSHelper.cpp; path = ../Classes/PluginReviewJSHelper.cpp; sourceTree = SOURCE_ROOT; };
+		115740B1B2F0FD864A8BF388 /*  */ = {isa = PBXFileReference; lastKnownFileType = "?"; name = ""; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/; sourceTree = SOURCE_ROOT; };
+		14684F219B52F56E4F1C8A35 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/id.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		15DE4A199D7F080D4365B204 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = plugin_review_res_bundle/pt.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		16954D64A4F58DA1C64CA86A /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/nl.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		17E940449B09B189DEFCC2B4 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = GoogleMobileAds.framework; sourceTree = SOURCE_ROOT; };
 		19B940939D08479F7FEDC977 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = plugin_review_res_bundle/nl.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		1A1A081B18C9DF05005C6854 /* project.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = project.json; path = ../../../project.json; sourceTree = "<group>"; };
@@ -134,17 +151,25 @@
 		1AFFCD841F7A5DCD00628F2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ios/Images.xcassets; sourceTree = "<group>"; };
 		1C0D4038A5EA8D278355DBCF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = FBSDKShareKit.framework; sourceTree = SOURCE_ROOT; };
 		1E6749128F401216C18D2F36 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = plugin_review_res_bundle/de.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		21B64C3AA6035EB47F993AAF /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/th.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		26DB4A12936430A681EF212E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		271D40528884F3D5CC71A3D7 /* PluginAdMobJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginAdMobJS.hpp; path = ../Classes/PluginAdMobJS.hpp; sourceTree = SOURCE_ROOT; };
 		294D7D7B1D0D667B002CE7B7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		2BD84166BBBF984A39E4B97D /* PluginUnityAdsJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginUnityAdsJSHelper.h; path = ../Classes/PluginUnityAdsJSHelper.h; sourceTree = SOURCE_ROOT; };
+		2EC344CBAE87C09622B0A25B /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/da.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		301A454A8A7CC1C66956ACF0 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ar.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		345943EDAF72BC6F438DED9F /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = TwitterCore.framework; sourceTree = SOURCE_ROOT; };
+		34FE4BA39195F064A7021E17 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/es.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		39DD4BD78DD461B970FFC4B7 /* PluginFacebookJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginFacebookJSHelper.h; path = ../Classes/PluginFacebookJSHelper.h; sourceTree = SOURCE_ROOT; };
 		3B474BB5A0F6CD0AE8F79590 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
 		3D604A548D9B7927E693B1BA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		3EB54056A494632670A1D3A4 /* PluginShareJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginShareJSHelper.h; path = ../Classes/PluginShareJSHelper.h; sourceTree = SOURCE_ROOT; };
+		41AE437DA3913DF794FF5B0C /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/he.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		43B04280B97E0C83874CA3B8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = plugin_review_res_bundle/ru.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		4D3EB2571F8F4A6C007DA644 /* jsb_module_register.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_module_register.cpp; sourceTree = "<group>"; };
 		4D697BD91CBD301C00A5AF29 /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = ../../cocos2d-x/external/ios/libs/libjs_static.a; sourceTree = "<group>"; };
 		4D697BDC1CBD303100A5AF29 /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = ../../cocos2d-x/external/mac/libs/libjs_static.a; sourceTree = "<group>"; };
+		4F8F45CAAB2D8065418DB51D /* gu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = gu; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/gu.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		502380DB17EBB88200990C9B /* libcurl.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libcurl.dylib; path = usr/lib/libcurl.dylib; sourceTree = SDKROOT; };
 		509D4AAA17EBB24E00697056 /* hello_world-desktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hello_world-desktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		509D4AAB17EBB2AB00697056 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppController.h; path = ios/AppController.h; sourceTree = "<group>"; };
@@ -161,35 +186,59 @@
 		509D4AE817EBB82000697056 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		509D4AEA17EBB82600697056 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		51E44744BA9658A7BDC64011 /* PluginFacebookJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginFacebookJS.cpp; path = ../Classes/PluginFacebookJS.cpp; sourceTree = SOURCE_ROOT; };
+		536942A58B5D14DE4B0B715E /* en-gb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en-gb; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/en-gb.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		54934A55B8934021FC7F14CE /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/uk.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		57AC4823AF2E48FF86DF9958 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/sv.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		5CA84E7F9606487FD9C1AC14 /* bg */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bg; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/bg.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		6048457181F61033D1FE96EC /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh-Hant; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/zh-Hant.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		61754F45A1AE7B379F97506B /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/hi.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		627B4308B55BBF676066449A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
 		63FF4CECAE4848616A4ED782 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = plugin_review_res_bundle/sv.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		65724FD4BE9F19DB3A92803D /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/MessageUI.framework; sourceTree = DEVELOPER_DIR; };
+		662C4A55A8656433FDA5E681 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/pl.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		67CF4A13BAA3E97999B3871E /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/GLKit.framework; sourceTree = DEVELOPER_DIR; };
+		680B4770A10571A30044A50C /* PluginShareJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginShareJS.cpp; path = ../Classes/PluginShareJS.cpp; sourceTree = SOURCE_ROOT; };
+		6B15409EA9F457502FB55F1B /* tl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tl; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/tl.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		6BF24C2A952BA7492FA8A29D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		6ECD421D98E2D4FD3D046F63 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ms.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		6ED94D4F9CF7706C0BC2431B /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ko.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		705C4EDBB0B5D209521A67C4 /* mr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = mr; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/mr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		728143219E2DD6E9701D7D70 /* PluginReviewJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginReviewJS.hpp; path = ../Classes/PluginReviewJS.hpp; sourceTree = SOURCE_ROOT; };
 		734C467DA242AA4702FF7958 /* sdkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sdkbox.framework; path = sdkbox.framework; sourceTree = SOURCE_ROOT; };
 		739B4E958F26AF9AF0451922 /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = plugin_review_res_bundle/da.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		754344B6BF78788AD785E126 /* PluginShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginShare.framework; path = PluginShare.framework; sourceTree = SOURCE_ROOT; };
+		771841AB86AA650D69A5D365 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/de.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		7B7A487A956060D8847AAF81 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FBSDKLoginKit.framework; sourceTree = SOURCE_ROOT; };
+		7B9148869498A3E277CD4D24 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
 		7F584519BB77D80D05BE4424 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = plugin_review_res_bundle/tr.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		7F7044EA8525B5AB860D9964 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = plugin_review_res_bundle/nb.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		83964B86923A7090D4FD4280 /* hy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hy; path = plugin_review_res_bundle/hy.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		84234A06A1BACD7887F747AB /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
+		853647E982BBCCFC7C2166C6 /* ur */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ur; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ur.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		879F4EEB8D7294D438FC2F10 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = plugin_review_res_bundle/ar.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		87AD413D80920D5213CE89D5 /* kn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = kn; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/kn.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		88ED4613B061567BA3426BDE /* PluginFacebookJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginFacebookJS.hpp; path = ../Classes/PluginFacebookJS.hpp; sourceTree = SOURCE_ROOT; };
 		89EC452AB98F6667A2F9564B /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = plugin_review_res_bundle/he.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		8C5D4DF79BBBA042B02A9374 /* PluginReview.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginReview.framework; path = PluginReview.framework; sourceTree = SOURCE_ROOT; };
 		91674E5E975BAF352D612C3A /* PluginAdMobJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginAdMobJS.cpp; path = ../Classes/PluginAdMobJS.cpp; sourceTree = SOURCE_ROOT; };
+		918E4B9EA377D84531E1D4FF /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/fa.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		92BB40BEBA76E4F139A15A08 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh-Hant; path = plugin_review_res_bundle/zh-Hant.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		92CB4E4697D8A37CEA43612C /* ta */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ta; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ta.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		95074A0CBD8E5BC686492ADA /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = plugin_review_res_bundle/it.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		953E4A17B6A7D465C81D65D8 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/EventKitUI.framework; sourceTree = DEVELOPER_DIR; };
 		9588441CBA7CDA98BF14E66A /* PluginAdMobJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginAdMobJSHelper.h; path = ../Classes/PluginAdMobJSHelper.h; sourceTree = SOURCE_ROOT; };
+		95C246FDA36D8D75802E68C8 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/cs.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		961349749630331CAFC92C63 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = plugin_review_res_bundle/ms.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		9A554AF5B36897E5F443038E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		9AC44BEC9261DAAF5B6B1679 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = plugin_review_res_bundle/el.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		9AEA4D34BCF33F76B40E5CD3 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = plugin_review_res_bundle/fa.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		9B5644F18A80ED8079968F87 /* PluginUnityAdsJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginUnityAdsJS.cpp; path = ../Classes/PluginUnityAdsJS.cpp; sourceTree = SOURCE_ROOT; };
 		A17443FDB793A2CFD1AC0575 /* PluginReviewJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginReviewJSHelper.h; path = ../Classes/PluginReviewJSHelper.h; sourceTree = SOURCE_ROOT; };
+		A3184CB0983E62E3E00E8537 /* hr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hr; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/hr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		A55344AEA8908D06B5AE19D4 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = plugin_review_res_bundle/ko.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		A58644C6B0412346980BCB03 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		A73442CBA595DB84D83CF2C6 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ro.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		A7EF4D74958A76D495941CA5 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/hu.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		A8F24B99AB4F6D33FF5C113A /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = plugin_review_res_bundle/fi.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		A922753D1517C094001B78AA /* hello_world-mobile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hello_world-mobile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92275411517C094001B78AA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -206,12 +255,16 @@
 		AB45A1001D34F7CC00033ACB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		AB45A1021D34F7E100033ACB /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		ABB3413395BE21798A07BB7D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
+		AD2B4A5295B15E1A2A1A00F9 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ja.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		B06F45709ACED96433218C7C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = plugin_review_res_bundle/es.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		B0AB45DB944D0E8D6324DD4B /* PluginReviewJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginReviewJS.cpp; path = ../Classes/PluginReviewJS.cpp; sourceTree = SOURCE_ROOT; };
 		B12244F0B1AD1259A8E9BCEE /* PluginUnityAdsJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginUnityAdsJSHelper.cpp; path = ../Classes/PluginUnityAdsJSHelper.cpp; sourceTree = SOURCE_ROOT; };
+		B22348198929DE8D5991855D /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/el.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		B3374BF7902DE8C059117850 /* PluginUnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginUnityAds.framework; path = PluginUnityAds.framework; sourceTree = SOURCE_ROOT; };
 		B516498FA070506E55B14442 /* PluginAdMobJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginAdMobJSHelper.cpp; path = ../Classes/PluginAdMobJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		B56F449A8DED464326EF84FA /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = plugin_review_res_bundle/id.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		B6C3437C9C33C3A8BDE0A71C /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/tr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		B6E94B9191D7A7069AF1FC22 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/nb.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		B7984BF1AE98B08A77A3F0B3 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = plugin_review_res_bundle/cs.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		B7CF4632A777D75C488BA465 /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = plugin_review_res_bundle/hu.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		BA3A85EB1A724AE900924D24 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
@@ -219,28 +272,41 @@
 		BA4E718219EB6E4600932425 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.0.sdk/System/Library/Frameworks/GameController.framework; sourceTree = DEVELOPER_DIR; };
 		BAEE4D831AC40C11003BEB0F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		BAF426FA19484B3E002B22EF /* script */ = {isa = PBXFileReference; lastKnownFileType = folder; name = script; path = ../../cocos2d-x/cocos/scripting/js-bindings/script; sourceTree = "<group>"; };
+		BF124212811FA44E443C1171 /* TwitterKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterKit.framework; path = TwitterKit.framework; sourceTree = SOURCE_ROOT; };
 		C03780EA18BEE0E400FE4F13 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; name = src; path = ../../../src; sourceTree = "<group>"; };
 		C037820118BF76AF00FE4F13 /* cocos2d_js_bindings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = wrapper.pb-project; name = cocos2d_js_bindings.xcodeproj; path = ../../cocos2d-x/cocos/scripting/js-bindings/proj.ios_mac/cocos2d_js_bindings.xcodeproj; sourceTree = "<group>"; };
 		C06E23CB18CEFE680093C81A /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C06E4D808E2EAE2C35C55D67 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = plugin_review_res_bundle/ro.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		C0799CB518BAE62000E9C828 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; name = res; path = ../../../res; sourceTree = "<group>"; };
+		C0D143C98DB1CF8A3CD542D0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/fr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		C4F5439B9DDA81EED626B07D /* sk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sk; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/sk.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		C8FF4CEB849A14A4F18BB564 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/fi.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		CB2F41A0A999AE753B74B38F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = plugin_review_res_bundle/ja.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		CCAE41D58EE30142F107767B /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = plugin_review_res_bundle/vi.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		CF98469B8F3E6060C25B381A /* PluginUnityAdsJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginUnityAdsJS.hpp; path = ../Classes/PluginUnityAdsJS.hpp; sourceTree = SOURCE_ROOT; };
+		D43B4202B58C777A6268B0CE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		D454520B156E22BD00887EB5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		D4545215156E28EF00887EB5 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		D4545216156E28EF00887EB5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D49F4C21B0AE289F3B76A8F0 /* PluginShareJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginShareJS.hpp; path = ../Classes/PluginShareJS.hpp; sourceTree = SOURCE_ROOT; };
 		D5814418B409C579F54180F4 /* SDKBoxJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SDKBoxJSHelper.cpp; path = ../Classes/SDKBoxJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		D6B061231803AB9F0077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
+		D8264E2288EC144502E69A56 /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/sr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		DF3542718FC0130FC3E4319B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh-Hans; path = plugin_review_res_bundle/zh-Hans.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		E26942B88242C02A62E98093 /* PluginFacebook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginFacebook.framework; path = PluginFacebook.framework; sourceTree = SOURCE_ROOT; };
+		E45D458BB1E15E691A0E7A31 /* bn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bn; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/bn.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		E7E3428E9FA22504255E6BC6 /* SDKBoxJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SDKBoxJSHelper.h; path = ../Classes/SDKBoxJSHelper.h; sourceTree = SOURCE_ROOT; };
 		E8ED40F2965EF5C6716ACC6F /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = plugin_review_res_bundle/pl.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		E9224335A668E0282458D818 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Bolts.framework; sourceTree = SOURCE_ROOT; };
+		EA844FF8A9DBB9CD8AD28973 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Social.framework; sourceTree = DEVELOPER_DIR; };
+		EEA84C5286223FC331D78F7A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/en.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		F1D04CC0BFE883F32A7174FB /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/vi.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		F35749B296D42F693C2DECDF /* PluginShareJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginShareJSHelper.cpp; path = ../Classes/PluginShareJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		F3B947049E5D41DA4B737D00 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = plugin_review_res_bundle/th.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		F78242E7AE1CA4476267EEC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = plugin_review_res_bundle/en.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		FA676C751C71AFA200E091E3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		FA676C771C71AFAB00E091E3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+		FAE34AC09D8DC89E8D26EB1A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh-Hans; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/zh-Hans.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		FB2A4DDFB7849FE18310AA90 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = plugin_review_res_bundle/uk.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		FF8344CBB8E10623E3FE8DAC /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = plugin_review_res_bundle/ca.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -323,6 +389,13 @@
 				1E3449B2AD0241FF9EB06133 /* PluginUnityAds.framework */,
 				00054258978958B6ABEE1DEC /* UnityAds.framework */,
 				4A494C199DEB9E7B23037553 /* PluginReview.framework */,
+				88FA42BD807D26FAE5856E47 /* PluginShare.framework */,
+				CEC44DBEBDAFFFF6A84DB5BD /* Fabric.framework */,
+				927945ACA381318E8B446687 /* TwitterCore.framework */,
+				4DFE4217BFF64A7E9FD2367D /* TwitterKit.framework */,
+				4F314AE880C94B64CC5CEF76 /* Accounts.framework */,
+				BBBF434D937D24F0C05F0116 /* CoreData.framework */,
+				5C53400A851A25CE5EC164E4 /* Social.framework */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +455,8 @@
 				A922753E1517C094001B78AA /* Products */,
 				15628F5B15F0F5C2000CF24B /* Resources */,
 				795F4BACBCDE9DB42A606EAE /* plugin_review_res_bundle */,
+				115740B1B2F0FD864A8BF388 /*  */,
+				EC0942E983A0280834261CD7 /* Localizable.strings */,
 			);
 			sourceTree = "<group>";
 		};
@@ -454,6 +529,13 @@
 				B3374BF7902DE8C059117850 /* PluginUnityAds.framework */,
 				02884DBEB1C7B974CECC35B7 /* UnityAds.framework */,
 				8C5D4DF79BBBA042B02A9374 /* PluginReview.framework */,
+				754344B6BF78788AD785E126 /* PluginShare.framework */,
+				D43B4202B58C777A6268B0CE /* Fabric.framework */,
+				345943EDAF72BC6F438DED9F /* TwitterCore.framework */,
+				BF124212811FA44E443C1171 /* TwitterKit.framework */,
+				7B9148869498A3E277CD4D24 /* Accounts.framework */,
+				6BF24C2A952BA7492FA8A29D /* CoreData.framework */,
+				EA844FF8A9DBB9CD8AD28973 /* Social.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -508,6 +590,10 @@
 				728143219E2DD6E9701D7D70 /* PluginReviewJS.hpp */,
 				0D3642C38AF02012CFC28031 /* PluginReviewJSHelper.cpp */,
 				A17443FDB793A2CFD1AC0575 /* PluginReviewJSHelper.h */,
+				680B4770A10571A30044A50C /* PluginShareJS.cpp */,
+				D49F4C21B0AE289F3B76A8F0 /* PluginShareJS.hpp */,
+				F35749B296D42F693C2DECDF /* PluginShareJSHelper.cpp */,
+				3EB54056A494632670A1D3A4 /* PluginShareJSHelper.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -622,6 +708,8 @@
 				C03780EB18BEE0E400FE4F13 /* src */,
 				C0799CB918BAE62000E9C828 /* res */,
 				E0794330BCF3B9F02F7D5610 /* SdkboxReviewResLocalizable.strings */,
+				C7B1438EBFA72DAA6AB852A5 /*  */,
+				519A4BECA2297AF86643F90E /* Localizable.strings */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -656,6 +744,8 @@
 				F06C458F8BB145D4C904DFB5 /* PluginUnityAdsJSHelper.cpp */,
 				DD8E4FED8E14A73147BA6A71 /* PluginReviewJS.cpp */,
 				B0E942ED91A26CDE2DC989C3 /* PluginReviewJSHelper.cpp */,
+				F8A64300B9615C65B66DF71A /* PluginShareJS.cpp */,
+				1F49413BAAE38F1A5A183012 /* PluginShareJSHelper.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,6 +886,10 @@
 					"\"PluginUnityAds.framework\"",
 					"\"UnityAds.framework\"",
 					"\"PluginReview.framework\"",
+					"\"PluginShare.framework\"",
+					"\"Fabric.framework\"",
+					"\"TwitterCore.framework\"",
+					"\"TwitterKit.framework\"",
 				);
 				OTHER_CFLAGS = (
 					-DSDKBOX_ENABLED,
@@ -847,6 +941,10 @@
 					"\"PluginUnityAds.framework\"",
 					"\"UnityAds.framework\"",
 					"\"PluginReview.framework\"",
+					"\"PluginShare.framework\"",
+					"\"Fabric.framework\"",
+					"\"TwitterCore.framework\"",
+					"\"TwitterKit.framework\"",
 				);
 				OTHER_CFLAGS = (
 					-DSDKBOX_ENABLED,
@@ -956,6 +1054,56 @@
 				FF8344CBB8E10623E3FE8DAC /* ca */,
 			);
 			name = SdkboxReviewResLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		EC0942E983A0280834261CD7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				771841AB86AA650D69A5D365 /* de */,
+				853647E982BBCCFC7C2166C6 /* ur */,
+				41AE437DA3913DF794FF5B0C /* he */,
+				301A454A8A7CC1C66956ACF0 /* ar */,
+				B22348198929DE8D5991855D /* el */,
+				FAE34AC09D8DC89E8D26EB1A /* zh-Hans */,
+				AD2B4A5295B15E1A2A1A00F9 /* ja */,
+				918E4B9EA377D84531E1D4FF /* fa */,
+				705C4EDBB0B5D209521A67C4 /* mr */,
+				EEA84C5286223FC331D78F7A /* en */,
+				54934A55B8934021FC7F14CE /* uk */,
+				4F8F45CAAB2D8065418DB51D /* gu */,
+				87AD413D80920D5213CE89D5 /* kn */,
+				B6E94B9191D7A7069AF1FC22 /* nb */,
+				536942A58B5D14DE4B0B715E /* en-gb */,
+				34FE4BA39195F064A7021E17 /* es */,
+				2EC344CBAE87C09622B0A25B /* da */,
+				02694D068D5C93DDAAE70858 /* it */,
+				5CA84E7F9606487FD9C1AC14 /* bg */,
+				C4F5439B9DDA81EED626B07D /* sk */,
+				D8264E2288EC144502E69A56 /* sr */,
+				6ECD421D98E2D4FD3D046F63 /* ms */,
+				92CB4E4697D8A37CEA43612C /* ta */,
+				57AC4823AF2E48FF86DF9958 /* sv */,
+				95C246FDA36D8D75802E68C8 /* cs */,
+				6ED94D4F9CF7706C0BC2431B /* ko */,
+				6048457181F61033D1FE96EC /* zh-Hant */,
+				A7EF4D74958A76D495941CA5 /* hu */,
+				B6C3437C9C33C3A8BDE0A71C /* tr */,
+				662C4A55A8656433FDA5E681 /* pl */,
+				F1D04CC0BFE883F32A7174FB /* vi */,
+				0C63449E8CDE8FAA7E44A425 /* ru */,
+				C0D143C98DB1CF8A3CD542D0 /* fr */,
+				C8FF4CEB849A14A4F18BB564 /* fi */,
+				14684F219B52F56E4F1C8A35 /* id */,
+				16954D64A4F58DA1C64CA86A /* nl */,
+				21B64C3AA6035EB47F993AAF /* th */,
+				027D4D1A9C3165218C8A2DCD /* pt */,
+				E45D458BB1E15E691A0E7A31 /* bn */,
+				A73442CBA595DB84D83CF2C6 /* ro */,
+				6B15409EA9F457502FB55F1B /* tl */,
+				A3184CB0983E62E3E00E8537 /* hr */,
+				61754F45A1AE7B379F97506B /* hi */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

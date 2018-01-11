@@ -1,27 +1,27 @@
-require = function o(e, n, i) {
-function t(c, s) {
-if (!n[c]) {
+require = function o(e, i, t) {
+function n(c, l) {
+if (!i[c]) {
 if (!e[c]) {
-var r = "function" == typeof require && require;
-if (!s && r) return r(c, !0);
-if (l) return l(c, !0);
-var g = new Error("Cannot find module '" + c + "'");
-throw g.code = "MODULE_NOT_FOUND", g;
+var d = "function" == typeof require && require;
+if (!l && d) return d(c, !0);
+if (s) return s(c, !0);
+var a = new Error("Cannot find module '" + c + "'");
+throw a.code = "MODULE_NOT_FOUND", a;
 }
-var a = n[c] = {
+var r = i[c] = {
 exports: {}
 };
-e[c][0].call(a.exports, function(o) {
-var n = e[c][1][o];
-return t(n || o);
-}, a, a.exports, o, e, n, i);
+e[c][0].call(r.exports, function(o) {
+var i = e[c][1][o];
+return n(i || o);
+}, r, r.exports, o, e, i, t);
 }
-return n[c].exports;
+return i[c].exports;
 }
-for (var l = "function" == typeof require && require, c = 0; c < i.length; c++) t(i[c]);
-return t;
+for (var s = "function" == typeof require && require, c = 0; c < t.length; c++) n(t[c]);
+return n;
 }({
-HelloWorld: [ function(o, e, n) {
+HelloWorld: [ function(o, e, i) {
 "use strict";
 cc._RF.push(e, "280c3rsZJJKnZ9RqbALVwtK", "HelloWorld");
 cc.Class({
@@ -34,45 +34,56 @@ type: cc.Label
 text: "Hello, World!",
 fbLoginText: "login"
 },
+showLog: function(o) {
+this.label.string = o;
+},
 onLoad: function() {
-this.label.string = this.text;
+this.showLog(this.text);
 cc.sys.isMobile && this.testSdkbox();
 },
 update: function(o) {},
 testSdkbox: function() {
+this.testFB();
+this.testAdMob();
+this.testUnityAds();
+this.testReview();
+this.testShare();
+},
+testFB: function() {
+var o = this;
 sdkbox.PluginFacebook.init();
 sdkbox.PluginFacebook.setListener({
-onLogin: function(o, e) {
-self.label.string = o ? "login successful" : "login failed";
+onLogin: function(e, i) {
+e ? o.showLog("login successful") : o.showLog("login failed");
 },
-onSharedSuccess: function(o) {
-self.label.string = o;
-self.fbLoginText.string = "logout";
+onSharedSuccess: function(e) {
+o.showLog(e);
+o.fbLoginText.string = "logout";
 },
-onSharedFailed: function(o) {
-self.label.string = msg;
-self.fbLoginText.string = "login";
+onSharedFailed: function(e) {
+o.showLog(msg);
+o.fbLoginText.string = "login";
 },
-onGetUserInfo: function(o) {
-self.label.string = "onGetUserInfo";
-console.log("Facebook > ", o.first_name);
-console.log("Facebook > ", o.id);
-console.log("Facebook > ", o.installed);
-console.log("Facebook > ", o.is_silhouette);
-console.log("Facebook > ", o.last_name);
-console.log("Facebook > ", o.name);
-console.log("Facebook > ", o.picture);
-console.log("Facebook > ", o.picture_url);
-console.log("Facebook > ", o.score);
+onGetUserInfo: function(e) {
+o.showLog("onGetUserInfo");
+console.log("Facebook > ", e.first_name);
+console.log("Facebook > ", e.id);
+console.log("Facebook > ", e.installed);
+console.log("Facebook > ", e.is_silhouette);
+console.log("Facebook > ", e.last_name);
+console.log("Facebook > ", e.name);
+console.log("Facebook > ", e.picture);
+console.log("Facebook > ", e.picture_url);
+console.log("Facebook > ", e.score);
 },
-onAPI: function(o, e) {
-self.label.string = o + e;
+onAPI: function(e, i) {
+o.showLog(e + i);
 },
-onFetchFriends: function(o, e) {
-self.label.string = "onFetchFriends" + e;
+onFetchFriends: function(e, i) {
+o.showLog("onFetchFriends" + i);
 },
-onPermission: function(o, e) {
-self.label.string = "onPermission" + e;
+onPermission: function(e, i) {
+o.showLog("onPermission" + i);
 }
 });
 sdkbox.PluginFacebook.isLoggedIn() ? this.fbLoginText.string = "logout" : this.fbLoginText.string = "login";
@@ -111,6 +122,130 @@ sdkbox.PluginFacebook.inviteFriends("https://fb.me/322164761287181", "http://www
 clickFBGraphAPI: function() {
 var o = new Object();
 sdkbox.PluginFacebook.api("/me/friendlists", "GET", o, "/me/friendlists");
+},
+testAdMob: function() {
+var o = this;
+sdkbox.PluginAdMob.init();
+sdkbox.PluginAdMob.setListener({
+adViewDidReceiveAd: function(e) {
+o.showLog("AdMob adViewDidReceiveAd " + e);
+sdkbox.PluginAdMob.show(e);
+},
+adViewDidFailToReceiveAdWithError: function(e, i) {
+o.showLog("AdMob adViewDidFailToReceiveAdWithError " + e);
+},
+adViewWillPresentScreen: function(e) {
+o.showLog("AdMob adViewWillPresentScreen " + e);
+},
+adViewDidDismissScreen: function(e) {
+o.showLog("AdMob adViewDidDismissScreen " + e);
+},
+adViewWillDismissScreen: function(e) {
+o.showLog("AdMob adViewWillDismissScreen " + e);
+},
+adViewWillLeaveApplication: function(e) {
+o.showLog("AdMob adViewWillLeaveApplication " + e);
+}
+});
+},
+clickShowAdMobBanner: function() {
+sdkbox.PluginAdMob.show("home");
+},
+clickShowAdMobInterstital: function() {
+sdkbox.PluginAdMob.show("gameover");
+},
+clickShowAdMobVideo: function() {
+sdkbox.PluginAdMob.show("rewarded");
+},
+clickHideAdMobBanner: function() {
+sdkbox.PluginAdMob.hide("home");
+},
+clickHideAdMobInterstital: function() {
+sdkbox.PluginAdMob.hide("gameover");
+},
+clickHideAdMobVideo: function() {
+sdkbox.PluginAdMob.hide("rewarded");
+},
+testUnityAds: function() {
+var o = this, e = sdkbox.PluginUnityAds;
+e.setListener({
+unityAdsDidClick: function(e) {
+o.showLog("unityAdsDidClick " + e);
+},
+unityAdsPlacementStateChanged: function(e, i, t) {
+o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + i + " newState:" + t);
+},
+unityAdsReady: function(e) {
+o.showLog("unityAdsReady " + e);
+},
+unityAdsDidError: function(e, i) {
+o.showLog("unityAdsDidError:" + e + " message:" + i);
+},
+unityAdsDidStart: function(e) {
+o.showLog("unityAdsDidStart=" + e);
+},
+unityAdsDidFinish: function(e, i) {
+o.showLog("unityAdsDidFinish " + e + " state:" + i);
+}
+});
+e.init();
+},
+clickShowUnityAds: function() {
+var o = this;
+sdkbox.PluginUnityAds.isReady("") ? sdkbox.PluginUnityAds.show("") : o.showLog("unityads is not ready");
+},
+testReview: function() {
+var o = this, e = sdkbox.PluginReview;
+e.setListener({
+onDisplayAlert: function(e) {
+o.showLog("Review: didDisplayAlert");
+},
+onDeclineToRate: function(e) {
+o.showLog("Review: didDeclineToRate");
+},
+onRate: function(e) {
+o.showLog("Review: didToRate");
+},
+onRemindLater: function(e) {
+o.showLog("Review: didToRemindLater");
+}
+});
+e.init();
+},
+clickReview: function() {
+sdkbox.PluginReview.setTitle("custom title");
+sdkbox.PluginReview.setMessage("custom message");
+sdkbox.PluginReview.setCancelButtonTitle("custom cancel");
+sdkbox.PluginReview.setRateButtonTitle("custom rate");
+sdkbox.PluginReview.setRateLaterButtonTitle("custom rate later");
+sdkbox.PluginReview.show();
+},
+testShare: function() {
+var o = this, e = sdkbox.PluginShare;
+e.setListener({
+onShareState: function(e) {
+o.showLog("PluginShare onSharestate:" + e.state + " error:" + e.error);
+e.state == sdkbox.SocialShareState.SocialShareStateSuccess && o.showLog("post success");
+}
+});
+e.init();
+},
+clickShare: function() {
+var o = {};
+o.text = "#sdkbox(www.sdkbox.com) - the cure for sdk fatigue - from js - ";
+o.title = "sdkbox";
+o.link = "http://www.sdkbox.com";
+info.showDialog = !1;
+o.platform = sdkbox.SocialPlatform.Platform_Select;
+plugin.share(o);
+},
+clickNativeShare: function() {
+var o = {};
+o.text = "#sdkbox(www.sdkbox.com) - the cure for sdk fatigue ";
+o.title = "sdkbox";
+o.link = "http://www.sdkbox.com";
+sdkbox.PluginShare.nativeShare(o);
+sdkbox.PluginShare.nativeShare(o);
 }
 });
 cc._RF.pop();

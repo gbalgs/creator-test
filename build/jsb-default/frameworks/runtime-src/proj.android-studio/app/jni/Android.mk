@@ -24,7 +24,9 @@ LOCAL_SRC_FILES := hellojavascript/main.cpp \
 ../../../Classes/PluginUnityAdsJS.cpp \
 ../../../Classes/PluginUnityAdsJSHelper.cpp \
 ../../../Classes/PluginReviewJS.cpp \
-../../../Classes/PluginReviewJSHelper.cpp
+../../../Classes/PluginReviewJSHelper.cpp \
+../../../Classes/PluginShareJS.cpp \
+../../../Classes/PluginShareJSHelper.cpp
 LOCAL_CPPFLAGS := -DSDKBOX_ENABLED \
 -DSDKBOX_COCOS_CREATOR
 LOCAL_LDLIBS := -landroid \
@@ -44,6 +46,7 @@ LOCAL_WHOLE_STATIC_LIBRARIES += sdkbox
 LOCAL_WHOLE_STATIC_LIBRARIES += PluginAdMob
 LOCAL_WHOLE_STATIC_LIBRARIES += PluginUnityAds
 LOCAL_WHOLE_STATIC_LIBRARIES += PluginReview
+LOCAL_WHOLE_STATIC_LIBRARIES += PluginShare
 
 LOCAL_STATIC_LIBRARIES := cocos2d_js_static
 
@@ -60,3 +63,4 @@ $(call import-module, ./pluginfacebook)
 $(call import-module, ./pluginadmob)
 $(call import-module, ./pluginunityads)
 $(call import-module, ./pluginreview)
+$(call import-module, ./pluginshare)
