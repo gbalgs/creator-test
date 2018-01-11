@@ -248,7 +248,7 @@ o.title = "sdkbox";
 o.link = "http://www.sdkbox.com";
 o.showDialog = !1;
 o.platform = sdkbox.PluginShare.SocialPlatform.Platform_Select;
-plugin.share(o);
+sdkbox.PluginShare.share(o);
 },
 clickNativeShare: function() {
 var o = {};
