@@ -11,9 +11,13 @@ cc.Class({
         fbLoginText: 'login'
     },
 
+    showLog: function (text) {
+        this.label.string = text;
+    },
+
     // use this for initialization
     onLoad: function () {
-        this.label.string = this.text;
+        this.showLog(this.text);
 
         if (cc.sys.isMobile) {
             this.testSdkbox();
@@ -38,21 +42,21 @@ cc.Class({
         sdkbox.PluginFacebook.setListener({
             onLogin: function(isLogin, msg) {
               if (isLogin) {
-                self.label.string = "login successful";
+                self.showLog("login successful");
               } else {
-                self.label.string = "login failed";
+                self.showLog("login failed");
               }
             },
             onSharedSuccess: function (msg) {
-                self.label.string = msg;
+                self.showLog(msg);
                 self.fbLoginText.string = "logout";
             },
             onSharedFailed: function (message) {
-                self.label.string = msg;
+                self.showLog(msg);
                 self.fbLoginText.string = "login";
             },
             onGetUserInfo: function (user) {
-                self.label.string = "onGetUserInfo";
+                self.showLog("onGetUserInfo");
 
                 console.log("Facebook > ", user.first_name);
                 console.log("Facebook > ", user.id);
@@ -65,13 +69,13 @@ cc.Class({
                 console.log("Facebook > ", user.score);
             },
             onAPI: function (key, jsonData) {
-                self.label.string = key + jsonData;
+                self.showLog(key + jsonData);
             },
             onFetchFriends: function (ok, msg) {
-                self.label.string = "onFetchFriends" + msg;
+                self.showLog("onFetchFriends" + msg);
             },
             onPermission: function (isLogin, msg) {
-                self.label.string = "onPermission" + msg;
+                self.showLog("onPermission" + msg);
             }
         });
         if (sdkbox.PluginFacebook.isLoggedIn()) {
@@ -133,24 +137,24 @@ cc.Class({
         sdkbox.PluginAdMob.init();
         sdkbox.PluginAdMob.setListener({
             adViewDidReceiveAd : function(name) {
-                self.label.string = "AdMob adViewDidReceiveAd " + name;
+                self.showLog("AdMob adViewDidReceiveAd " + name);
 
                 sdkbox.PluginAdMob.show(name);
             },
             adViewDidFailToReceiveAdWithError : function(name, msg) {
-                self.label.string = "AdMob adViewDidFailToReceiveAdWithError " + name;
+                self.showLog("AdMob adViewDidFailToReceiveAdWithError " + name);
             },
             adViewWillPresentScreen : function(name) {
-                self.label.string = "AdMob adViewWillPresentScreen " + name;
+                self.showLog("AdMob adViewWillPresentScreen " + name);
             },
             adViewDidDismissScreen : function(name) {
-                self.label.string = "AdMob adViewDidDismissScreen " + name;
+                self.showLog("AdMob adViewDidDismissScreen " + name);
             },
             adViewWillDismissScreen : function(name) {
-                self.label.string = "AdMob adViewWillDismissScreen " + name;
+                self.showLog("AdMob adViewWillDismissScreen " + name);
             },
             adViewWillLeaveApplication : function(name) {
-                self.label.string = "AdMob adViewWillLeaveApplication " + name;
+                self.showLog("AdMob adViewWillLeaveApplication " + name);
             }
         });
     },
@@ -172,4 +176,41 @@ cc.Class({
     clickHideAdMobVideo: function () {
         sdkbox.PluginAdMob.hide("rewarded");
     },
+
+    // unity ads
+    testUnityAds: function () {
+        var self = this;
+        var plugin = sdkbox.PluginUnityAds
+        plugin.setListener({
+            unityAdsDidClick: function(placementId) {
+                self.showLog('unityAdsDidClick ' + placementId);
+            },
+            unityAdsPlacementStateChanged: function(placementId, oldState, newState) {
+                self.showLog('unityAdsPlacementStateChanged:' + placementId + ' oldState:' + oldState + " newState:" + newState);
+            },
+            unityAdsReady: function(placementId) {
+                self.showLog('unityAdsReady ' + placementId);
+            },
+            unityAdsDidError: function(error, message) {
+                self.showLog('unityAdsDidError:' + error + ' message:' + message);
+            },
+            unityAdsDidStart: function(placementId) {
+                self.showLog('unityAdsDidStart=' + placementId);
+            },
+            unityAdsDidFinish: function(placementId, state) {
+                self.showLog('unityAdsDidFinish ' + placementId + ' state:' + state);
+            }
+        })
+        plugin.init();
+
+    },
+    clickShowUnityAds: function () {
+        var self = this;
+        const placementId = '';
+        if (sdkbox.PluginUnityAds.isReady(placementId)) {
+            sdkbox.PluginUnityAds.show(placementId);
+        } else {
+            self.showLog('unityads is not ready');
+        }
+    }
 });
