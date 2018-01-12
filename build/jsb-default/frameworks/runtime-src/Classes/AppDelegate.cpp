@@ -17,6 +17,10 @@ using namespace anysdk::framework;
 
 USING_NS_CC;
 #ifdef SDKBOX_ENABLED
+#include "PluginGoogleAnalyticsJS.hpp"
+//#include "PluginGoogleAnalyticsJSHelper.h"
+#endif
+#ifdef SDKBOX_ENABLED
 #include "PluginShareJS.hpp"
 #include "PluginShareJSHelper.h"
 #endif
@@ -95,6 +99,10 @@ bool AppDelegate::applicationDidFinishLaunching()
     });
 
     jsb_register_all_modules();
+#ifdef SDKBOX_ENABLED
+    se->addRegisterCallback(register_all_PluginGoogleAnalyticsJS);
+//    se->addRegisterCallback(register_all_PluginGoogleAnalyticsJS_helper);
+#endif
 #ifdef SDKBOX_ENABLED
     se->addRegisterCallback(register_all_PluginShareJS);
     se->addRegisterCallback(register_all_PluginShareJS_helper);

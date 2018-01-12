@@ -25,6 +25,7 @@
 		1AFFCD851F7A5DCF00628F2C /* Images.xcassets */ = {isa = PBXBuildFile; fileRef = 1AFFCD841F7A5DCD00628F2C /* Images.xcassets */; };
 		1AFFCD861F7A5DCF00628F2C /* LaunchScreen.storyboard */ = {isa = PBXBuildFile; fileRef = 1AFFCD821F7A5DCC00628F2C /* LaunchScreen.storyboard */; };
 		1AFFCD871F7A5DCF00628F2C /* LaunchScreenBackground.png */ = {isa = PBXBuildFile; fileRef = 1AFFCD831F7A5DCD00628F2C /* LaunchScreenBackground.png */; };
+		1CF545E384C49A65B74DD502 /* PluginGoogleAnalyticsJS.cpp */ = {isa = PBXBuildFile; fileRef = 9734403D8AF21F594A31D5E1 /* PluginGoogleAnalyticsJS.cpp */; };
 		1E3449B2AD0241FF9EB06133 /* PluginUnityAds.framework */ = {isa = PBXBuildFile; fileRef = B3374BF7902DE8C059117850 /* PluginUnityAds.framework */; };
 		1F49413BAAE38F1A5A183012 /* PluginShareJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = F35749B296D42F693C2DECDF /* PluginShareJSHelper.cpp */; };
 		1FE4486B93D54ED130E966EB /* FBSDKShareKit.framework */ = {isa = PBXBuildFile; fileRef = 1C0D4038A5EA8D278355DBCF /* FBSDKShareKit.framework */; };
@@ -64,6 +65,7 @@
 		7EF74425A35FB7511487E4CB /* PluginFacebookJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = 07A342FEB5F4B782C6A86028 /* PluginFacebookJSHelper.cpp */; };
 		88FA42BD807D26FAE5856E47 /* PluginShare.framework */ = {isa = PBXBuildFile; fileRef = 754344B6BF78788AD785E126 /* PluginShare.framework */; };
 		8AC04E55AF5ED77DA9FAEF24 /* AdSupport.framework */ = {isa = PBXBuildFile; fileRef = 26DB4A12936430A681EF212E /* AdSupport.framework */; };
+		8AFB4005B8A44F25C75093E0 /* PluginGoogleAnalytics.framework */ = {isa = PBXBuildFile; fileRef = 322E473DB622269D50B0B2C8 /* PluginGoogleAnalytics.framework */; };
 		927945ACA381318E8B446687 /* TwitterCore.framework */ = {isa = PBXBuildFile; fileRef = 345943EDAF72BC6F438DED9F /* TwitterCore.framework */; };
 		9D6745388ADB9D2AFAA8C905 /* StoreKit.framework */ = {isa = PBXBuildFile; fileRef = A58644C6B0412346980BCB03 /* StoreKit.framework */; };
 		A6134DFB812559838D722183 /* Bolts.framework */ = {isa = PBXBuildFile; fileRef = E9224335A668E0282458D818 /* Bolts.framework */; };
@@ -158,6 +160,7 @@
 		2BD84166BBBF984A39E4B97D /* PluginUnityAdsJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginUnityAdsJSHelper.h; path = ../Classes/PluginUnityAdsJSHelper.h; sourceTree = SOURCE_ROOT; };
 		2EC344CBAE87C09622B0A25B /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/da.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		301A454A8A7CC1C66956ACF0 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ar.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		322E473DB622269D50B0B2C8 /* PluginGoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginGoogleAnalytics.framework; path = PluginGoogleAnalytics.framework; sourceTree = SOURCE_ROOT; };
 		345943EDAF72BC6F438DED9F /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = TwitterCore.framework; sourceTree = SOURCE_ROOT; };
 		34FE4BA39195F064A7021E17 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/es.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		39DD4BD78DD461B970FFC4B7 /* PluginFacebookJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginFacebookJSHelper.h; path = ../Classes/PluginFacebookJSHelper.h; sourceTree = SOURCE_ROOT; };
@@ -229,6 +232,7 @@
 		9588441CBA7CDA98BF14E66A /* PluginAdMobJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginAdMobJSHelper.h; path = ../Classes/PluginAdMobJSHelper.h; sourceTree = SOURCE_ROOT; };
 		95C246FDA36D8D75802E68C8 /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/cs.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		961349749630331CAFC92C63 /* ms */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ms; path = plugin_review_res_bundle/ms.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		9734403D8AF21F594A31D5E1 /* PluginGoogleAnalyticsJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginGoogleAnalyticsJS.cpp; path = ../Classes/PluginGoogleAnalyticsJS.cpp; sourceTree = SOURCE_ROOT; };
 		9A554AF5B36897E5F443038E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
 		9AC44BEC9261DAAF5B6B1679 /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = plugin_review_res_bundle/el.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		9AEA4D34BCF33F76B40E5CD3 /* fa */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fa; path = plugin_review_res_bundle/fa.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
@@ -259,6 +263,7 @@
 		B06F45709ACED96433218C7C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = plugin_review_res_bundle/es.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		B0AB45DB944D0E8D6324DD4B /* PluginReviewJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginReviewJS.cpp; path = ../Classes/PluginReviewJS.cpp; sourceTree = SOURCE_ROOT; };
 		B12244F0B1AD1259A8E9BCEE /* PluginUnityAdsJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginUnityAdsJSHelper.cpp; path = ../Classes/PluginUnityAdsJSHelper.cpp; sourceTree = SOURCE_ROOT; };
+		B19B465898DD5DEC71250A04 /* PluginGoogleAnalyticsJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginGoogleAnalyticsJS.hpp; path = ../Classes/PluginGoogleAnalyticsJS.hpp; sourceTree = SOURCE_ROOT; };
 		B22348198929DE8D5991855D /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/el.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		B3374BF7902DE8C059117850 /* PluginUnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginUnityAds.framework; path = PluginUnityAds.framework; sourceTree = SOURCE_ROOT; };
 		B516498FA070506E55B14442 /* PluginAdMobJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginAdMobJSHelper.cpp; path = ../Classes/PluginAdMobJSHelper.cpp; sourceTree = SOURCE_ROOT; };
@@ -396,6 +401,7 @@
 				4F314AE880C94B64CC5CEF76 /* Accounts.framework */,
 				BBBF434D937D24F0C05F0116 /* CoreData.framework */,
 				5C53400A851A25CE5EC164E4 /* Social.framework */,
+				8AFB4005B8A44F25C75093E0 /* PluginGoogleAnalytics.framework */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +542,7 @@
 				7B9148869498A3E277CD4D24 /* Accounts.framework */,
 				6BF24C2A952BA7492FA8A29D /* CoreData.framework */,
 				EA844FF8A9DBB9CD8AD28973 /* Social.framework */,
+				322E473DB622269D50B0B2C8 /* PluginGoogleAnalytics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -594,6 +601,8 @@
 				D49F4C21B0AE289F3B76A8F0 /* PluginShareJS.hpp */,
 				F35749B296D42F693C2DECDF /* PluginShareJSHelper.cpp */,
 				3EB54056A494632670A1D3A4 /* PluginShareJSHelper.h */,
+				9734403D8AF21F594A31D5E1 /* PluginGoogleAnalyticsJS.cpp */,
+				B19B465898DD5DEC71250A04 /* PluginGoogleAnalyticsJS.hpp */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -746,6 +755,7 @@
 				B0E942ED91A26CDE2DC989C3 /* PluginReviewJSHelper.cpp */,
 				F8A64300B9615C65B66DF71A /* PluginShareJS.cpp */,
 				1F49413BAAE38F1A5A183012 /* PluginShareJSHelper.cpp */,
+				1CF545E384C49A65B74DD502 /* PluginGoogleAnalyticsJS.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,6 +900,7 @@
 					"\"Fabric.framework\"",
 					"\"TwitterCore.framework\"",
 					"\"TwitterKit.framework\"",
+					"\"PluginGoogleAnalytics.framework\"",
 				);
 				OTHER_CFLAGS = (
 					-DSDKBOX_ENABLED,
@@ -945,6 +956,7 @@
 					"\"Fabric.framework\"",
 					"\"TwitterCore.framework\"",
 					"\"TwitterKit.framework\"",
+					"\"PluginGoogleAnalytics.framework\"",
 				);
 				OTHER_CFLAGS = (
 					-DSDKBOX_ENABLED,

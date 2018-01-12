@@ -26,7 +26,9 @@ LOCAL_SRC_FILES := hellojavascript/main.cpp \
 ../../Classes/PluginReviewJS.cpp \
 ../../Classes/PluginReviewJSHelper.cpp \
 ../../Classes/PluginShareJS.cpp \
-../../Classes/PluginShareJSHelper.cpp
+../../Classes/PluginShareJSHelper.cpp \
+../../Classes/PluginGoogleAnalyticsJS.cpp \
+../../Classes/PluginGoogleAnalyticsJS.hpp
 LOCAL_CPPFLAGS := -DSDKBOX_ENABLED \
 -DSDKBOX_COCOS_CREATOR
 LOCAL_LDLIBS := -landroid \
@@ -47,6 +49,7 @@ LOCAL_WHOLE_STATIC_LIBRARIES += PluginAdMob
 LOCAL_WHOLE_STATIC_LIBRARIES += PluginUnityAds
 LOCAL_WHOLE_STATIC_LIBRARIES += PluginReview
 LOCAL_WHOLE_STATIC_LIBRARIES += PluginShare
+LOCAL_WHOLE_STATIC_LIBRARIES += PluginGoogleAnalytics
 
 LOCAL_STATIC_LIBRARIES := cocos2d_js_static
 
@@ -64,3 +67,4 @@ $(call import-module, ./pluginadmob)
 $(call import-module, ./pluginunityads)
 $(call import-module, ./pluginreview)
 $(call import-module, ./pluginshare)
+$(call import-module, ./plugingoogleanalytics)

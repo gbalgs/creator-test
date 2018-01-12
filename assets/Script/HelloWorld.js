@@ -38,6 +38,7 @@ cc.Class({
         this.testUnityAds();
         this.testReview();
         this.testShare();
+        this.testGoogleAnalytics();
     },
 
     // facebook begin
@@ -295,6 +296,56 @@ cc.Class({
         //shareInfo.showDialog = false;
         //shareInfo.platform = sdkbox.SocialPlatform.Platform_Select;
         // sdkbox.PluginShare.nativeShare(shareInfo);
+    },
+
+    // googleanalytics
+    testGoogleAnalytics: function () {
+        sdkbox.PluginGoogleAnalytics.init();
+
+        const ecommerceInfo = {
+            // transaction info
+            action: 'purchase',
+            transaction: 'T12345',
+            affiliation: 'Google Store - Online',
+            transactionCouponCode: 'SUMMER2017',
+            revenue: '37.39',
+            tax: '2.85',
+            shipping: '5.34',
+
+            // product info
+            productID: 'P12345',
+            productName: 'Android Warhol T-Shirt',
+            category: 'Apparel/T-Shirts',
+            brand: 'SDKBox',
+            productVariant: 'black',
+            productCouponCode: 'APPARELSALE',
+            price: '29.20',
+            quantity: '1',
+
+            // currency code
+            // https://support.google.com/analytics/answer/6205902?#supported-currencies
+            currencyCode: 'EUR'
+        };
+        sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo);
+
+
+        const ecommerceInfo = {
+            // transaction info
+            action: 'refund',
+            transaction: 'T12345',
+        };
+        sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo);
+
+        const ecommerceInfo = {
+            // transaction info
+            action: 'refund',
+            transaction: 'T12345',
+
+            // product info
+            productID: 'P12345',
+            quantity: '1',
+        };
+        sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo);
     }
 
 
