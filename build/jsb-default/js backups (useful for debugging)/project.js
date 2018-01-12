@@ -320,7 +320,7 @@ this.iapEnable = !0;
 } else this.iapEnable = !1;
 },
 log: function(o) {
-cc.log(o);
+console.log(o);
 this.logLable.string = o;
 },
 logProduct: function(o) {
@@ -342,7 +342,7 @@ sdkbox.IAP.restore();
 onIAPPurchaseButton: function() {
 if (this.iapEnable) {
 this.log("onIAPPurchaseButton");
-sdkbox.IAP.purchase(name);
+sdkbox.IAP.purchase("remove_ads");
 }
 }
 });
