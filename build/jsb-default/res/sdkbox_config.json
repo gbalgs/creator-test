@@ -1,15 +1,27 @@
 {
     "android": {
+        "UnityAds": {
+            "gameId": "1493045", 
+            "testMode": true
+        }, 
+        "Review": {
+            "LaunchLimit": 3, 
+            "DayForReminding": 1, 
+            "tryPromptWhenInit": true, 
+            "DayLimit": 0, 
+            "LaunchForReminding": 2, 
+            "UserEventLimit": 0
+        }, 
         "Share": {
             "platforms": {
-                "SMS": {}, 
+                "Facebook": {}, 
                 "Twitter": {
                     "params": {
                         "secret": "nlmUdPNcFGLWhyLu9cD794EDuDrVQnjd0YjTpB6sX8oHIQRrne", 
                         "key": "EuovpLL0UhSGB7Jv5eKFJNMqO"
                     }
                 }, 
-                "Facebook": {}, 
+                "SMS": {}, 
                 "Mail": {}
             }
         }, 
@@ -42,33 +54,73 @@
                 }
             }
         }, 
-        "UnityAds": {
-            "gameId": "1493045", 
-            "testMode": true
+        "sdkboxplay": {
+            "leaderboards": [
+                {
+                    "id": "CgkI6KjppNEWEAIQAg", 
+                    "name": "ldb1"
+                }, 
+                {
+                    "id": "CgkI6KjppNEWEAIQAw", 
+                    "name": "ldb2"
+                }
+            ], 
+            "achievements": [
+                {
+                    "name": "hidden", 
+                    "id": "CgkI6KjppNEWEAIQBA"
+                }, 
+                {
+                    "incremental": true, 
+                    "name": "incremental", 
+                    "id": "CgkI6KjppNEWEAIQBQ"
+                }, 
+                {
+                    "name": "craftsman", 
+                    "id": "CgkI6KjppNEWEAIQBg"
+                }, 
+                {
+                    "name": "hunter", 
+                    "id": "CgkI6KjppNEWEAIQBw"
+                }, 
+                {
+                    "name": "ten-games", 
+                    "id": "CgkI6KjppNEWEAIQCA"
+                }
+            ], 
+            "clound_save": false, 
+            "connect_on_start": true, 
+            "show_achievement_notification": true, 
+            "debug": true
         }, 
         "Facebook": {
             "debug": false
+        }
+    }, 
+    "ios": {
+        "UnityAds": {
+            "gameId": "1493044", 
+            "testMode": true
         }, 
         "Review": {
             "LaunchLimit": 3, 
             "DayForReminding": 1, 
             "tryPromptWhenInit": true, 
+            "AppID": "587767923", 
             "DayLimit": 0, 
             "LaunchForReminding": 2, 
             "UserEventLimit": 0
-        }
-    }, 
-    "ios": {
+        }, 
         "Share": {
             "platforms": {
-                "SMS": {}, 
+                "Facebook": {}, 
                 "Twitter": {
                     "params": {
                         "secret": "haVcKarM96Sr4390XLQoHjyRUSyuHdkMX6letcc38h8TOWyiR9", 
                         "key": "BUJTV6NEM7BAhhm82B12VbKGy"
                     }
                 }, 
-                "Facebook": {}, 
+                "SMS": {}, 
                 "Mail": {}
             }
         }, 
@@ -102,32 +154,72 @@
                 }
             }
         }, 
-        "UnityAds": {
-            "gameId": "1493044", 
-            "testMode": true
+        "sdkboxplay": {
+            "leaderboards": [
+                {
+                    "id": "ldb1", 
+                    "name": "ldb1"
+                }
+            ], 
+            "achievements": [
+                {
+                    "incremental": false, 
+                    "id": "tengames", 
+                    "name": "ten-games"
+                }, 
+                {
+                    "incremental": false, 
+                    "id": "hunter", 
+                    "name": "hunter"
+                }, 
+                {
+                    "incremental": false, 
+                    "id": "craftsman", 
+                    "name": "craftsman"
+                }, 
+                {
+                    "incremental": true, 
+                    "id": "Incremental", 
+                    "name": "incremental"
+                }, 
+                {
+                    "incremental": false, 
+                    "id": "hidden_incremental", 
+                    "name": "hidden"
+                }, 
+                {
+                    "incremental": true, 
+                    "id": "flip_cards1", 
+                    "name": "flip_cards1"
+                }, 
+                {
+                    "incremental": true, 
+                    "id": "flip_cards2", 
+                    "name": "flip_cards2"
+                }, 
+                {
+                    "incremental": true, 
+                    "id": "flip_cards3", 
+                    "name": "flip_cards3"
+                }
+            ], 
+            "connect_on_start": false, 
+            "show_achievement_notification": true, 
+            "debug": true
         }, 
         "Facebook": {
             "debug": true
-        }, 
-        "Review": {
-            "LaunchLimit": 3, 
-            "DayForReminding": 1, 
-            "tryPromptWhenInit": true, 
-            "AppID": "587767923", 
-            "DayLimit": 0, 
-            "LaunchForReminding": 2, 
-            "UserEventLimit": 0
         }
     }, 
     "amazon": {
         "Review": {
             "LaunchLimit": 3, 
             "DayForReminding": 1, 
-            "UserEventLimit": 0, 
+            "market": "amazon", 
             "tryPromptWhenInit": true, 
             "DayLimit": 0, 
             "LaunchForReminding": 2, 
-            "market": "amazon"
+            "UserEventLimit": 0
         }
     }
 }

@@ -1,27 +1,27 @@
-require = function o(e, i, t) {
-function n(c, r) {
-if (!i[c]) {
-if (!e[c]) {
-var l = "function" == typeof require && require;
-if (!r && l) return l(c, !0);
-if (s) return s(c, !0);
-var d = new Error("Cannot find module '" + c + "'");
-throw d.code = "MODULE_NOT_FOUND", d;
+require = function o(e, n, t) {
+function i(l, s) {
+if (!n[l]) {
+if (!e[l]) {
+var a = "function" == typeof require && require;
+if (!s && a) return a(l, !0);
+if (c) return c(l, !0);
+var r = new Error("Cannot find module '" + l + "'");
+throw r.code = "MODULE_NOT_FOUND", r;
 }
-var a = i[c] = {
+var d = n[l] = {
 exports: {}
 };
-e[c][0].call(a.exports, function(o) {
-var i = e[c][1][o];
-return n(i || o);
-}, a, a.exports, o, e, i, t);
+e[l][0].call(d.exports, function(o) {
+var n = e[l][1][o];
+return i(n || o);
+}, d, d.exports, o, e, n, t);
 }
-return i[c].exports;
+return n[l].exports;
 }
-for (var s = "function" == typeof require && require, c = 0; c < t.length; c++) n(t[c]);
-return n;
+for (var c = "function" == typeof require && require, l = 0; l < t.length; l++) i(t[l]);
+return i;
 }({
-HelloWorld: [ function(o, e, i) {
+HelloWorld: [ function(o, e, n) {
 "use strict";
 cc._RF.push(e, "280c3rsZJJKnZ9RqbALVwtK", "HelloWorld");
 cc.Class({
@@ -56,7 +56,7 @@ testFB: function() {
 var o = this;
 sdkbox.PluginFacebook.init();
 sdkbox.PluginFacebook.setListener({
-onLogin: function(e, i) {
+onLogin: function(e, n) {
 e ? o.showLog("login successful") : o.showLog("login failed");
 },
 onSharedSuccess: function(e) {
@@ -79,14 +79,14 @@ console.log("Facebook > ", e.picture);
 console.log("Facebook > ", e.picture_url);
 console.log("Facebook > ", e.score);
 },
-onAPI: function(e, i) {
-o.showLog(e + i);
+onAPI: function(e, n) {
+o.showLog(e + n);
 },
-onFetchFriends: function(e, i) {
-o.showLog("onFetchFriends" + i);
+onFetchFriends: function(e, n) {
+o.showLog("onFetchFriends" + n);
 },
-onPermission: function(e, i) {
-o.showLog("onPermission" + i);
+onPermission: function(e, n) {
+o.showLog("onPermission" + n);
 }
 });
 sdkbox.PluginFacebook.isLoggedIn() ? this.fbLoginText.string = "logout" : this.fbLoginText.string = "login";
@@ -147,7 +147,7 @@ o.rewarded = !0;
 }
 sdkbox.PluginAdMob.show(e);
 },
-adViewDidFailToReceiveAdWithError: function(e, i) {
+adViewDidFailToReceiveAdWithError: function(e, n) {
 o.showLog("AdMob adViewDidFailToReceiveAdWithError " + e);
 },
 adViewWillPresentScreen: function(e) {
@@ -188,20 +188,20 @@ e.setListener({
 unityAdsDidClick: function(e) {
 o.showLog("unityAdsDidClick " + e);
 },
-unityAdsPlacementStateChanged: function(e, i, t) {
-o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + i + " newState:" + t);
+unityAdsPlacementStateChanged: function(e, n, t) {
+o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + n + " newState:" + t);
 },
 unityAdsReady: function(e) {
 o.showLog("unityAdsReady " + e);
 },
-unityAdsDidError: function(e, i) {
-o.showLog("unityAdsDidError:" + e + " message:" + i);
+unityAdsDidError: function(e, n) {
+o.showLog("unityAdsDidError:" + e + " message:" + n);
 },
 unityAdsDidStart: function(e) {
 o.showLog("unityAdsDidStart=" + e);
 },
-unityAdsDidFinish: function(e, i) {
-o.showLog("unityAdsDidFinish " + e + " state:" + i);
+unityAdsDidFinish: function(e, n) {
+o.showLog("unityAdsDidFinish " + e + " state:" + n);
 }
 });
 e.init();
@@ -260,9 +260,9 @@ sdkbox.PluginShare.nativeShare(o);
 });
 cc._RF.pop();
 }, {} ],
-iap: [ function(o, e, i) {
+sdkboxplay: [ function(o, e, n) {
 "use strict";
-cc._RF.push(e, "20e19P3ENRM0Zdsb5Hyr/GK", "iap");
+cc._RF.push(e, "195456JmLRGrot3rcm+gYHU", "sdkboxplay");
 cc.Class({
 extends: cc.Component,
 properties: {
@@ -272,80 +272,131 @@ type: cc.Label
 }
 },
 start: function() {
-this.initIAP();
+this.initSDKBoxPlay();
 },
-initIAP: function() {
-if ("undefined" != typeof sdkbox && "undefined" != typeof sdkbox.IAP) {
-this.log("init IAP");
-var o = this;
-sdkbox.IAP.init();
-sdkbox.IAP.setDebug(!0);
-sdkbox.IAP.setListener({
-onSuccess: function(e) {
-o.log("Purchase successful: " + e.name);
+initSDKBoxPlay: function() {
+if ("undefined" != typeof sdkbox && "undefined" != typeof sdkbox.PluginSdkboxPlay) {
+this.log("init SDKBoxPlay");
+var o = this, e = sdkbox.PluginSdkboxPlay;
+e.setListener({
+onConnectionStatusChanged: function(n) {
+cc.log("connection status change: " + n + " connection_status");
+if (1e3 == n) {
+cc.log("Player id: " + e.getPlayerId());
+cc.log("Player name: " + e.getPlayerAccountField("name"));
+o.log("connection status: " + n + " " + e.getPlayerId() + " " + e.getPlayerAccountField("name") + "(" + e.getPlayerAccountField("display_name") + ")");
+} else o.log("Not connected. Status: " + n);
 },
-onFailure: function(e, i) {
-o.log("Purchase failed: " + e.name + " error: " + i);
+onScoreSubmitted: function(o, e, n, t, i) {
+cc.log("onScoreSubmitted trigger leaderboard_name:" + o + " score:" + e + " maxScoreAllTime:" + n + " maxScoreWeek:" + t + " maxScoreToday:" + i);
 },
-onCanceled: function(e) {
-o.log("Purchase canceled: " + e.name);
+onMyScore: function(o, e, n, t) {
+cc.log("onMyScore trigger leaderboard_name:" + o + " time_span:" + e + " collection_type:" + n + " score:" + t);
 },
-onRestored: function(e) {
-o.log("Restored: " + e.name);
+onMyScoreError: function(o, e, n, t, i) {
+cc.log("onMyScoreError trigger leaderboard_name:" + o + " time_span:" + e + " collection_type:" + n + " error_code:" + t + " error_description:" + i);
 },
-onProductRequestSuccess: function(e) {
-for (var i = 0; i < e.length; i++) o.logProduct(e[i]);
+onPlayerCenteredScores: function(o, e, n, t) {
+cc.log("onPlayerCenteredScores trigger leaderboard_name:" + o + " time_span:" + e + " collection_type:" + n + " json_with_score_entries:" + t);
 },
-onProductRequestFailure: function(e) {
-o.log("Failed to get products");
+onPlayerCenteredScoresError: function(o, e, n, t, i) {
+cc.log("onPlayerCenteredScoresError trigger leaderboard_name:" + o + " time_span:" + e + " collection_type:" + n + " error_code:" + t + " error_description:" + i);
 },
-onShouldAddStorePayment: function(e) {
-o.log("onShouldAddStorePayment:" + e);
-return !0;
+onIncrementalAchievementUnlocked: function(o) {
+cc.log("incremental achievement " + o + " unlocked.");
 },
-onFetchStorePromotionOrder: function(e, i) {
-o.log("onFetchStorePromotionOrder:  e:" + i);
+onIncrementalAchievementStep: function(o, e) {
+cc.log("incremental achievent " + o + " step: " + e);
 },
-onFetchStorePromotionVisibility: function(e, i, t) {
-o.log("onFetchStorePromotionVisibility:" + e + " v:" + i + " e:" + t);
+onIncrementalAchievementStepError: function(o, e, n, t) {
+cc.log("onIncrementalAchievementStepError trigger leaderboard_name:" + o + " steps:" + e + " error_code:" + n + " error_description:" + t);
 },
-onUpdateStorePromotionOrder: function(e) {
-o.log("onUpdateStorePromotionOrder:" + e);
+onAchievementUnlocked: function(o, e) {
+cc.log("onAchievementUnlocked trigger achievement_name:" + o + " newlyUnlocked:" + e);
 },
-onUpdateStorePromotionVisibility: function(e) {
-o.log("onUpdateStorePromotionVisibility:" + e);
+onAchievementUnlockError: function(o, e, n) {
+cc.log("onAchievementUnlockError trigger achievement_name:" + o + " error_code:" + e + " error_description:" + n);
+},
+onAchievementsLoaded: function(o, e) {
+cc.log("onAchievementsLoaded trigger reload_forced:" + o + " json_achievements_info:" + e);
+},
+onSetSteps: function(o, e) {
+cc.log("onSetSteps trigger name:" + o + " steps:" + e);
+},
+onSetStepsError: function(o, e, n, t) {
+cc.log("onSetStepsError trigger name:" + o + " steps:" + e + " error_code:" + n + " error_description:" + t);
+},
+onReveal: function(o) {
+cc.log("onReveal trigger name:" + o);
+},
+onRevealError: function(o, e, n) {
+cc.log("onRevealError trigger name:" + o + " error_code:" + e + " error_description:" + n);
+},
+onGameData: function(o, e, n, t) {
+t ? cc.log("onGameData failed:" + t) : "load" == o ? cc.log("onGameData load:" + e + ":" + n) : "save" == o ? cc.log("onGameData save:" + e + ":" + n) : cc.log("onGameData unknown action:" + o);
 }
 });
-this.iapEnable = !0;
-} else this.iapEnable = !1;
+e.init();
+e.saveGameData("name", "test");
+this.SDKBoxPlayEnable = !0;
+} else {
+this.log("SDKBoxPlay is disable");
+this.SDKBoxPlayEnable = !1;
+}
 },
 log: function(o) {
-cc.log(o);
+console.log(o);
 this.logLable.string = o;
 },
-logProduct: function(o) {
-var e = "Product: " + o.name + " " + o.title + " " + o.description + " " + o.price + " " + o.priceValue + " " + o.currencyCode + " " + o.receipt + " " + o.receiptCipheredPayload + " " + o.transactionID;
-this.log(e);
-},
-onIAPRefreshButton: function() {
-if (this.iapEnable) {
-this.log("onIAPRefreshButton");
-sdkbox.IAP.refresh();
+onSDKBoxPlaySigninOrSignOutButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlaySigninOrSignOut");
+sdkbox.PluginSdkboxPlay.isSignedIn() ? sdkbox.PluginSdkboxPlay.signout() : sdkbox.PluginSdkboxPlay.signin();
 }
 },
-onIAPRestoreButton: function() {
-if (this.iapEnable) {
-this.log("onIAPRestoreButton");
-sdkbox.IAP.restore();
+onSDKBoxPlayShowLeaderboardButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlayShowLeaderboard");
+sdkbox.PluginSdkboxPlay.showLeaderboard("ldb1");
 }
 },
-onIAPPurchaseButton: function() {
-if (this.iapEnable) {
-this.log("onIAPPurchaseButton");
-sdkbox.IAP.purchase(name);
+onSDKBoxPlayShowAchievementsButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlayShowAchievements");
+sdkbox.PluginSdkboxPlay.showAchievements();
+}
+},
+onSDKBoxPlayUnlockAchievementButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlayUnlockAchievement");
+sdkbox.PluginSdkboxPlay.unlockAchievement("craftsman");
+}
+},
+onSDKBoxPlayIncrementAchievementButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlayIncrementAchievementButton");
+sdkbox.PluginSdkboxPlay.incrementAchievement("incremental", 1);
+}
+},
+onSDKBoxPlaySubmitScoreButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlaySubmitScoreButton");
+sdkbox.PluginSdkboxPlay.submitScore("ldb1", 1);
+}
+},
+onSDKBoxPlayLoadAllDataButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlayLoadAllDataButton");
+sdkbox.PluginSdkboxPlay.loadAllData();
+}
+},
+onSDKBoxPlaySaveGameDataButton: function() {
+if (this.SDKBoxPlayEnable) {
+this.log("onSDKBoxPlaySaveGameDataButton");
+sdkbox.PluginSdkboxPlay.saveGameData("key1", "test data");
 }
 }
 });
 cc._RF.pop();
 }, {} ]
-}, {}, [ "HelloWorld", "iap" ]);
+}, {}, [ "HelloWorld", "sdkboxplay" ]);
