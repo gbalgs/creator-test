@@ -538,12 +538,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
-				TargetAttributes = {
-					5023812617EBBCE400990C9B = {
-						DevelopmentTeam = B98TY7ZM6E;
-						ProvisioningStyle = Automatic;
-					};
-				};
 			};
 			buildConfigurationList = F293B3C215EB7BE500256477 /* Build configuration list for PBXProject "simulator" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -756,11 +750,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = mac/Simulator.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../../../../../simulator/mac;
-				DEVELOPMENT_TEAM = B98TY7ZM6E;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
@@ -785,7 +776,6 @@
 					10000,
 				);
 				PRODUCT_NAME = Simulator;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../../cocos/platform/mac $(SRCROOT)/../../../../../external/mac/include $(SRCROOT)/../../../../../external/mac/include/glfw3 $(SRCROOT)/../../../../../external/mac/include/spidermonkey $(SRCROOT)/../../../../../external/sources";
 				VALID_ARCHS = "$(ARCHS_STANDARD_64_BIT)";
@@ -798,11 +788,8 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_ENTITLEMENTS = mac/Simulator.entitlements;
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = ../../../../../simulator/mac;
-				DEVELOPMENT_TEAM = B98TY7ZM6E;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -826,7 +813,6 @@
 					10000,
 				);
 				PRODUCT_NAME = Simulator;
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../../../../../cocos/platform/mac $(SRCROOT)/../../../../../external/mac/include $(SRCROOT)/../../../../../external/mac/include/glfw3 $(SRCROOT)/../../../../../external/mac/include/spidermonkey $(SRCROOT)/../../../../../external/sources";
 				VALID_ARCHS = "$(ARCHS_STANDARD_64_BIT)";

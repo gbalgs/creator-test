@@ -59,6 +59,7 @@ console.error.bind ? cc.error = console.error.bind(console) : cc.error = console
 cc.assert = function(t, e) {
 if (!t) {
 e && (e = cc.js.formatStr.apply(null, cc.js.shiftArguments.apply(null, arguments)));
+0;
 throw new Error(e);
 }
 };
@@ -257,23 +258,22 @@ this._boundarySet = t;
 },
 initWithTarget: function(t, e) {
 if (!t) throw new Error("cc.Follow.initWithAction(): followedNode must be non nil");
-var i = this;
 e = e || cc.rect(0, 0, 0, 0);
-i._followedNode = t;
-i._worldRect = e;
-i._boundarySet = !cc._rectEqualToZero(e);
-i._boundaryFullyCovered = !1;
-var n = cc.director.getWinSize();
-i._fullScreenSize = cc.p(n.width, n.height);
-i._halfScreenSize = cc.pMult(i._fullScreenSize, .5);
-if (i._boundarySet) {
-i.leftBoundary = -(e.x + e.width - i._fullScreenSize.x);
-i.rightBoundary = -e.x;
-i.topBoundary = -e.y;
-i.bottomBoundary = -(e.y + e.height - i._fullScreenSize.y);
-i.rightBoundary < i.leftBoundary && (i.rightBoundary = i.leftBoundary = (i.leftBoundary + i.rightBoundary) / 2);
-i.topBoundary < i.bottomBoundary && (i.topBoundary = i.bottomBoundary = (i.topBoundary + i.bottomBoundary) / 2);
-i.topBoundary === i.bottomBoundary && i.leftBoundary === i.rightBoundary && (i._boundaryFullyCovered = !0);
+this._followedNode = t;
+this._worldRect = e;
+this._boundarySet = !cc._rectEqualToZero(e);
+this._boundaryFullyCovered = !1;
+var i = cc.director.getWinSize();
+this._fullScreenSize = cc.p(i.width, i.height);
+this._halfScreenSize = cc.pMult(this._fullScreenSize, .5);
+if (this._boundarySet) {
+this.leftBoundary = -(e.x + e.width - this._fullScreenSize.x);
+this.rightBoundary = -e.x;
+this.topBoundary = -e.y;
+this.bottomBoundary = -(e.y + e.height - this._fullScreenSize.y);
+this.rightBoundary < this.leftBoundary && (this.rightBoundary = this.leftBoundary = (this.leftBoundary + this.rightBoundary) / 2);
+this.topBoundary < this.bottomBoundary && (this.topBoundary = this.bottomBoundary = (this.topBoundary + this.bottomBoundary) / 2);
+this.topBoundary === this.bottomBoundary && this.leftBoundary === this.rightBoundary && (this._boundaryFullyCovered = !0);
 }
 return !0;
 },
@@ -1059,9 +1059,10 @@ return cc._easeBackOutObj;
 };
 cc.EaseBackInOut = cc.ActionEase.extend({
 update: function(t) {
-if ((t *= 2) < 1) this._inner.update(t * t * (3.5949095 * t - 2.5949095) / 2); else {
+var e = 2.5949095;
+if ((t *= 2) < 1) this._inner.update(t * t * ((e + 1) * t - e) / 2); else {
 t -= 2;
-this._inner.update(t * t * (3.5949095 * t + 2.5949095) / 2 + 1);
+this._inner.update(t * t * ((e + 1) * t + e) / 2 + 1);
 }
 },
 clone: function() {
@@ -1075,7 +1076,8 @@ return new cc.EaseBackInOut(this._inner.reverse());
 });
 cc._easeBackInOutObj = {
 easing: function(t) {
-return (t *= 2) < 1 ? t * t * (3.5949095 * t - 2.5949095) / 2 : (t -= 2) * t * (3.5949095 * t + 2.5949095) / 2 + 1;
+var e = 2.5949095;
+return (t *= 2) < 1 ? t * t * ((e + 1) * t - e) / 2 : (t -= 2) * t * ((e + 1) * t + e) / 2 + 1;
 },
 reverse: function() {
 return cc._easeBackInOutObj;
@@ -3277,6 +3279,7 @@ e.lock = !1;
 }
 }
 });
+0;
 }), {} ],
 10: [ (function(t, e, i) {
 t("./CCActionManager");
@@ -3360,16 +3363,16 @@ return f;
 function s(t, e) {
 var i = e.props, n = e.comps;
 if (i) for (var o in i) {
-u = r(t, o, l = i[o]);
-a.push(u);
+var s = r(t, o, i[o]);
+a.push(s);
 }
-if (n) for (var s in n) {
-var c = t.getComponent(s);
-if (c) {
-var h = n[s];
-for (var o in h) {
-var l = h[o], u = r(c, o, l);
-a.push(u);
+if (n) for (var c in n) {
+var h = t.getComponent(c);
+if (h) {
+var l = n[c];
+for (var o in l) {
+s = r(h, o, l[o]);
+a.push(s);
 }
 }
 }
@@ -3489,6 +3492,8 @@ i.resume();
 g._reloadClip = function(t) {
 s(this.target, t);
 };
+0;
+0;
 n.exports = r;
 }), {
 "../core/utils/binary-search": 155,
@@ -3694,6 +3699,7 @@ this._ignoreIndex = o;
 }
 }
 });
+0;
 n.exports = {
 AnimCurve: l,
 DynamicAnimCurve: u,
@@ -3908,6 +3914,7 @@ s.getset(d, "wrapMode", (function() {
 return this._wrapMode;
 }), (function(t) {
 this._wrapMode = t;
+0;
 this.time = 0;
 t & u.Loop ? this.repeatCount = Infinity : this.repeatCount = 1;
 }));
@@ -3956,6 +3963,7 @@ return n = (i = o(-E + L)) - o(E + L) - m;
 return 0 * n * n * n + 3 * t[1] * i * n * n + 3 * t[3] * i * i * n + 1 * i * i * i;
 }
 var s = Math.cos, c = Math.acos, a = Math.max, h = 2 * Math.PI, l = Math.sqrt;
+0;
 e.exports = {
 bezier: n,
 bezierByTime: r
@@ -4068,16 +4076,13 @@ e = .1;
 return (t *= 2) < 1 ? i * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - e) * (2 * Math.PI) / .4) * -.5 : i * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - e) * (2 * Math.PI) / .4) * .5 + 1;
 },
 backIn: function(t) {
-var e = 1.70158;
-return t * t * ((e + 1) * t - e);
+return t * t * (2.70158 * t - 1.70158);
 },
 backOut: function(t) {
-var e = 1.70158;
-return --t * t * ((e + 1) * t + e) + 1;
+return --t * t * (2.70158 * t + 1.70158) + 1;
 },
 backInOut: function(t) {
-var e = 2.5949095;
-return (t *= 2) < 1 ? t * t * ((e + 1) * t - e) * .5 : .5 * ((t -= 2) * t * ((e + 1) * t + e) + 2);
+return (t *= 2) < 1 ? t * t * (3.5949095 * t - 2.5949095) * .5 : .5 * ((t -= 2) * t * (3.5949095 * t + 2.5949095) + 2);
 },
 bounceOut: function(t) {
 return t < 1 / 2.75 ? 7.5625 * t * t : t < 2 / 2.75 ? 7.5625 * (t -= 1.5 / 2.75) * t + .75 : t < 2.5 / 2.75 ? 7.5625 * (t -= 2.25 / 2.75) * t + .9375 : 7.5625 * (t -= 2.625 / 2.75) * t + .984375;
@@ -4206,7 +4211,7 @@ I.push(A.lerp(x, C));
 O += N;
 }
 y = "constant" === w ? w : s.Linear;
-for (var P = 0, R = I.length; P < R; P++) {
+for (P = 0, R = I.length; P < R; P++) {
 var V = S + v + N * P * E;
 a(I[P], y, V);
 }
@@ -4230,7 +4235,8 @@ t.endCtrlPoint = n.in;
 this.beziers.push(t);
 this.length += t.getLength();
 }
-for (var r = 0, e = 0; e < this.beziers.length; e++) {
+var r = 0;
+for (e = 0; e < this.beziers.length; e++) {
 t = this.beziers[e];
 this.ratios[e] = t.getLength() / this.length;
 this.progresses[e] = r += this.ratios[e];
@@ -4274,11 +4280,12 @@ break;
 a = o - 1;
 }
 if (n[o = a] === i) {
-return l = o / (r - 1);
+return o / (r - 1);
 }
-var h = n[o], l = (o + (i - h) / (n[o + 1] - h)) / (r - 1);
-return l;
+var h = n[o];
+return (o + (i - h) / (n[o + 1] - h)) / (r - 1);
 };
+0;
 e.exports = {
 sampleMotionPaths: r,
 Curve: n,
@@ -4505,6 +4512,7 @@ return function(e) {
 return t.stop(e);
 };
 }));
+0;
 };
 }), {} ],
 23: [ (function(i, n, o) {
@@ -4517,7 +4525,7 @@ node: n
 };
 return null;
 }
-var s = i("./utils/prefab-helper"), c = i("./utils/scene-graph-helper"), a = cc.Object.Flags.Destroying, h = i("./utils/misc"), l = i("./event/event"), u = !!cc.ActionManager, d = function() {}, f = cc.Enum({
+var s = i("./utils/prefab-helper"), c = i("./utils/scene-graph-helper"), a = cc.Object.Flags.Destroying, h = "position-changed", l = "size-changed", u = "anchor-changed", d = "rotation-changed", f = "scale-changed", p = i("./utils/misc"), _ = i("./event/event"), g = !!cc.ActionManager, v = function() {}, y = cc.Enum({
 TOUCH_START: "touchstart",
 TOUCH_MOVE: "touchmove",
 TOUCH_END: "touchend",
@@ -4528,77 +4536,77 @@ MOUSE_ENTER: "mouseenter",
 MOUSE_LEAVE: "mouseleave",
 MOUSE_UP: "mouseup",
 MOUSE_WHEEL: "mousewheel"
-}), p = [ f.TOUCH_START, f.TOUCH_MOVE, f.TOUCH_END, f.TOUCH_CANCEL ], _ = [ f.MOUSE_DOWN, f.MOUSE_ENTER, f.MOUSE_MOVE, f.MOUSE_LEAVE, f.MOUSE_UP, f.MOUSE_WHEEL ], g = null, v = function(t, e) {
-e = l.EventTouch.pool.get(e);
+}), m = [ y.TOUCH_START, y.TOUCH_MOVE, y.TOUCH_END, y.TOUCH_CANCEL ], b = [ y.MOUSE_DOWN, y.MOUSE_ENTER, y.MOUSE_MOVE, y.MOUSE_LEAVE, y.MOUSE_UP, y.MOUSE_WHEEL ], C = null, T = function(t, e) {
+e = _.EventTouch.pool.get(e);
 var i = t.getLocation(), n = this.owner;
 if (n._hitTest(i, this)) {
-e.type = f.TOUCH_START;
+e.type = y.TOUCH_START;
 e.touch = t;
 e.bubbles = !0;
 n.dispatchEvent(e);
 return !0;
 }
 return !1;
-}, y = function(t, e) {
-e = l.EventTouch.pool.get(e);
+}, S = function(t, e) {
+e = _.EventTouch.pool.get(e);
 var i = this.owner;
-e.type = f.TOUCH_MOVE;
+e.type = y.TOUCH_MOVE;
 e.touch = t;
 e.bubbles = !0;
 i.dispatchEvent(e);
-}, m = function(t, e) {
-e = l.EventTouch.pool.get(e);
+}, E = function(t, e) {
+e = _.EventTouch.pool.get(e);
 var i = t.getLocation(), n = this.owner;
-n._hitTest(i, this) ? e.type = f.TOUCH_END : e.type = f.TOUCH_CANCEL;
+n._hitTest(i, this) ? e.type = y.TOUCH_END : e.type = y.TOUCH_CANCEL;
 e.touch = t;
 e.bubbles = !0;
 n.dispatchEvent(e);
-}, b = function(t) {
+}, A = function(t) {
 var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
-(t = l.EventMouse.pool.get(t)).type = f.MOUSE_DOWN;
+(t = _.EventMouse.pool.get(t)).type = y.MOUSE_DOWN;
 t.bubbles = !0;
 i.dispatchEvent(t);
 }
-}, C = function(t) {
+}, x = function(t) {
 var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
-t = l.EventMouse.pool.get(t);
+t = _.EventMouse.pool.get(t);
 if (!this._previousIn) {
-if (g) {
-t.type = f.MOUSE_LEAVE;
-g.dispatchEvent(t);
-g._mouseListener._previousIn = !1;
+if (C) {
+t.type = y.MOUSE_LEAVE;
+C.dispatchEvent(t);
+C._mouseListener._previousIn = !1;
 }
-g = this.owner;
-t.type = f.MOUSE_ENTER;
+C = this.owner;
+t.type = y.MOUSE_ENTER;
 i.dispatchEvent(t);
 this._previousIn = !0;
 }
-t.type = f.MOUSE_MOVE;
+t.type = y.MOUSE_MOVE;
 t.bubbles = !0;
 i.dispatchEvent(t);
 } else if (this._previousIn) {
-(t = l.EventMouse.pool.get(t)).type = f.MOUSE_LEAVE;
+(t = _.EventMouse.pool.get(t)).type = y.MOUSE_LEAVE;
 i.dispatchEvent(t);
 this._previousIn = !1;
-g = null;
+C = null;
 }
-}, T = function(t) {
+}, w = function(t) {
 var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
-(t = l.EventMouse.pool.get(t)).type = f.MOUSE_UP;
+(t = _.EventMouse.pool.get(t)).type = y.MOUSE_UP;
 t.bubbles = !0;
 i.dispatchEvent(t);
 }
-}, S = function(t) {
+}, I = function(t) {
 var e = t.getLocation(), i = this.owner;
 if (i._hitTest(e, this)) {
-(t = l.EventMouse.pool.get(t)).type = f.MOUSE_WHEEL;
+(t = _.EventMouse.pool.get(t)).type = y.MOUSE_WHEEL;
 t.bubbles = !0;
 i.dispatchEvent(t);
 }
-}, E = cc.Class({
+}, O = cc.Class({
 name: "cc.Node",
 extends: i("./utils/base-node"),
 properties: {
@@ -4640,7 +4648,7 @@ if (t !== e.x) {
 e.x = t;
 this._sgNode.setPositionX(t);
 var i = this._hasListenerCache;
-i && i["position-changed"] && this.emit("position-changed");
+i && i[h] && this.emit(h);
 }
 }
 },
@@ -4654,7 +4662,7 @@ if (t !== e.y) {
 e.y = t;
 this._sgNode.setPositionY(t);
 var i = this._hasListenerCache;
-i && i["position-changed"] && this.emit("position-changed");
+i && i[h] && this.emit(h);
 }
 }
 },
@@ -4668,7 +4676,7 @@ if (this._rotationX !== t || this._rotationY !== t) {
 this._rotationX = this._rotationY = t;
 this._sgNode.rotation = t;
 var e = this._hasListenerCache;
-e && e["rotation-changed"] && this.emit("rotation-changed");
+e && e[d] && this.emit(d);
 }
 }
 },
@@ -4681,7 +4689,7 @@ if (this._rotationX !== t) {
 this._rotationX = t;
 this._sgNode.rotationX = t;
 var e = this._hasListenerCache;
-e && e["rotation-changed"] && this.emit("rotation-changed");
+e && e[d] && this.emit(d);
 }
 }
 },
@@ -4694,7 +4702,7 @@ if (this._rotationY !== t) {
 this._rotationY = t;
 this._sgNode.rotationY = t;
 var e = this._hasListenerCache;
-e && e["rotation-changed"] && this.emit("rotation-changed");
+e && e[d] && this.emit(d);
 }
 }
 },
@@ -4707,7 +4715,7 @@ if (this._scaleX !== t) {
 this._scaleX = t;
 this._sgNode.scaleX = t;
 var e = this._hasListenerCache;
-e && e["scale-changed"] && this.emit("scale-changed");
+e && e[f] && this.emit(f);
 }
 }
 },
@@ -4720,7 +4728,7 @@ if (this._scaleY !== t) {
 this._scaleY = t;
 this._sgNode.scaleY = t;
 var e = this._hasListenerCache;
-e && e["scale-changed"] && this.emit("scale-changed");
+e && e[f] && this.emit(f);
 }
 }
 },
@@ -4778,6 +4786,7 @@ return this._color.clone();
 set: function(t) {
 if (!this._color.equals(t)) {
 this._color.fromColor(t);
+0;
 this._sizeProvider instanceof _ccsg.Node && this._sizeProvider.setColor(t);
 }
 }
@@ -4792,7 +4801,7 @@ if (e.x !== t) {
 e.x = t;
 var i = this._sizeProvider;
 i instanceof _ccsg.Node && i.setAnchorPoint(e);
-this.emit("anchor-changed");
+this.emit(u);
 }
 }
 },
@@ -4806,7 +4815,7 @@ if (e.y !== t) {
 e.y = t;
 var i = this._sizeProvider;
 i instanceof _ccsg.Node && i.setAnchorPoint(e);
-this.emit("anchor-changed");
+this.emit(u);
 }
 }
 },
@@ -4824,7 +4833,7 @@ if (t !== this._contentSize.width) {
 var e = this._sizeProvider;
 e && e.setContentSize(t, e._getHeight());
 this._contentSize.width = t;
-this.emit("size-changed");
+this.emit(l);
 }
 }
 },
@@ -4842,7 +4851,7 @@ if (t !== this._contentSize.height) {
 var e = this._sizeProvider;
 e && e.setContentSize(e._getWidth(), t);
 this._contentSize.height = t;
-this.emit("size-changed");
+this.emit(l);
 }
 }
 },
@@ -4868,7 +4877,7 @@ e._entity = this;
 e.onEnter = function() {
 _ccsg.Node.prototype.onEnter.call(this);
 if (this._entity && !this._entity._active) {
-u && cc.director.getActionManager().pauseTarget(this);
+g && cc.director.getActionManager().pauseTarget(this);
 cc.eventManager.pauseTarget(this);
 }
 };
@@ -4882,7 +4891,7 @@ this._retainedActions = [];
 },
 statics: {
 isNode: function(t) {
-return t instanceof E && (t.constructor === E || !(t instanceof cc.Scene));
+return t instanceof O && (t.constructor === O || !(t instanceof cc.Scene));
 }
 },
 _onSetParent: function(t) {
@@ -4909,8 +4918,8 @@ i._sgNode.insertChildBefore(this._sgNode, c._sgNode);
 },
 _onPreDestroy: function() {
 var t = this._onPreDestroyBase();
-u && cc.director.getActionManager().removeAllActionsFromTarget(this);
-g === this && (g = null);
+g && cc.director.getActionManager().removeAllActionsFromTarget(this);
+C === this && (C = null);
 cc.macro.ENABLE_GC_FOR_NATIVE_OBJECTS || this._releaseAllActions();
 if (this._touchListener) {
 this._touchListener.release();
@@ -4929,10 +4938,13 @@ cc.eventManager.removeListeners(this);
 if (t) {
 this._sgNode._entity = null;
 this._sgNode = null;
-} else this._removeSgNode();
+} else {
+this._removeSgNode();
+0;
+}
 },
 _onPostActivated: function(t) {
-var e = u ? cc.director.getActionManager() : null;
+var e = g ? cc.director.getActionManager() : null;
 if (t) {
 e && e.resumeTarget(this);
 cc.eventManager.resumeTarget(this);
@@ -4955,38 +4967,38 @@ t && t.sync && !t._synced && t.root === this && s.syncWithPrefab(this);
 this._updateDummySgNode();
 this._parent && this._parent._sgNode.addChild(this._sgNode);
 if (!this._activeInHierarchy) {
-u && cc.director.getActionManager().pauseTarget(this);
+g && cc.director.getActionManager().pauseTarget(this);
 cc.eventManager.pauseTarget(this);
 }
 for (var e = this._children, i = 0, n = e.length; i < n; i++) e[i]._onBatchCreated();
 },
 on: function(t, e, i, n) {
 var o = !1;
-if (-1 !== p.indexOf(t)) {
+if (-1 !== m.indexOf(t)) {
 if (!this._touchListener) {
 this._touchListener = cc.EventListener.create({
 event: cc.EventListener.TOUCH_ONE_BY_ONE,
 swallowTouches: !0,
 owner: this,
 mask: r(this),
-onTouchBegan: v,
-onTouchMoved: y,
-onTouchEnded: m
+onTouchBegan: T,
+onTouchMoved: S,
+onTouchEnded: E
 });
 this._touchListener.retain();
 cc.eventManager.addListener(this._touchListener, this);
 o = !0;
 }
-} else if (-1 !== _.indexOf(t) && !this._mouseListener) {
+} else if (-1 !== b.indexOf(t) && !this._mouseListener) {
 this._mouseListener = cc.EventListener.create({
 event: cc.EventListener.MOUSE,
 _previousIn: !1,
 owner: this,
 mask: r(this),
-onMouseDown: b,
-onMouseMove: C,
-onMouseUp: T,
-onMouseScroll: S
+onMouseDown: A,
+onMouseMove: x,
+onMouseUp: w,
+onMouseScroll: I
 });
 this._mouseListener.retain();
 cc.eventManager.addListener(this._mouseListener, this);
@@ -4999,7 +5011,7 @@ return this._EventTargetOn(t, e, i, n);
 },
 off: function(t, e, i, n) {
 this._EventTargetOff(t, e, i, n);
--1 !== p.indexOf(t) ? this._checkTouchListeners() : -1 !== _.indexOf(t) && this._checkMouseListeners();
+-1 !== m.indexOf(t) ? this._checkTouchListeners() : -1 !== b.indexOf(t) && this._checkMouseListeners();
 },
 targetOff: function(t) {
 this._EventTargetTargetOff(t);
@@ -5015,8 +5027,8 @@ cc.eventManager.resumeTarget(this, t);
 _checkTouchListeners: function() {
 if (!(this._objFlags & a) && this._touchListener) {
 var t = 0;
-if (this._bubblingListeners) for (;t < p.length; ++t) if (this._bubblingListeners.has(p[t])) return;
-if (this._capturingListeners) for (;t < p.length; ++t) if (this._capturingListeners.has(p[t])) return;
+if (this._bubblingListeners) for (;t < m.length; ++t) if (this._bubblingListeners.has(m[t])) return;
+if (this._capturingListeners) for (;t < m.length; ++t) if (this._capturingListeners.has(m[t])) return;
 cc.eventManager.removeListener(this._touchListener);
 this._touchListener = null;
 }
@@ -5024,9 +5036,9 @@ this._touchListener = null;
 _checkMouseListeners: function() {
 if (!(this._objFlags & a) && this._mouseListener) {
 var t = 0;
-if (this._bubblingListeners) for (;t < _.length; ++t) if (this._bubblingListeners.has(_[t])) return;
-if (this._capturingListeners) for (;t < _.length; ++t) if (this._capturingListeners.has(_[t])) return;
-g === this && (g = null);
+if (this._bubblingListeners) for (;t < b.length; ++t) if (this._bubblingListeners.has(b[t])) return;
+if (this._capturingListeners) for (;t < b.length; ++t) if (this._capturingListeners.has(b[t])) return;
+C === this && (C = null);
 cc.eventManager.removeListener(this._mouseListener);
 this._mouseListener = null;
 }
@@ -5066,7 +5078,7 @@ i = i.parent;
 isRunning: function() {
 return this._activeInHierarchy;
 },
-runAction: u ? function(t) {
+runAction: g ? function(t) {
 if (this.active) {
 cc.assertID(t, 1618);
 cc.macro.ENABLE_GC_FOR_NATIVE_OBJECTS || this._retainAction(t);
@@ -5074,23 +5086,23 @@ this._sgNode._owner = this;
 cc.director.getActionManager().addAction(t, this, !1);
 return t;
 }
-} : d,
-pauseAllActions: u ? function() {
+} : v,
+pauseAllActions: g ? function() {
 cc.director.getActionManager().pauseTarget(this);
-} : d,
-resumeAllActions: u ? function() {
+} : v,
+resumeAllActions: g ? function() {
 cc.director.getActionManager().resumeTarget(this);
-} : d,
-stopAllActions: u ? function() {
+} : v,
+stopAllActions: g ? function() {
 cc.director.getActionManager().removeAllActionsFromTarget(this);
-} : d,
-stopAction: u ? function(t) {
+} : v,
+stopAction: g ? function(t) {
 cc.director.getActionManager().removeAction(t);
-} : d,
-stopActionByTag: u ? function(t) {
+} : v,
+stopActionByTag: g ? function(t) {
 t !== cc.Action.TAG_INVALID ? cc.director.getActionManager().removeActionByTag(t, this) : cc.logID(1612);
-} : d,
-getActionByTag: u ? function(t) {
+} : v,
+getActionByTag: g ? function(t) {
 if (t === cc.Action.TAG_INVALID) {
 cc.logID(1613);
 return null;
@@ -5099,7 +5111,7 @@ return cc.director.getActionManager().getActionByTag(t, this);
 } : function() {
 return null;
 },
-getNumberOfRunningActions: u ? function() {
+getNumberOfRunningActions: g ? function() {
 return cc.director.getActionManager().getNumberOfRunningActionsInTarget(this);
 } : function() {
 return 0;
@@ -5133,7 +5145,7 @@ r.x = o;
 r.y = n;
 this._sgNode.setPosition(o, n);
 var s = this._hasListenerCache;
-s && s["position-changed"] && this.emit("position-changed");
+s && s[h] && this.emit(h);
 }
 },
 getScale: function() {
@@ -5150,7 +5162,7 @@ this._scaleX = i;
 this._scaleY = n;
 this._sgNode.setScale(i, n);
 var o = this._hasListenerCache;
-o && o["scale-changed"] && this.emit("scale-changed");
+o && o[f] && this.emit(f);
 }
 },
 getContentSize: function(t) {
@@ -5165,15 +5177,17 @@ setContentSize: function(t, e) {
 var i = this._contentSize;
 if (void 0 === e) {
 if (t.width === i.width && t.height === i.height) return;
+0;
 i.width = t.width;
 i.height = t.height;
 } else {
 if (t === i.width && e === i.height) return;
+0;
 i.width = t;
 i.height = e;
 }
 this._sizeProvider && this._sizeProvider.setContentSize(i);
-this.emit("size-changed");
+this.emit(l);
 },
 setOpacityModifyRGB: function(t) {
 if (this._opacityModifyRGB !== t) {
@@ -5210,7 +5224,7 @@ i.y = e;
 }
 var n = this._sizeProvider;
 n instanceof _ccsg.Node && n.setAnchorPoint(i);
-this.emit("anchor-changed");
+this.emit(u);
 },
 getAnchorPointInPoints: function() {
 return this._sgNode.getAnchorPointInPoints();
@@ -5333,6 +5347,7 @@ o = void 0;
 s = !0;
 r = "";
 }
+0;
 cc.assertID(i, 1606);
 cc.assertID(null === i._parent, 1605);
 i.parent = this;
@@ -5340,7 +5355,7 @@ i.zIndex = n;
 s ? i.setTag(o) : i.setName(r);
 },
 cleanup: function() {
-u && cc.director.getActionManager().removeAllActionsFromTarget(this);
+g && cc.director.getActionManager().removeAllActionsFromTarget(this);
 cc.eventManager.removeListeners(this);
 var t, e, i = this._children.length;
 for (t = 0; t < i; ++t) (e = this._children[t]) && e.cleanup();
@@ -5398,7 +5413,7 @@ var t = this._sgNode;
 t.setAnchorPoint(this._anchorPoint);
 t.setVisible(this._active);
 t.setColor(this._color);
-var e = u ? cc.director.getActionManager() : null;
+var e = g ? cc.director.getActionManager() : null;
 if (this._activeInHierarchy) {
 e && e.resumeTarget(this);
 cc.eventManager.resumeTarget(this);
@@ -5409,10 +5424,10 @@ cc.eventManager.pauseTarget(this);
 },
 _removeSgNode: c.removeSgNode,
 onRestore: !1
-}), A = function() {
+}), N = function() {
 this._activeInHierarchy || cc.eventManager.pauseTarget(this);
 };
-cc.js.getset(E.prototype, "_sgNode", (function() {
+cc.js.getset(O.prototype, "_sgNode", (function() {
 return this.__sgNode;
 }), (function(t) {
 this.__sgNode = t;
@@ -5429,18 +5444,18 @@ cc.eventManager.removeListener(this._mouseListener);
 cc.eventManager.addListener(this._mouseListener, this);
 this._mouseListener.release();
 }
-cc.director.once(cc.Director.EVENT_BEFORE_UPDATE, A, this);
+cc.director.once(cc.Director.EVENT_BEFORE_UPDATE, N, this);
 }
 }), !0);
-h.propertyDefine(E, [ "parent", "tag", "skewX", "skewY", "position", "rotation", "rotationX", "rotationY", "scale", "scaleX", "scaleY", "opacity", "color" ], {
+p.propertyDefine(O, [ "parent", "tag", "skewX", "skewY", "position", "rotation", "rotationX", "rotationY", "scale", "scaleX", "scaleY", "opacity", "color" ], {
 x: [ "getPositionX", "setPositionX" ],
 y: [ "getPositionY", "setPositionY" ],
 zIndex: [ "getLocalZOrder", "setLocalZOrder" ],
 opacityModifyRGB: [ "isOpacityModifyRGB", "setOpacityModifyRGB" ],
 cascadeOpacity: [ "isCascadeOpacityEnabled", "setCascadeOpacityEnabled" ]
 });
-E.EventType = f;
-cc.Node = n.exports = E;
+O.EventType = y;
+cc.Node = n.exports = O;
 }), {
 "./event/event": 85,
 "./utils/base-node": 154,
@@ -5473,12 +5488,14 @@ _onHierarchyChanged: function() {},
 _instantiate: null,
 _load: function() {
 if (!this._inited) {
+0;
 this._onBatchCreated();
 this._inited = !0;
 }
 },
 _activate: function(t) {
 t = !1 !== t;
+0;
 cc.director._nodeActivator.activateNode(this, t);
 }
 });
@@ -5614,6 +5631,7 @@ this.data._instantiate(t);
 this.data._prefab._synced = !0;
 t = this.data._instantiate();
 }
+0;
 return t;
 }
 });
@@ -5875,6 +5893,7 @@ for (i.i = 0; i.i < f.length; ++i.i) r((e = f[i.i]).node, e);
 }
 p.isAligning = !1;
 }
+0;
 }
 function a(t) {
 var e = t._parent;
@@ -5900,15 +5919,19 @@ t.on(cc.Director.EVENT_BEFORE_VISIT, c);
 add: function(t) {
 t.node._widget = t;
 this._nodesOrderDirty = !0;
+0;
 },
 remove: function(t) {
 t.node._widget = null;
 this._activeWidgetsIterator.remove(t);
+0;
 },
 updateAlignment: a
 };
+0;
 }), {} ],
 38: [ (function(t, e, i) {
+0;
 var n = cc.Class({
 name: "cc.Camera",
 extends: cc._RendererUnderSG,
@@ -6268,32 +6291,33 @@ n.y = _;
 n.width = g - p;
 n.height = v - _;
 } else if (t instanceof cc.CircleCollider) {
-E = cc.pointApplyAffineTransform(t.offset, o);
-i.position.x = E.x;
-i.position.y = E.y;
+var y = cc.pointApplyAffineTransform(t.offset, o);
+i.position.x = y.x;
+i.position.y = y.y;
 o.tx = o.ty = 0;
 s.x = t.radius;
 s.y = 0;
-var y = cc.pointApplyAffineTransform(s, o), m = Math.sqrt(y.x * y.x + y.y * y.y);
-i.radius = m;
-n.x = E.x - m;
-n.y = E.y - m;
-n.width = 2 * m;
-n.height = 2 * m;
+var m = cc.pointApplyAffineTransform(s, o), b = Math.sqrt(m.x * m.x + m.y * m.y);
+i.radius = b;
+n.x = y.x - b;
+n.y = y.y - b;
+n.width = 2 * b;
+n.height = 2 * b;
 } else if (t instanceof cc.PolygonCollider) {
-var b = t.points, C = i.points;
-C.length = b.length;
-for (var p = 1e6, _ = 1e6, g = -1e6, v = -1e6, T = 0, S = b.length; T < S; T++) {
-C[T] || (C[T] = cc.v2());
-s.x = b[T].x + e.x;
-s.y = b[T].y + e.y;
-var E = cc.pointApplyAffineTransform(s, o);
-C[T].x = E.x;
-C[T].y = E.y;
-E.x > g && (g = E.x);
-E.x < p && (p = E.x);
-E.y > v && (v = E.y);
-E.y < _ && (_ = E.y);
+var C = t.points, T = i.points;
+T.length = C.length;
+p = 1e6, _ = 1e6, g = -1e6, v = -1e6;
+for (var S = 0, E = C.length; S < E; S++) {
+T[S] || (T[S] = cc.v2());
+s.x = C[S].x + e.x;
+s.y = C[S].y + e.y;
+y = cc.pointApplyAffineTransform(s, o);
+T[S].x = y.x;
+T[S].y = y.y;
+y.x > g && (g = y.x);
+y.x < p && (p = y.x);
+y.y > v && (v = y.y);
+y.y < _ && (_ = y.y);
 }
 n.x = p;
 n.y = _;
@@ -6623,6 +6647,7 @@ var e = u.MutableForwardIterator;
 this._zero = new e([]);
 this._neg = new e([]);
 this._pos = new e([]);
+0;
 this._invoke = t;
 },
 statics: {
@@ -6886,6 +6911,7 @@ i && this._animator.setStateTime(i, t);
 getAnimationState: function(t) {
 this._init();
 var e = this._nameToState[t];
+0;
 e && !e.curveLoaded && this._animator._reloadClip(e);
 return e || null;
 },
@@ -6966,12 +6992,14 @@ for (var t = null, e = !1, i = 0; i < this._clips.length; ++i) {
 var o = this._clips[i];
 if (o) {
 t = new cc.AnimationState(o);
+0;
 this._nameToState[t.name] = t;
 n(this._defaultClip, o) && (e = t);
 }
 }
 if (this._defaultClip && !e) {
 t = new cc.AnimationState(this._defaultClip);
+0;
 this._nameToState[t.name] = t;
 }
 }
@@ -7207,6 +7235,7 @@ this._fromScale = 1;
 this._toScale = 1;
 this._originalScale = 1;
 this._sprite = null;
+0;
 },
 _resetState: function() {
 this._pressed = !1;
@@ -7218,6 +7247,7 @@ interactable: {
 default: !0,
 tooltip: !1,
 notify: function(t) {
+0;
 this._updateState();
 this.interactable || this._resetState();
 },
@@ -7550,7 +7580,8 @@ this._thisOnResized.retain();
 __preload: function() {
 if (o.instance) return cc.errorID(6700, this.node.name, o.instance.node.name);
 o.instance = this;
-if (this.node._sizeProvider) ; else this.node._sizeProvider = n;
+if (this.node._sizeProvider) {
+} else this.node._sizeProvider = n;
 cc.director.on(cc.Director.EVENT_BEFORE_VISIT, this.alignWithScreen, this);
 cc.eventManager.addListener(this._thisOnResized, 1);
 this.applySettings();
@@ -7617,7 +7648,10 @@ serializable: !1
 uuid: {
 get: function() {
 var t = this._id;
-t || (t = this._id = c.getNewId());
+if (!t) {
+t = this._id = c.getNewId();
+0;
+}
 return t;
 },
 visible: !1
@@ -7689,8 +7723,10 @@ var n = t[e];
 n && n.targetOff(this);
 }
 t.length = 0;
+0;
 cc.director._nodeActivator.destroyComp(this);
 this.node._removeComponent(this);
+0;
 },
 _instantiate: function(t) {
 t || (t = cc.instantiate._clone(this, this));
@@ -7720,6 +7756,7 @@ cc.director.getScheduler().unscheduleAllForTarget(this);
 });
 l._requireComponent = null;
 l._executionOrder = 0;
+0;
 s.value(l, "_registerEditorProps", (function(i, n) {
 var o = n.requireComponent;
 o && (i._requireComponent = o);
@@ -7883,7 +7920,9 @@ this._sgNode.maxLength = this.maxLength;
 stayOnTop: {
 tooltip: !1,
 default: !1,
-notify: function() {}
+notify: function() {
+0;
+}
 },
 _tabIndex: 0,
 tabIndex: {
@@ -7941,6 +7980,7 @@ return e;
 },
 _initSgNode: function() {
 var t = this._sgNode;
+0;
 this._createBackgroundSprite();
 t.setContentSize(this.node.getContentSize());
 t.inputMode = this.inputMode;
@@ -7982,7 +8022,9 @@ __preload: function() {
 this._super();
 this._registerEvent();
 },
-_registerEvent: function() {},
+_registerEvent: function() {
+0;
+},
 _onTouchBegan: function(t) {
 this._sgNode && this._sgNode._onTouchBegan(t.touch);
 t.stopPropagation();
@@ -8017,7 +8059,9 @@ i("../label/CCSGLabelWebGLRenderCmd");
 var r = cc.TextAlignment, s = cc.VerticalTextAlignment, c = _ccsg.Label.Overflow, a = cc.Class({
 name: "cc.Label",
 extends: cc._RendererUnderSG,
-ctor: function() {},
+ctor: function() {
+0;
+},
 editor: !1,
 _updateSgNodeString: function() {
 this._sgNode.setString(this.string);
@@ -8135,6 +8179,7 @@ return this._N$file;
 },
 set: function(i) {
 i || (this._isSystemFontUsed = !0);
+0;
 this._N$file = i;
 this._bmFontOriginalSize = -1;
 i && this._isSystemFontUsed && (this._isSystemFontUsed = !1);
@@ -8161,6 +8206,7 @@ get: function() {
 return this._isSystemFontUsed;
 },
 set: function(t) {
+0;
 this._isSystemFontUsed = !!t;
 if (t) {
 this.font = null;
@@ -8199,6 +8245,7 @@ Overflow: c
 },
 __preload: function() {
 this._super();
+0;
 this._updateNodeSize();
 },
 _createSgNode: function() {
@@ -8227,6 +8274,7 @@ n.enableWrapText(this._enableWrapText);
 n.setLineHeight(this._lineHeight);
 n.setString(this.string);
 i instanceof cc.BitmapFont && n.setSpacingX(this.spacingX);
+0;
 n.setContentSize(this.node.getContentSize());
 n.setColor(this.node.color);
 },
@@ -8871,8 +8919,7 @@ for (var n = [], o = 2 * Math.PI / i, r = 0; r < i; ++r) n.push(cc.v2(e.x * Math
 return n;
 },
 _refreshStencil: function() {
-if (this.type === o.IMAGE_STENCIL && (cc._renderType, cc.game.RENDER_TYPE_WEBGL), 
-1) {
+this.type === o.IMAGE_STENCIL && (cc._renderType, cc.game.RENDER_TYPE_WEBGL), 0;
 var t = this.node.getContentSize(), e = this.node.getAnchorPoint(), i = this._clippingStencil;
 if (this._type === o.IMAGE_STENCIL) {
 if (!(i instanceof cc.Scale9Sprite) || i._spriteFrame !== this.spriteFrame) {
@@ -8902,7 +8949,7 @@ i.drawPoly(this._calculateCircle(l, u, this._segements), a, 0, a);
 }
 this._sgNode.setInverted(this.inverted);
 this._clippingStencil = i;
-} else cc.warnID(4200);
+0;
 }
 });
 r.prototype.__superOnDestroy = n.prototype.onDestroy;
@@ -9429,6 +9476,7 @@ name: "cc._RendererInSG",
 ctor: function() {
 var t = this._sgNode = this._createSgNode();
 t.setVisible(!1);
+0;
 t.retain();
 this._plainNode = new _ccsg.Node();
 this._plainNode.retain();
@@ -9456,11 +9504,16 @@ this._plainNode = null;
 }
 },
 _replaceSgNode: function(t) {
+0;
 var e = this.node, i = e._sgNode;
 i._entity = null;
+0;
 var n = i.getChildren().slice();
 i.removeAllChildren(!1);
-t.getChildrenCount() > 0 && t.removeAllChildren(!1);
+if (t.getChildrenCount() > 0) {
+0;
+t.removeAllChildren(!1);
+}
 for (var o = 0, r = n.length; o < r; ++o) t.addChild(n[o]);
 var s = i.getParent();
 if (s) if (cc.runtime) {
@@ -9575,6 +9628,7 @@ tooltip: !1,
 notify: function(t) {
 if (this.font !== t) {
 this._layoutDirty = !0;
+0;
 this._updateRichTextStatus();
 }
 }
@@ -9654,6 +9708,7 @@ this._applyTextAttribute(t);
 },
 _initSgNode: function() {
 this._updateRichText();
+0;
 },
 _createFontLabel: function(t) {
 return _ccsg.Label.pool.get(t, this.font, null, this.fontSize);
@@ -9727,28 +9782,28 @@ i.setDimensions(n.width, this.lineHeight);
 return i;
 },
 _updateRichTextWithMaxWidth: function(t, e, i) {
-var n, o = e;
-if (this._lineOffsetX > 0 && o + this._lineOffsetX > this.maxWidth) for (var r = 0; this._lineOffsetX <= this.maxWidth; ) {
-var s = this._getFirstWordLen(t, r, t.length), c = t.substr(r, s), a = this._measureText(i, c);
-if (!(this._lineOffsetX + a <= this.maxWidth)) {
-if (r > 0) {
-var h = t.substr(0, r);
-this._addLabelSegment(h, i);
-t = t.substr(r, t.length);
-o = this._measureText(i, t);
+var n = e;
+if (this._lineOffsetX > 0 && n + this._lineOffsetX > this.maxWidth) for (var o = 0; this._lineOffsetX <= this.maxWidth; ) {
+var r = this._getFirstWordLen(t, o, t.length), s = t.substr(o, r), c = this._measureText(i, s);
+if (!(this._lineOffsetX + c <= this.maxWidth)) {
+if (o > 0) {
+var a = t.substr(0, o);
+this._addLabelSegment(a, i);
+t = t.substr(o, t.length);
+n = this._measureText(i, t);
 }
 this._updateLineInfo();
 break;
 }
-this._lineOffsetX += a;
-r += s;
+this._lineOffsetX += c;
+o += r;
 }
-if (o > this.maxWidth) for (var l = cc.TextUtils.fragmentText(t, o, this.maxWidth, this._measureText(i)), u = 0; u < l.length; ++u) {
-var d = l[u], f = (n = this._addLabelSegment(d, i)).getContentSize();
-this._lineOffsetX += f.width;
-l.length > 1 && u < l.length - 1 && this._updateLineInfo();
+if (n > this.maxWidth) for (var h = cc.TextUtils.fragmentText(t, n, this.maxWidth, this._measureText(i)), l = 0; l < h.length; ++l) {
+var u = h[l], d = this._addLabelSegment(u, i).getContentSize();
+this._lineOffsetX += d.width;
+h.length > 1 && l < h.length - 1 && this._updateLineInfo();
 } else {
-this._lineOffsetX += o;
+this._lineOffsetX += n;
 this._addLabelSegment(t, i);
 }
 },
@@ -9961,7 +10016,8 @@ _createSgNode: null,
 _initSgNode: null,
 _removeSgNode: n.removeSgNode,
 _registSizeProvider: function() {
-if (this.node._sizeProvider) ; else this.node._sizeProvider = this._sgNode;
+if (this.node._sizeProvider) {
+} else this.node._sizeProvider = this._sgNode;
 }
 });
 cc._SGComponent = e.exports = o;
@@ -10875,7 +10931,9 @@ handle: {
 default: null,
 type: cc.Button,
 tooltip: !1,
-notify: function() {}
+notify: function() {
+0;
+}
 },
 direction: {
 default: n.Horizontal,
@@ -11028,6 +11086,7 @@ var i = this._spriteFrame;
 if (i !== t) {
 this._spriteFrame = t;
 this._applySpriteFrame(i);
+0;
 }
 },
 type: cc.SpriteFrame
@@ -11208,6 +11267,7 @@ n.once("load", this._onTextureLoaded, this);
 n.ensureLoadTexture();
 }
 } else i.setVisible(!1);
+0;
 },
 _createSgNode: function() {
 return new cc.Scale9Sprite();
@@ -11229,6 +11289,7 @@ t.setBlendFunc(this._blendFunc);
 },
 _resized: !1
 });
+0;
 t("../utils/misc").propertyDefine(a, [ "insetLeft", "insetTop", "insetRight", "insetBottom" ], {
 type: [ null, "setRenderingType" ]
 });
@@ -11562,6 +11623,7 @@ this.resourceType === s.REMOTE ? t.setURL(this.remoteURL) : t.setURL(this._clip 
 _initSgNode: function() {
 var t = this._sgNode;
 if (t) {
+0;
 this._updateVideoSource();
 t.seekTo(this.currentTime);
 t.setKeepAspectRatioEnabled(this.keepAspectRatio);
@@ -11680,6 +11742,7 @@ return new _ccsg.WebView();
 _initSgNode: function() {
 var t = this._sgNode;
 if (t) {
+0;
 t.loadURL(this._url);
 t.setContentSize(this.node.getContentSize());
 }
@@ -11737,6 +11800,7 @@ return this._target;
 },
 set: function(t) {
 this._target = t;
+0;
 },
 type: cc.Node,
 tooltip: !1
@@ -11964,11 +12028,18 @@ if (e) {
 this._alignFlags |= t;
 if (i) {
 this.isAlignHorizontalCenter = !1;
-this.isStretchWidth && (this._originalWidth = this.node.width);
+if (this.isStretchWidth) {
+this._originalWidth = this.node.width;
+0;
+}
 } else {
 this.isAlignVerticalCenter = !1;
-this.isStretchHeight && (this._originalHeight = this.node.height);
+if (this.isStretchHeight) {
+this._originalHeight = this.node.height;
+0;
 }
+}
+0;
 } else {
 i ? this.isStretchWidth && (this.node.width = this._originalWidth) : this.isStretchHeight && (this.node.height = this._originalHeight);
 this._alignFlags &= ~t;
@@ -12327,6 +12398,7 @@ n.containCanceled && n.purgeCanceled();
 }
 };
 e.exports = n;
+0;
 }), {
 "../platform/callbacks-invoker": 141
 } ],
@@ -12468,6 +12540,7 @@ a.length = 0;
 a.length = 0;
 };
 h.emit = function(t, e) {
+0;
 var i = this._hasListenerCache;
 if (i) {
 var n = i[t];
@@ -13149,6 +13222,7 @@ this.downloader = e;
 this.loader = i;
 this.onProgress = null;
 this._autoReleaseSetting = {};
+0;
 }
 var c = i("../platform/js"), a = i("./pipeline"), h = i("./loading-items"), l = i("./asset-loader"), u = i("./downloader"), d = i("./loader"), f = i("./asset-table"), p = i("../platform/utils").callInNextTick, _ = i("./auto-release-utils"), g = new f(), v = {
 url: null,
@@ -13379,6 +13453,7 @@ if ((t = o.content) instanceof cc.Asset) {
 t instanceof cc.SpriteFrame && r && t.release();
 for (var s = t.rawUrls, c = 0; c < s.length; c++) this.release(s[c]);
 } else t instanceof cc.Texture2D && cc.textureCache.removeTextureForKey(o.rawUrl || o.url);
+0;
 }
 }
 };
@@ -13417,13 +13492,14 @@ for (var n = _.getDependsRecursively(i), o = 0; o < n.length; o++) {
 var r = n[o];
 this._autoReleaseSetting[r] = e;
 }
-}
+} else 0;
 };
 b.isAutoRelease = function(t) {
 var e = this._getReferenceKey(t);
 return !!e && !!this._autoReleaseSetting[e];
 };
 cc.loader = new s();
+0;
 n.exports = cc.loader;
 }), {
 "../platform/js": 148,
@@ -13438,21 +13514,21 @@ n.exports = cc.loader;
 "./released-asset-checker": 105
 } ],
 94: [ (function(t, e, i) {
-var n = t("../utils/CCPath"), o = t("./pipeline"), r = t("./loading-items"), s = "AssetLoader", c = function(t) {
-this.id = s;
+var n = t("../utils/CCPath"), o = t("./pipeline"), r = t("./loading-items"), s = function(t) {
+this.id = "AssetLoader";
 this.async = !0;
 this.pipeline = null;
 };
-c.ID = s;
-var a = [];
-c.prototype.handle = function(t, e) {
+s.ID = "AssetLoader";
+var c = [];
+s.prototype.handle = function(t, e) {
 var i = t.uuid;
 if (!i) return t.content ? t.content : null;
-cc.AssetLibrary.queryAssetInfo(i, (function(o, s, c) {
+cc.AssetLibrary.queryAssetInfo(i, (function(o, s, a) {
 if (o) e(o); else {
 t.url = t.rawUrl = s;
-t.isRawAsset = c;
-if (c) {
+t.isRawAsset = a;
+if (a) {
 var h = n.extname(s).toLowerCase();
 if (!h) {
 e(new Error("Download Uuid: can not find type of raw asset[" + i + "]: " + s));
@@ -13460,7 +13536,7 @@ return;
 }
 h = h.substr(1);
 var l = r.getQueue(t);
-a[0] = {
+c[0] = {
 queueId: t.queueId,
 id: s,
 url: s,
@@ -13469,7 +13545,8 @@ error: null,
 alias: t,
 complete: !0
 };
-l.append(a);
+0;
+l.append(c);
 t.type = h;
 e(null, t.content);
 } else {
@@ -13479,7 +13556,7 @@ e(null, t.content);
 }
 }));
 };
-o.AssetLoader = e.exports = c;
+o.AssetLoader = e.exports = s;
 }), {
 "../utils/CCPath": 153,
 "./loading-items": 101,
@@ -13607,8 +13684,8 @@ return Object.keys(e);
 97: [ (function(t, e, i) {
 function n(t, e, i, o) {
 void 0 === i && (i = !0);
-var r = f(t.url);
-o = o || h.imagePool.get();
+var r = p(t.url);
+o = o || l.imagePool.get();
 i && "file:" !== window.location.protocol ? o.crossOrigin = "anonymous" : o.crossOrigin = null;
 if (o.complete && o.naturalWidth > 0 && o.src === r) return o;
 !(function() {
@@ -13634,13 +13711,13 @@ n.body.appendChild(o);
 var r = "";
 isNaN(t - 0) ? r += "@font-face { font-family:" + t + "; src:" : r += "@font-face { font-family:'" + t + "'; src:";
 if (e instanceof Array) for (var s = 0, c = e.length; s < c; s++) {
-var h = e[s];
-i = a.extname(h).toLowerCase();
-r += "url('" + e[s] + "') format('" + p[i] + "')";
+var a = e[s];
+i = h.extname(a).toLowerCase();
+r += "url('" + e[s] + "') format('" + _[i] + "')";
 r += s === c - 1 ? ";" : ",";
 } else {
 i = i.toLowerCase();
-r += "url('" + e + "') format('" + p[i] + "');";
+r += "url('" + e + "') format('" + _[i] + "');";
 }
 o.textContent += r + "}";
 var l = document.createElement("div"), u = l.style;
@@ -13657,8 +13734,8 @@ if (r && s) {
 -1 === s.indexOf(i) && s.push(i);
 o(r, s);
 } else {
-n = a.extname(i);
-o(r = a.basename(i, n), i, n);
+n = h.extname(i);
+o(r = h.basename(i, n), i, n);
 }
 if (!document.fonts) return null;
 document.fonts.load("1em " + r).then((function() {
@@ -13667,32 +13744,37 @@ e(null, null);
 e(t);
 }));
 }
-var s, c = t("../platform/js"), a = t("../utils/CCPath"), h = t("../utils/misc"), l = t("./pipeline"), u = t("./pack-downloader"), d = t("./text-downloader"), f = t("./utils").urlAppendTimestamp, p = {
+var s, c = t("../platform/js"), a = t("../platform/CCSys"), h = t("../utils/CCPath"), l = t("../utils/misc"), u = t("./pipeline"), d = t("./pack-downloader"), f = t("./text-downloader"), p = t("./utils").urlAppendTimestamp, _ = {
 ".eot": "embedded-opentype",
 ".ttf": "truetype",
 ".ttc": "truetype",
 ".woff": "woff",
 ".svg": "svg"
-}, _ = {
-js: function(t, e, i) {
-function n() {
-c.parentNode.removeChild(c);
-c.removeEventListener("load", n, !1);
-c.removeEventListener("error", o, !1);
-e(null, r);
-}
+}, g = {
+js: function(e, i, n) {
 function o() {
-c.parentNode.removeChild(c);
-c.removeEventListener("load", n, !1);
-c.removeEventListener("error", o, !1);
-e(new Error("Load " + r + " failed!"), r);
+h.parentNode.removeChild(h);
+h.removeEventListener("load", o, !1);
+h.removeEventListener("error", r, !1);
+i(null, s);
 }
-var r = t.url, s = document, c = document.createElement("script");
-c.async = i;
-c.src = f(r);
-c.addEventListener("load", n, !1);
-c.addEventListener("error", o, !1);
-s.body.appendChild(c);
+function r() {
+h.parentNode.removeChild(h);
+h.removeEventListener("load", o, !1);
+h.removeEventListener("error", r, !1);
+i(new Error("Load " + s + " failed!"), s);
+}
+if (a.platform !== a.WECHAT_GAME) {
+var s = e.url, c = document, h = document.createElement("script");
+h.async = n;
+h.src = p(s);
+h.addEventListener("load", o, !1);
+h.addEventListener("error", r, !1);
+c.body.appendChild(h);
+} else {
+t(e.url);
+i(null, e.url);
+}
 },
 png: n,
 jpg: n,
@@ -13709,17 +13791,17 @@ mp3: s = t("./audio-downloader"),
 ogg: s,
 wav: s,
 m4a: s,
-txt: d,
-xml: d,
-vsh: d,
-fsh: d,
-atlas: d,
-tmx: d,
-tsx: d,
-json: d,
-ExportJson: d,
-plist: d,
-fnt: d,
+txt: f,
+xml: f,
+vsh: f,
+fsh: f,
+atlas: f,
+tmx: f,
+tsx: f,
+json: f,
+ExportJson: f,
+plist: f,
+fnt: f,
 font: r,
 eot: r,
 ttf: r,
@@ -13727,19 +13809,20 @@ woff: r,
 svg: r,
 ttc: r,
 uuid: function(t, e) {
-var i = u.load(t, e);
+var i = d.load(t, e);
 return void 0 === i ? this.extMap.json(t, e) : i || void 0;
 },
-default: d
-}, g = "Downloader", v = function(t) {
-this.id = g;
+default: f
+}, v = function(t) {
+this.id = "Downloader";
 this.async = !0;
 this.pipeline = null;
 this._curConcurrent = 0;
 this._loadQueue = [];
-this.extMap = c.mixin(t, _);
+this.extMap = c.mixin(t, g);
 };
-v.ID = g;
+v.ID = "Downloader";
+v.PackDownloader = d;
 v.prototype.addHandlers = function(t) {
 c.mixin(this.extMap, t);
 };
@@ -13771,8 +13854,9 @@ item: t,
 callback: e
 });
 };
-l.Downloader = e.exports = v;
+u.Downloader = e.exports = v;
 }), {
+"../platform/CCSys": 137,
 "../platform/js": 148,
 "../utils/CCPath": 153,
 "../utils/misc": 158,
@@ -13813,6 +13897,7 @@ this.jsons[s] = c;
 r.prototype.retrieve = function(t) {
 return this.jsons[t] || null;
 };
+0;
 n.exports = r;
 }), {} ],
 100: [ (function(i, n, o) {
@@ -13825,15 +13910,15 @@ return new Error("JSON Loader: Parse json [" + i.id + "] failed : " + t);
 }
 }
 function s(t, e) {
-if (!(t.content instanceof Image)) return new Error("Image Loader: Input item doesn't contain Image content");
-var i = t.rawUrl, n = cc.textureCache.getTextureForKey(i) || new h();
+if (a.platform !== a.WECHAT_GAME && !(t.content instanceof Image)) return new Error("Image Loader: Input item doesn't contain Image content");
+var i = t.rawUrl, n = cc.textureCache.getTextureForKey(i) || new l();
 n.url = i;
 n.initWithElement(t.content);
 n.handleLoadedTexture();
 cc.textureCache.cacheImage(i, n);
 return n;
 }
-var c = i("../platform/js"), a = i("./pipeline"), h = i("../textures/CCTexture2D"), l = i("./uuid-loader"), u = (i("../utils/misc"), 
+var c = i("../platform/js"), a = i("../platform/CCSys"), h = i("./pipeline"), l = i("../textures/CCTexture2D"), u = i("./uuid-loader"), d = (i("../utils/misc"), 
 {
 png: s,
 jpg: s,
@@ -13851,28 +13936,29 @@ if ("string" !== ("object" == (e = typeof i.content) ? t(i.content) : e)) return
 var o = cc.plistParser.parse(i.content);
 return o || new Error("Plist Loader: Parse [" + i.id + "] failed");
 },
-uuid: l,
-prefab: l,
-fire: l,
-scene: l,
+uuid: u,
+prefab: u,
+fire: u,
+scene: u,
 default: function(t, e) {
 return null;
 }
-}), d = function(t) {
+}), f = function(t) {
 this.id = "Loader";
 this.async = !0;
 this.pipeline = null;
-this.extMap = c.mixin(t, u);
+this.extMap = c.mixin(t, d);
 };
-d.ID = "Loader";
-d.prototype.addHandlers = function(t) {
+f.ID = "Loader";
+f.prototype.addHandlers = function(t) {
 this.extMap = c.mixin(this.extMap, t);
 };
-d.prototype.handle = function(t, e) {
+f.prototype.handle = function(t, e) {
 return (this.extMap[t.type] || this.extMap.default).call(this, t, e);
 };
-a.Loader = n.exports = d;
+h.Loader = n.exports = f;
 }), {
+"../platform/CCSys": 137,
 "../platform/js": 148,
 "../textures/CCTexture2D": 1,
 "../utils/misc": 158,
@@ -14149,20 +14235,20 @@ cc.LoadingItems = n.exports = v;
 "../utils/CCPath": 153
 } ],
 102: [ (function(t, e, i) {
-var n = t("./pipeline"), o = "MD5Pipe", r = /(\.[^.\n\\/]*)$/, s = function(t, e, i) {
-this.id = o;
+var n = t("./pipeline"), o = /(\.[^.\n\\/]*)$/, r = function(t, e, i) {
+this.id = "MD5Pipe";
 this.async = !1;
 this.pipeline = null;
 this.md5AssetsMap = t;
 this.libraryBase = e;
 this.rawAssetsBase = i;
 };
-s.ID = o;
-s.prototype.handle = function(t) {
+r.ID = "MD5Pipe";
+r.prototype.handle = function(t) {
 t.url = this.transformURL(t.url);
 return t;
 };
-s.prototype.transformURL = function(t) {
+r.prototype.transformURL = function(t) {
 var e = t.indexOf("?"), i = t;
 -1 !== e && (i = t.substr(0, e));
 if (i.startsWith(this.libraryBase)) i = i.slice(this.libraryBase.length); else {
@@ -14171,16 +14257,16 @@ i = i.slice(this.rawAssetsBase.length);
 }
 var n = this.md5AssetsMap[i];
 if (n) {
-var o = !1;
-t = t.replace(r, (function(t, e) {
-o = !0;
+var r = !1;
+t = t.replace(o, (function(t, e) {
+r = !0;
 return "." + n + e;
 }));
-o || (t = t + "." + n);
+r || (t = t + "." + n);
 }
 return t;
 };
-n.MD5Pipe = e.exports = s;
+n.MD5Pipe = e.exports = r;
 }), {
 "./pipeline": 104
 } ],
@@ -14188,12 +14274,7 @@ n.MD5Pipe = e.exports = s;
 function n(t, e) {
 return new Error("Can not retrieve " + t + " from packer " + e);
 }
-var o = t("./json-unpacker"), r = t("../utils/misc").pushToMap, s = {}, c = {}, a = {}, h = {
-Invalid: 0,
-Removed: 1,
-Downloading: 2,
-Loaded: 3
-};
+var o = t("./json-unpacker"), r = t("../utils/misc").pushToMap, s = {}, c = {}, a = {}, h = 0, l = 2, u = 3;
 e.exports = {
 initPacks: function(t) {
 c = t;
@@ -14218,44 +14299,45 @@ c ? i(null, c) : i(n(t, e));
 },
 _doLoadNewPack: function(t, e, i) {
 var n = a[e];
-if (n.state !== h.Loaded) {
+if (n.state !== u) {
 n.read(c[e], i);
-n.state = h.Loaded;
+n.state = u;
 }
 return n.retrieve(t);
 },
 _selectLoadedPack: function(t) {
-for (var e = h.Invalid, i = "", n = 0; n < t.length; n++) {
+for (var e = h, i = "", n = 0; n < t.length; n++) {
 var o = t[n], r = a[o];
 if (r) {
 var s = r.state;
-if (s === h.Loaded) return o;
+if (s === u) return o;
 if (s > e) {
 e = s;
 i = o;
 }
 }
 }
-return e !== h.Invalid ? i : t[0];
+return e !== h ? i : t[0];
 },
 load: function(t, e) {
 var i = t.uuid, r = s[i];
 if (r) {
 Array.isArray(r) && (r = this._selectLoadedPack(r));
 var c = a[r];
-if (c && c.state === h.Loaded) {
-var l = c.retrieve(i);
-return l || n(i, r);
+if (c && c.state === u) {
+var h = c.retrieve(i);
+return h || n(i, r);
 }
 if (!c) {
 console.log("Create unpacker %s for %s", r, i);
-(c = a[r] = new o()).state = h.Downloading;
+(c = a[r] = new o()).state = l;
 }
 this._loadNewPack(i, r, e);
 return null;
 }
 }
 };
+0;
 }), {
 "../utils/misc": 158,
 "./json-unpacker": 99
@@ -14385,11 +14467,13 @@ cc.Pipeline = e.exports = s;
 "../platform/js": 148
 } ],
 106: [ (function(i, n, o) {
+i("../platform/CCSys");
 n.exports = function(i, n) {
 var o = i.url, r = jsb.fileUtils.getStringFromFile(o);
 return "string" === ("object" == (e = typeof r) ? t(r) : e) && r ? r : new Error("Download text failed: " + o);
 };
 }), {
+"../platform/CCSys": 137,
 "./utils": 107
 } ],
 107: [ (function(i, n, o) {
@@ -14406,6 +14490,7 @@ function r(t) {
 return t && (t[0] && "cc.Scene" === t[0].__type__ || t[1] && "cc.Scene" === t[1].__type__ || t[0] && "cc.Prefab" === t[0].__type__);
 }
 function s(i, n) {
+0;
 var o;
 if ("string" === ("object" == (e = typeof i.content) ? t(i.content) : e)) try {
 o = JSON.parse(i.content);
@@ -14435,6 +14520,7 @@ var d = t + "\n" + t.stack;
 return new Error("Uuid Loader: Deserialize asset [" + i.id + "] failed : " + d);
 }
 l._uuid = i.uuid;
+0;
 !(function(t, e, i, n, o, r) {
 var s, c, h, l, u, d = n.uuidList, f = e.dependKeys = [];
 if (o) {
@@ -14526,6 +14612,7 @@ s.isSceneObj = r;
 } ],
 109: [ (function(i, n, o) {
 function r(t, e, i) {
+0;
 e ? t._removeComponent(e) : h.array.removeAt(t._components, i);
 }
 function s() {
@@ -14590,6 +14677,7 @@ t._onPostActivated(!0);
 }
 },
 _deactivateNodeRecursively: function(t) {
+0;
 t._objFlags |= f;
 t._activeInHierarchy = !1;
 for (var e = t._components.length, i = 0; i < e; ++i) {
@@ -14673,11 +14761,15 @@ this.normalImpulse = 0;
 this.tangentImpulse = 0;
 }
 function o() {}
-var r = t("./CCPhysicsTypes").PTM_RATIO, s = t("./CCPhysicsTypes").ContactType, c = [], a = [ cc.v2(), cc.v2() ], h = {
+var r = t("./CCPhysicsTypes").PTM_RATIO, s = t("./CCPhysicsTypes").ContactType, c = [], a = [ cc.v2(), cc.v2() ];
+0;
+var h = {
 points: [],
 separations: [],
 normal: cc.v2()
-}, l = [ new n(), new n() ], u = {
+}, l = [ new n(), new n() ];
+0;
+var u = {
 type: 0,
 localPoint: cc.v2(),
 localNormal: cc.v2(),
@@ -15138,31 +15230,31 @@ function c(t) {
 p(t);
 for (var e, i, n, o, _, v, y = [], m = cc.v2(), b = cc.v2(), C = 0, T = 0, S = 0; S < t.length; ++S) if (a(S, t)) {
 i = n = 1e8;
-for (w = 0; w < t.length; ++w) {
-if (l(r(S - 1, t), r(S, t), r(w, t)) && d(r(S - 1, t), r(S, t), r(w - 1, t))) {
-o = g(r(S - 1, t), r(S, t), r(w, t), r(w - 1, t));
+for (var E = 0; E < t.length; ++E) {
+if (l(r(S - 1, t), r(S, t), r(E, t)) && d(r(S - 1, t), r(S, t), r(E - 1, t))) {
+o = g(r(S - 1, t), r(S, t), r(E, t), r(E - 1, t));
 if (h(r(S + 1, t), r(S, t), o) && (e = f(r(S, t), o)) < i) {
 i = e;
 m = o;
-C = w;
+C = E;
 }
 }
-if (l(r(S + 1, t), r(S, t), r(w + 1, t)) && d(r(S + 1, t), r(S, t), r(w, t))) {
-o = g(r(S + 1, t), r(S, t), r(w, t), r(w + 1, t));
+if (l(r(S + 1, t), r(S, t), r(E + 1, t)) && d(r(S + 1, t), r(S, t), r(E, t))) {
+o = g(r(S + 1, t), r(S, t), r(E, t), r(E + 1, t));
 if (l(r(S - 1, t), r(S, t), o) && (e = f(r(S, t), o)) < n) {
 n = e;
-T = w;
+T = E;
 b = o;
 }
 }
 }
 if (C == (T + 1) % t.length) {
-var E = m.add(b).div(2);
-(_ = s(S, T, t)).push(E);
-(v = s(C, S, t)).push(E);
+var A = m.add(b).div(2);
+(_ = s(S, T, t)).push(A);
+(v = s(C, S, t)).push(A);
 } else {
-for (var A = 0, x = C; T < C; ) T += t.length;
-for (var w = C; w <= T; ++w) if (function(t, e, i) {
+for (var x = 0, w = C; T < C; ) T += t.length;
+for (E = C; E <= T; ++E) if (function(t, e, i) {
 if (a(t, i)) {
 if (u(r(t, i), r(t - 1, i), r(e, i)) && d(r(t, i), r(t + 1, i), r(e, i))) return !1;
 } else if (d(r(t, i), r(t + 1, i), r(e, i)) || u(r(t, i), r(t - 1, i), r(e, i))) return !1;
@@ -15188,16 +15280,16 @@ return !1;
 }(r(t, i), r(e, i), r(n, i), r(n + 1, i), o)) return !1;
 }
 return !0;
-}(S, w, t)) {
-var I = 1 / (f(r(S, t), r(w, t)) + 1);
-a(w, t) ? d(r(w - 1, t), r(w, t), r(S, t)) && u(r(w + 1, t), r(w, t), r(S, t)) ? I += 3 : I += 2 : I += 1;
-if (I > A) {
-x = w;
-A = I;
+}(S, E, t)) {
+var I = 1 / (f(r(S, t), r(E, t)) + 1);
+a(E, t) ? d(r(E - 1, t), r(E, t), r(S, t)) && u(r(E + 1, t), r(E, t), r(S, t)) ? I += 3 : I += 2 : I += 1;
+if (I > x) {
+w = E;
+x = I;
 }
 }
-_ = s(S, x, t);
-v = s(x, S, t);
+_ = s(S, w, t);
+v = s(w, S, t);
 }
 return y = (y = y.concat(c(_))).concat(c(v));
 }
@@ -15898,6 +15990,7 @@ cc.PhysicsPolygonCollider = e.exports = r;
 "../CCPolygonSeparator": 113
 } ],
 120: [ (function(t, e, i) {
+0;
 t("./CCPhysicsManager");
 t("./CCRigidBody");
 t("./CCPhysicsContact");
@@ -15915,6 +16008,7 @@ t("./joint/CCPrismaticJoint");
 t("./joint/CCWeldJoint");
 t("./joint/CCWheelJoint");
 t("./joint/CCRopeJoint");
+0;
 }), {
 "../../../external/box2d/box2d": 1,
 "./CCPhysicsContact": 110,
@@ -16687,7 +16781,9 @@ getLibUrlNoExt: function(t) {
 t = d(t);
 return p + t.slice(0, 2) + "/" + t;
 },
-_queryAssetInfoInEditor: function(t, e) {},
+_queryAssetInfoInEditor: function(t, e) {
+0;
+},
 _getAssetInfoInRuntime: function(t, e) {
 e = e || {
 url: null,
@@ -16738,6 +16834,7 @@ getAssetByUuid: function(t) {
 return v._uuidToAsset[t] || null;
 },
 init: function(t) {
+0;
 var e = t.libraryPath;
 e = e.replace(/\\/g, "/");
 p = cc.path.stripSep(e) + "/";
@@ -16752,31 +16849,32 @@ var o = h._resources;
 o.reset();
 var r = t.rawAssets;
 if (r) {
-for (var a in r) {
-var u = r[a];
-for (var d in u) {
-var v = u[d], y = v[0], m = v[1], b = cc.js._getClassById(m);
-if (b) {
-g[d] = new s(a + "/" + y, b);
-if ("assets" === a && y.startsWith("resources/")) {
-if (cc.isChildClassOf(b, c)) {
-var C = cc.path.extname(y);
-y = C ? y.slice("resources/".length, -C.length) : y.slice("resources/".length);
-} else y = y.slice("resources/".length);
-var T = 1 === v[2];
-o.add(y, d, b, !T);
+var a = "resources/";
+for (var u in r) {
+var d = r[u];
+for (var v in d) {
+var y = d[v], m = y[0], b = y[1], C = cc.js._getClassById(b);
+if (C) {
+g[v] = new s(u + "/" + m, C);
+if ("assets" === u && m.startsWith(a)) {
+if (cc.isChildClassOf(C, c)) {
+var T = cc.path.extname(m);
+m = T ? m.slice(a.length, -T.length) : m.slice(a.length);
+} else m = m.slice(a.length);
+var S = 1 === y[2];
+o.add(m, v, C, !S);
 }
-} else cc.error("Cannot get", m);
+} else cc.error("Cannot get", b);
 }
 }
 }
 t.packedAssets && l.initPacks(t.packedAssets);
-var S = t.mountPaths;
-S || (S = {
+var E = t.mountPaths;
+E || (E = {
 assets: _ + "assets",
 internal: _ + "internal"
 });
-cc.url._init(S);
+cc.url._init(E);
 }
 };
 v._uuidToAsset = {};
@@ -16795,10 +16893,12 @@ function r(t, e) {
 t.indexOf(e) < 0 && t.push(e);
 }
 function s(t, e) {
+0;
 r(t.__props__, e);
 }
 function c(t, e, i, n, o) {
 var r = n.default;
+0;
 S.setClassAttr(t, i, "default", r);
 s(t, i);
 var c = m(t, n, e, i, !1);
@@ -16816,12 +16916,21 @@ c.length = 0;
 function a(t, e, i, n, o) {
 var r = n.get, s = n.set, c = t.prototype, a = Object.getOwnPropertyDescriptor(c, i), h = !a;
 if (r) {
+0;
 for (var l = m(t, n, e, i, !0), u = 0; u < l.length; u++) S.attr(t, i, l[u]);
 l.length = 0;
 S.setClassAttr(t, i, "serializable", !1);
+0;
 o || b.get(c, i, r, h, h);
+0;
 }
-s && (o || b.set(c, i, s, h, h));
+if (s) {
+if (!o) {
+0;
+b.set(c, i, s, h, h);
+}
+0;
+}
 }
 function h(i) {
 return "function" === ("object" == (e = typeof i) ? t(i) : e) ? i() : i;
@@ -16861,6 +16970,7 @@ b.extend(s, e);
 u = s.prototype;
 }
 b.value(s, "$super", e);
+0;
 }
 if (i) {
 for (var d = i.length - 1; d >= 0; d--) {
@@ -16968,6 +17078,7 @@ return n;
 continue;
 }
 }
+0;
 }
 }
 return r;
@@ -17022,6 +17133,7 @@ s.__props__ = null;
 var a = i.statics;
 if (a) {
 var h;
+0;
 for (h in a) s[h] = a[h];
 }
 for (var l in i) if (!(w.indexOf(l) >= 0)) {
@@ -17051,7 +17163,7 @@ var f = R[d];
 if (f) u.push({
 type: d,
 _onAfterProp: A(f, "cc." + d)
-}); else if ("Object" === d) ; else if (d === S.ScriptUuid) {
+}); else if ("Object" === d) 0; else if (d === S.ScriptUuid) {
 var p = S.ObjectType(cc.ScriptAsset);
 p.type = "Script";
 u.push(p);
@@ -17068,15 +17180,17 @@ ctor: d
 } : S.ObjectType(d)));
 }
 n.editorOnly && ((h || c())[l + "editorOnly"] = !0);
+0;
 n.url && ((h || c())[l + "saveUrlAsAsset"] = !0);
 !1 === n.serializable && ((h || c())[l + "serializable"] = !1);
 a("formerlySerializedAs", "string");
+0;
 var _ = n.range;
-if (_ && Array.isArray(_) && _.length >= 2) {
+if (_) if (Array.isArray(_)) if (_.length >= 2) {
 (h || c())[l + "min"] = _[0];
 h[l + "max"] = _[1];
 _.length > 2 && (h[l + "step"] = _[2]);
-}
+} else 0; else 0;
 a("min", "number");
 a("max", "number");
 a("step", "number");
@@ -17133,10 +17247,10 @@ this.__initProps__(e);
 var n = t.length, r = e.__ctors__;
 if (n > 0) {
 if (!(i && i.startsWith("cc."))) try {
-if (1 === n) r[0].apply(this, arguments); else for (s = 0; s < n; s++) r[s].apply(this, arguments);
+if (1 === n) r[0].apply(this, arguments); else for (var s = 0; s < n; s++) r[s].apply(this, arguments);
 } catch (t) {
 cc._throw(t);
-} else if (1 === n) r[0].apply(this, arguments); else for (var s = 0; s < n; s++) r[s].apply(this, arguments);
+} else if (1 === n) r[0].apply(this, arguments); else for (s = 0; s < n; s++) r[s].apply(this, arguments);
 }
 };
 }, P = /xyz/.test((function() {
@@ -17161,7 +17275,10 @@ y.attr = S.attr;
 cc.isChildClassOf = function(i, n) {
 if (i && n) {
 if ("function" !== ("object" == (e = typeof i) ? t(i) : e)) return !1;
-if ("function" !== ("object" == (e = typeof n) ? t(n) : e)) return !1;
+if ("function" !== ("object" == (e = typeof n) ? t(n) : e)) {
+0;
+return !1;
+}
 if (i === n) return !0;
 for (;;) {
 if (!(i = b.getSuper(i))) return !1;
@@ -17192,6 +17309,7 @@ IDENTIFIER_RE: N,
 escapeForJS: p,
 getDefault: h
 };
+0;
 }), {
 "./CCEnum": 134,
 "./attribute": 140,
@@ -17216,6 +17334,7 @@ return i(t, n);
 }
 function a(t, e, i) {
 return function(t) {
+0;
 return function(i) {
 return e(i, t);
 };
@@ -17225,6 +17344,7 @@ function h(t) {
 return a.bind(null, !1);
 }
 function l(t, e) {
+0;
 return s(t, g);
 }
 function u(i, n, o, r, s, c) {
@@ -17233,6 +17353,7 @@ if (s && (s.get || s.set)) {
 s.get && (l.get = s.get);
 s.set && (l.set = s.set);
 } else {
+0;
 var u = void 0;
 if (s) {
 if (s.initializer) {
@@ -17262,6 +17383,7 @@ u = d[o];
 !0;
 }
 }
+0;
 l.default = u;
 }
 n[o] = l;
@@ -17346,7 +17468,10 @@ a = ++n;
 i[c] = a;
 } else if ("number" === ("object" == (e = typeof a) ? t(a) : e)) n = a; else if ("string" === ("object" == (e = typeof a) ? t(a) : e) && Number.isInteger(parseFloat(c))) continue;
 var h = "" + a;
-c !== h && s.value(i, h, c);
+if (c !== h) {
+0;
+s.value(i, h, c);
+}
 }
 return i;
 }
@@ -17610,8 +17735,7 @@ BATCH_VERTEX_COUNT: 2e4,
 ENABLE_GC_FOR_NATIVE_OBJECTS: !0,
 ENABLE_TILEDMAP_CULLING: !0,
 DOWNLOAD_MAX_CONCURRENT: 64,
-ENABLE_TRANSPARENT_CANVAS: !1,
-ENABLE_WEBGL_ANTIALIAS: !0
+ENABLE_TRANSPARENT_CANVAS: !1
 };
 var n = !0;
 cc.defineGetterSetter(cc.macro, "ENABLE_CULLING", (function() {
@@ -17673,6 +17797,7 @@ var i = l[e];
 i._objFlags & h || i._destroyImmediate();
 }
 t === l.length ? l.length = 0 : l.splice(0, t);
+0;
 }
 var c = i("./js"), a = i("./CCClass"), h = 1;
 a.fastDefine("cc.Object", r, {
@@ -17702,6 +17827,7 @@ IsSizeLocked: 1 << 20
 });
 var l = [];
 c.value(r, "_deferredDestroy", s);
+0;
 var u = r.prototype;
 c.getset(u, "name", (function() {
 return this._name;
@@ -17711,6 +17837,7 @@ this._name = t;
 c.get(u, "isValid", (function() {
 return !(this._objFlags & h);
 }));
+0;
 u.destroy = function() {
 if (this._objFlags & h) {
 cc.warnID(5e3);
@@ -17719,8 +17846,10 @@ return !1;
 if (4 & this._objFlags) return !1;
 this._objFlags |= 4;
 l.push(this);
+0;
 return !0;
 };
+0;
 u._destruct = function() {
 var i = this.constructor, n = i.__destruct__;
 if (!n) {
@@ -17779,138 +17908,96 @@ this._destruct();
 this._objFlags |= h;
 }
 };
+0;
 u._deserialize = null;
 cc.isValid = function(i) {
 return "object" === ("object" == (e = typeof i) ? t(i) : e) ? !(!i || i._objFlags & h) : "undefined" !== ("object" == (e = typeof i) ? t(i) : e);
 };
+0;
 cc.Object = n.exports = r;
 }), {
 "./CCClass": 132,
 "./js": 148
 } ],
 137: [ (function(i, n, o) {
+function r() {
+return window.wx;
+}
 if (!cc.sys) {
 cc.sys = {};
-var r = cc.sys;
-r.LANGUAGE_ENGLISH = "en";
-r.LANGUAGE_CHINESE = "zh";
-r.LANGUAGE_FRENCH = "fr";
-r.LANGUAGE_ITALIAN = "it";
-r.LANGUAGE_GERMAN = "de";
-r.LANGUAGE_SPANISH = "es";
-r.LANGUAGE_DUTCH = "du";
-r.LANGUAGE_RUSSIAN = "ru";
-r.LANGUAGE_KOREAN = "ko";
-r.LANGUAGE_JAPANESE = "ja";
-r.LANGUAGE_HUNGARIAN = "hu";
-r.LANGUAGE_PORTUGUESE = "pt";
-r.LANGUAGE_ARABIC = "ar";
-r.LANGUAGE_NORWEGIAN = "no";
-r.LANGUAGE_POLISH = "pl";
-r.LANGUAGE_TURKISH = "tr";
-r.LANGUAGE_UKRAINIAN = "uk";
-r.LANGUAGE_ROMANIAN = "ro";
-r.LANGUAGE_BULGARIAN = "bg";
-r.LANGUAGE_UNKNOWN = "unknown";
-r.OS_IOS = "iOS";
-r.OS_ANDROID = "Android";
-r.OS_WINDOWS = "Windows";
-r.OS_MARMALADE = "Marmalade";
-r.OS_LINUX = "Linux";
-r.OS_BADA = "Bada";
-r.OS_BLACKBERRY = "Blackberry";
-r.OS_OSX = "OS X";
-r.OS_WP8 = "WP8";
-r.OS_WINRT = "WINRT";
-r.OS_UNKNOWN = "Unknown";
-r.UNKNOWN = -1;
-r.WIN32 = 0;
-r.LINUX = 1;
-r.MACOS = 2;
-r.ANDROID = 3;
-r.IPHONE = 4;
-r.IPAD = 5;
-r.BLACKBERRY = 6;
-r.NACL = 7;
-r.EMSCRIPTEN = 8;
-r.TIZEN = 9;
-r.WINRT = 10;
-r.WP8 = 11;
-r.MOBILE_BROWSER = 100;
-r.DESKTOP_BROWSER = 101;
-r.EDITOR_PAGE = 102;
-r.EDITOR_CORE = 103;
-r.BROWSER_TYPE_WECHAT = "wechat";
-r.BROWSER_TYPE_ANDROID = "androidbrowser";
-r.BROWSER_TYPE_IE = "ie";
-r.BROWSER_TYPE_QQ = "qqbrowser";
-r.BROWSER_TYPE_MOBILE_QQ = "mqqbrowser";
-r.BROWSER_TYPE_UC = "ucbrowser";
-r.BROWSER_TYPE_360 = "360browser";
-r.BROWSER_TYPE_BAIDU_APP = "baiduboxapp";
-r.BROWSER_TYPE_BAIDU = "baidubrowser";
-r.BROWSER_TYPE_MAXTHON = "maxthon";
-r.BROWSER_TYPE_OPERA = "opera";
-r.BROWSER_TYPE_OUPENG = "oupeng";
-r.BROWSER_TYPE_MIUI = "miuibrowser";
-r.BROWSER_TYPE_FIREFOX = "firefox";
-r.BROWSER_TYPE_SAFARI = "safari";
-r.BROWSER_TYPE_CHROME = "chrome";
-r.BROWSER_TYPE_LIEBAO = "liebao";
-r.BROWSER_TYPE_QZONE = "qzone";
-r.BROWSER_TYPE_SOUGOU = "sogou";
-r.BROWSER_TYPE_UNKNOWN = "unknown";
-r.isNative = !1;
-r.isBrowser = "object" === ("object" == (e = typeof window) ? t(window) : e) && "object" === ("object" == (e = typeof document) ? t(document) : e);
-var s = window, c = s.navigator, a = document, h = a.documentElement, l = c.userAgent.toLowerCase();
-r.isMobile = /mobile|android|iphone|ipad/.test(l);
-r.platform = r.isMobile ? r.MOBILE_BROWSER : r.DESKTOP_BROWSER;
-var u = c.language;
-u = (u = u || c.browserLanguage) ? u.split("-")[0] : r.LANGUAGE_ENGLISH;
-r.language = u;
-var d = !1, f = !1, p = "", _ = 0, g = /android (\d+(?:\.\d+)+)/i.exec(l) || /android (\d+(?:\.\d+)+)/i.exec(c.platform);
-if (g) {
-d = !0;
-p = g[1] || "";
-_ = parseInt(p) || 0;
-}
-if (g = /(iPad|iPhone|iPod).*OS ((\d+_?){2,3})/i.exec(l)) {
-f = !0;
-p = g[2] || "";
-_ = parseInt(p) || 0;
-} else if (/(iPhone|iPad|iPod)/.exec(c.platform)) {
-f = !0;
-p = "";
-_ = 0;
-}
-var v = r.OS_UNKNOWN;
--1 !== c.appVersion.indexOf("Win") ? v = r.OS_WINDOWS : f ? v = r.OS_IOS : -1 !== c.appVersion.indexOf("Mac") ? v = r.OS_OSX : -1 !== c.appVersion.indexOf("X11") && -1 === c.appVersion.indexOf("Linux") ? v = r.OS_UNIX : d ? v = r.OS_ANDROID : -1 === c.appVersion.indexOf("Linux") && -1 === l.indexOf("ubuntu") || (v = r.OS_LINUX);
-r.os = v;
-r.osVersion = p;
-r.osMainVersion = _;
-r.browserType = r.BROWSER_TYPE_UNKNOWN;
-!(function() {
-var t = /mqqbrowser|micromessenger|qq|sogou|qzone|liebao|maxthon|ucbrowser|360 aphone|360browser|baiduboxapp|baidubrowser|maxthon|mxbrowser|miuibrowser/i.exec(l);
-t || (t = /qqbrowser|chrome|safari|firefox|trident|opera|opr\/|oupeng/i.exec(l));
-var e = t ? t[0].toLowerCase() : r.BROWSER_TYPE_UNKNOWN;
-"micromessenger" === e ? e = r.BROWSER_TYPE_WECHAT : "safari" === e && d ? e = r.BROWSER_TYPE_ANDROID : "qq" === e && l.match(/android.*applewebkit/i) ? e = r.BROWSER_TYPE_ANDROID : "trident" === e ? e = r.BROWSER_TYPE_IE : "360 aphone" === e ? e = r.BROWSER_TYPE_360 : "mxbrowser" === e ? e = r.BROWSER_TYPE_MAXTHON : "opr/" === e && (e = r.BROWSER_TYPE_OPERA);
-r.browserType = e;
-})();
-r.browserVersion = "";
-!(function() {
-var t = l.match(/(mqqbrowser|micromessenger|qq|sogou|qzone|liebao|maxthon|uc|360 aphone|360|baiduboxapp|baidu|maxthon|mxbrowser|miui)(mobile)?(browser)?\/?([\d.]+)/i);
-t || (t = l.match(/(qqbrowser|chrome|safari|firefox|trident|opera|opr\/|oupeng)(mobile)?(browser)?\/?([\d.]+)/i));
-r.browserVersion = t ? t[4] : "";
-})();
-var y = window.innerWidth || document.documentElement.clientWidth, m = window.innerHeight || document.documentElement.clientHeight, b = window.devicePixelRatio || 1;
-r.windowPixelResolution = {
-width: b * y,
-height: b * m
-};
-r._checkWebGLRenderMode = function() {
-if (cc._renderType !== cc.game.RENDER_TYPE_WEBGL) throw new Error("This feature supports WebGL render mode only.");
-};
-var C = document.createElement("canvas"), T = document.createElement("canvas");
+var s = cc.sys;
+s.LANGUAGE_ENGLISH = "en";
+s.LANGUAGE_CHINESE = "zh";
+s.LANGUAGE_FRENCH = "fr";
+s.LANGUAGE_ITALIAN = "it";
+s.LANGUAGE_GERMAN = "de";
+s.LANGUAGE_SPANISH = "es";
+s.LANGUAGE_DUTCH = "du";
+s.LANGUAGE_RUSSIAN = "ru";
+s.LANGUAGE_KOREAN = "ko";
+s.LANGUAGE_JAPANESE = "ja";
+s.LANGUAGE_HUNGARIAN = "hu";
+s.LANGUAGE_PORTUGUESE = "pt";
+s.LANGUAGE_ARABIC = "ar";
+s.LANGUAGE_NORWEGIAN = "no";
+s.LANGUAGE_POLISH = "pl";
+s.LANGUAGE_TURKISH = "tr";
+s.LANGUAGE_UKRAINIAN = "uk";
+s.LANGUAGE_ROMANIAN = "ro";
+s.LANGUAGE_BULGARIAN = "bg";
+s.LANGUAGE_UNKNOWN = "unknown";
+s.OS_IOS = "iOS";
+s.OS_ANDROID = "Android";
+s.OS_WINDOWS = "Windows";
+s.OS_MARMALADE = "Marmalade";
+s.OS_LINUX = "Linux";
+s.OS_BADA = "Bada";
+s.OS_BLACKBERRY = "Blackberry";
+s.OS_OSX = "OS X";
+s.OS_WP8 = "WP8";
+s.OS_WINRT = "WINRT";
+s.OS_UNKNOWN = "Unknown";
+s.UNKNOWN = -1;
+s.WIN32 = 0;
+s.LINUX = 1;
+s.MACOS = 2;
+s.ANDROID = 3;
+s.IPHONE = 4;
+s.IPAD = 5;
+s.BLACKBERRY = 6;
+s.NACL = 7;
+s.EMSCRIPTEN = 8;
+s.TIZEN = 9;
+s.WINRT = 10;
+s.WP8 = 11;
+s.MOBILE_BROWSER = 100;
+s.DESKTOP_BROWSER = 101;
+s.EDITOR_PAGE = 102;
+s.EDITOR_CORE = 103;
+s.WECHAT_GAME = 104;
+s.BROWSER_TYPE_WECHAT = "wechat";
+s.BROWSER_TYPE_WECHAT_GAME = "wechatgame";
+s.BROWSER_TYPE_ANDROID = "androidbrowser";
+s.BROWSER_TYPE_IE = "ie";
+s.BROWSER_TYPE_QQ = "qqbrowser";
+s.BROWSER_TYPE_MOBILE_QQ = "mqqbrowser";
+s.BROWSER_TYPE_UC = "ucbrowser";
+s.BROWSER_TYPE_360 = "360browser";
+s.BROWSER_TYPE_BAIDU_APP = "baiduboxapp";
+s.BROWSER_TYPE_BAIDU = "baidubrowser";
+s.BROWSER_TYPE_MAXTHON = "maxthon";
+s.BROWSER_TYPE_OPERA = "opera";
+s.BROWSER_TYPE_OUPENG = "oupeng";
+s.BROWSER_TYPE_MIUI = "miuibrowser";
+s.BROWSER_TYPE_FIREFOX = "firefox";
+s.BROWSER_TYPE_SAFARI = "safari";
+s.BROWSER_TYPE_CHROME = "chrome";
+s.BROWSER_TYPE_LIEBAO = "liebao";
+s.BROWSER_TYPE_QZONE = "qzone";
+s.BROWSER_TYPE_SOUGOU = "sogou";
+s.BROWSER_TYPE_UNKNOWN = "unknown";
+s.isNative = !1;
+s.isBrowser = "object" === ("object" == (e = typeof window) ? t(window) : e) && "object" === ("object" == (e = typeof document) ? t(document) : e) && !r();
 cc.create3DContext = function(t, e, i) {
 if (!i) return cc.create3DContext(t, e, "webgl") || cc.create3DContext(t, e, "experimental-webgl") || cc.create3DContext(t, e, "webkit-3d") || cc.create3DContext(t, e, "moz-webgl") || null;
 try {
@@ -17919,15 +18006,94 @@ return t.getContext(i, e);
 return null;
 }
 };
-r._supportCanvasNewBlendModes = (function() {
-var t = C;
+if (r()) {
+var c = wx.getSystemInfoSync();
+s.isMobile = !0;
+s.platform = s.WECHAT_GAME;
+s.language = c.language.substr(0, 2);
+"android" === c.platform ? s.os = s.OS_ANDROID : "ios" === c.platform && (s.os = s.OS_IOS);
+var a = /[\d\.]+/.exec(c.system);
+s.osVersion = a[0];
+s.osMainVersion = parseInt(s.osVersion);
+s.browserType = s.BROWSER_TYPE_WECHAT_GAME;
+s.browserVersion = c.version;
+var h = c.windowWidth, l = c.windowHeight, u = c.pixelRatio || 1;
+s.windowPixelResolution = {
+width: u * h,
+height: u * l
+};
+s.localStorage = window.localStorage;
+s.capabilities = {
+canvas: !0,
+opengl: !0,
+webp: !1
+};
+s.__audioSupport = {
+ONLY_ONE: !1,
+WEB_AUDIO: !1,
+DELAY_CREATE_CTX: !1,
+format: [ ".mp3" ]
+};
+} else {
+var d = window, f = d.navigator, p = document, _ = p.documentElement, g = f.userAgent.toLowerCase();
+s.isMobile = /mobile|android|iphone|ipad/.test(g);
+s.platform = s.isMobile ? s.MOBILE_BROWSER : s.DESKTOP_BROWSER;
+var v = f.language;
+v = (v = v || f.browserLanguage) ? v.split("-")[0] : s.LANGUAGE_ENGLISH;
+s.language = v;
+var y = !1, m = !1, b = "", C = 0, T = /android (\d+(?:\.\d+)+)/i.exec(g) || /android (\d+(?:\.\d+)+)/i.exec(f.platform);
+if (T) {
+y = !0;
+b = T[1] || "";
+C = parseInt(b) || 0;
+}
+if (T = /(iPad|iPhone|iPod).*OS ((\d+_?){2,3})/i.exec(g)) {
+m = !0;
+b = T[2] || "";
+C = parseInt(b) || 0;
+} else if (/(iPhone|iPad|iPod)/.exec(f.platform)) {
+m = !0;
+b = "";
+C = 0;
+}
+var S = s.OS_UNKNOWN;
+-1 !== f.appVersion.indexOf("Win") ? S = s.OS_WINDOWS : m ? S = s.OS_IOS : -1 !== f.appVersion.indexOf("Mac") ? S = s.OS_OSX : -1 !== f.appVersion.indexOf("X11") && -1 === f.appVersion.indexOf("Linux") ? S = s.OS_UNIX : y ? S = s.OS_ANDROID : -1 === f.appVersion.indexOf("Linux") && -1 === g.indexOf("ubuntu") || (S = s.OS_LINUX);
+s.os = S;
+s.osVersion = b;
+s.osMainVersion = C;
+s.browserType = s.BROWSER_TYPE_UNKNOWN;
+!(function() {
+var t = /mqqbrowser|micromessenger|qq|sogou|qzone|liebao|maxthon|ucbrowser|360 aphone|360browser|baiduboxapp|baidubrowser|maxthon|mxbrowser|miuibrowser/i.exec(g);
+t || (t = /qqbrowser|chrome|safari|firefox|trident|opera|opr\/|oupeng/i.exec(g));
+var e = t ? t[0].toLowerCase() : s.BROWSER_TYPE_UNKNOWN;
+r() ? e = s.BROWSER_TYPE_WECHAT_GAME : "micromessenger" === e ? e = s.BROWSER_TYPE_WECHAT : "safari" === e && y ? e = s.BROWSER_TYPE_ANDROID : "qq" === e && g.match(/android.*applewebkit/i) ? e = s.BROWSER_TYPE_ANDROID : "trident" === e ? e = s.BROWSER_TYPE_IE : "360 aphone" === e ? e = s.BROWSER_TYPE_360 : "mxbrowser" === e ? e = s.BROWSER_TYPE_MAXTHON : "opr/" === e && (e = s.BROWSER_TYPE_OPERA);
+s.browserType = e;
+})();
+s.browserVersion = "";
+!(function() {
+var t = g.match(/(mqqbrowser|micromessenger|qq|sogou|qzone|liebao|maxthon|uc|360 aphone|360|baiduboxapp|baidu|maxthon|mxbrowser|miui)(mobile)?(browser)?\/?([\d.]+)/i);
+t || (t = g.match(/(qqbrowser|chrome|safari|firefox|trident|opera|opr\/|oupeng)(mobile)?(browser)?\/?([\d.]+)/i));
+s.browserVersion = t ? t[4] : "";
+})();
+h = window.innerWidth || document.documentElement.clientWidth, l = window.innerHeight || document.documentElement.clientHeight, 
+u = window.devicePixelRatio || 1;
+s.windowPixelResolution = {
+width: u * h,
+height: u * l
+};
+s._checkWebGLRenderMode = function() {
+if (cc._renderType !== cc.game.RENDER_TYPE_WEBGL) throw new Error("This feature supports WebGL render mode only.");
+};
+var E = document.createElement("canvas"), A = document.createElement("canvas");
+s._supportCanvasNewBlendModes = (function() {
+var t = E;
 t.width = 1;
 t.height = 1;
 var e = t.getContext("2d");
 e.fillStyle = "#000";
 e.fillRect(0, 0, 1, 1);
 e.globalCompositeOperation = "multiply";
-var i = T;
+var i = A;
 i.width = 1;
 i.height = 1;
 var n = i.getContext("2d");
@@ -17937,112 +18103,113 @@ e.drawImage(i, 0, 0, 1, 1);
 return 0 === e.getImageData(0, 0, 1, 1).data[0];
 })();
 if (cc.sys.isMobile) {
-var S = document.createElement("style");
-S.type = "text/css";
-document.body.appendChild(S);
-S.textContent = "body,canvas,div{ -moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;-khtml-user-select: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}";
+var x = document.createElement("style");
+x.type = "text/css";
+document.body.appendChild(x);
+x.textContent = "body,canvas,div{ -moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;-khtml-user-select: none;-webkit-tap-highlight-color:rgba(0,0,0,0);}";
 }
 try {
-var E = r.localStorage = s.localStorage;
-E.setItem("storage", "");
-E.removeItem("storage");
-E = null;
+var w = s.localStorage = d.localStorage;
+w.setItem("storage", "");
+w.removeItem("storage");
+w = null;
 } catch (t) {
-var A = function() {
+var I = function() {
 cc.warnID(5200);
 };
-r.localStorage = {
-getItem: A,
-setItem: A,
-removeItem: A,
-clear: A
+s.localStorage = {
+getItem: I,
+setItem: I,
+removeItem: I,
+clear: I
 };
 }
-var x = C.toDataURL("image/webp").startsWith("data:image/webp"), w = !!C.getContext("2d"), I = !1;
-if (s.WebGLRenderingContext) {
-cc.create3DContext(document.createElement("CANVAS")) && (I = !0);
-if (I && r.os === r.OS_ANDROID) {
-var O = parseFloat(r.browserVersion);
-switch (r.browserType) {
-case r.BROWSER_TYPE_MOBILE_QQ:
-case r.BROWSER_TYPE_BAIDU:
-case r.BROWSER_TYPE_BAIDU_APP:
-I = O >= 6.2;
+var O = E.toDataURL("image/webp").startsWith("data:image/webp"), N = !!E.getContext("2d"), L = !1;
+if (d.WebGLRenderingContext) {
+cc.create3DContext(document.createElement("CANVAS")) && (L = !0);
+if (L && s.os === s.OS_ANDROID) {
+var P = parseFloat(s.browserVersion);
+switch (s.browserType) {
+case s.BROWSER_TYPE_MOBILE_QQ:
+case s.BROWSER_TYPE_BAIDU:
+case s.BROWSER_TYPE_BAIDU_APP:
+L = P >= 6.2;
 break;
 
-case r.BROWSER_TYPE_ANDROID:
-r.osMainVersion && r.osMainVersion >= 5 && (I = !0);
+case s.BROWSER_TYPE_ANDROID:
+s.osMainVersion && s.osMainVersion >= 5 && (L = !0);
 break;
 
-case r.BROWSER_TYPE_CHROME:
-I = O >= 30;
+case s.BROWSER_TYPE_CHROME:
+L = P >= 30;
 break;
 
-case r.BROWSER_TYPE_UC:
-I = O > 11;
+case s.BROWSER_TYPE_UC:
+L = P > 11;
 
-case r.BROWSER_TYPE_360:
-I = !1;
+case s.BROWSER_TYPE_360:
+L = !1;
 }
 }
 }
-var N = r.capabilities = {
-canvas: w,
-opengl: I,
-webp: x
+var R = s.capabilities = {
+canvas: N,
+opengl: L,
+webp: O
 };
-(void 0 !== h.ontouchstart || void 0 !== a.ontouchstart || c.msPointerEnabled) && (N.touches = !0);
-void 0 !== h.onmouseup && (N.mouse = !0);
-void 0 !== h.onkeyup && (N.keyboard = !0);
-(s.DeviceMotionEvent || s.DeviceOrientationEvent) && (N.accelerometer = !0);
-var L;
+(void 0 !== _.ontouchstart || void 0 !== p.ontouchstart || f.msPointerEnabled) && (R.touches = !0);
+void 0 !== _.onmouseup && (R.mouse = !0);
+void 0 !== _.onkeyup && (R.keyboard = !0);
+(d.DeviceMotionEvent || d.DeviceOrientationEvent) && (R.accelerometer = !0);
+var B;
 !(function() {
-r.browserVersion;
+s.browserVersion;
 var t = !!(window.AudioContext || window.webkitAudioContext || window.mozAudioContext);
-L = {
+B = {
 ONLY_ONE: !1,
 WEB_AUDIO: t,
 DELAY_CREATE_CTX: !1
 };
-r.os === r.OS_IOS && (L.USE_LOADER_EVENT = "loadedmetadata");
-if (r.browserType === r.BROWSER_TYPE_FIREFOX) {
-L.DELAY_CREATE_CTX = !0;
-L.USE_LOADER_EVENT = "canplay";
+s.os === s.OS_IOS && (B.USE_LOADER_EVENT = "loadedmetadata");
+if (s.browserType === s.BROWSER_TYPE_FIREFOX) {
+B.DELAY_CREATE_CTX = !0;
+B.USE_LOADER_EVENT = "canplay";
 }
-r.os === r.OS_ANDROID && r.browserType === r.BROWSER_TYPE_UC && (L.ONE_SOURCE = !0);
+s.os === s.OS_ANDROID && s.browserType === s.BROWSER_TYPE_UC && (B.ONE_SOURCE = !0);
+!1;
 })();
 try {
-if (L.WEB_AUDIO) {
-L.context = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext)();
-L.DELAY_CREATE_CTX && setTimeout((function() {
-L.context = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext)();
+if (B.WEB_AUDIO) {
+B.context = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext)();
+B.DELAY_CREATE_CTX && setTimeout((function() {
+B.context = new (window.AudioContext || window.webkitAudioContext || window.mozAudioContext)();
 }), 0);
 }
 } catch (t) {
-L.WEB_AUDIO = !1;
+B.WEB_AUDIO = !1;
 cc.logID(5201);
 }
-var P = [];
-!(function() {
-var t = document.createElement("audio");
-if (t.canPlayType) {
-t.canPlayType('audio/ogg; codecs="vorbis"') && P.push(".ogg");
-t.canPlayType("audio/mpeg") && P.push(".mp3");
-t.canPlayType('audio/wav; codecs="1"') && P.push(".wav");
-t.canPlayType("audio/mp4") && P.push(".mp4");
-t.canPlayType("audio/x-m4a") && P.push(".m4a");
+B.format = (function() {
+var t = [], e = document.createElement("audio");
+if (e.canPlayType) {
+e.canPlayType('audio/ogg; codecs="vorbis"') && t.push(".ogg");
+e.canPlayType("audio/mpeg") && t.push(".mp3");
+e.canPlayType('audio/wav; codecs="1"') && t.push(".wav");
+e.canPlayType("audio/mp4") && t.push(".mp4");
+e.canPlayType("audio/x-m4a") && t.push(".m4a");
 }
+return t;
 })();
-L.format = P;
-r.__audioSupport = L;
-r.garbageCollect = function() {};
-r.dumpRoot = function() {};
-r.restartVM = function() {};
-r.cleanScript = function(t) {};
-r.isObjectValid = function(t) {
+s.__audioSupport = B;
+}
+s.garbageCollect = function() {};
+s.dumpRoot = function() {};
+s.restartVM = function() {};
+s.cleanScript = function(t) {};
+s.isObjectValid = function(t) {
 return !!t;
 };
-r.dump = function() {
+s.dump = function() {
 var t = "";
 t += "isMobile : " + this.isMobile + "\r\n";
 t += "language : " + this.language + "\r\n";
@@ -18055,13 +18222,13 @@ t += "platform : " + this.platform + "\r\n";
 t += "Using " + (cc._renderType === cc.game.RENDER_TYPE_WEBGL ? "WEBGL" : "CANVAS") + " renderer.\r\n";
 cc.log(t);
 };
-r.openURL = function(t) {
+s.openURL = function(t) {
 window.open(t);
 };
-r.now = function() {
+s.now = function() {
 return Date.now ? Date.now() : +new Date();
 };
-n.exports = r;
+n.exports = s;
 }
 }), {} ],
 138: [ (function(t, e, i) {
@@ -18221,7 +18388,7 @@ var d = n + u, f = {};
 for (h in s) h.startsWith(d) && (f[h.slice(d.length)] = s[h]);
 return f;
 }
-if ("object" === ("object" == (e = typeof o) ? t(o) : e)) for (h in o) 95 !== h.charCodeAt(0) && (a[n + u + h] = o[h]);
+if ("object" === ("object" == (e = typeof o) ? t(o) : e)) for (h in o) 95 !== h.charCodeAt(0) && (a[n + u + h] = o[h]); else 0;
 }
 function c(t) {
 return t.hasOwnProperty("__attrs__") && t.__attrs__ || (function(t) {
@@ -18236,10 +18403,13 @@ return t.__attrs__;
 function a(t) {
 return c(t).constructor.prototype;
 }
-function h(t, e) {}
+function h(t, e) {
+0;
+}
 var l = i("./js"), u = (i("./utils").isPlainEmptyObj_DEV, "$_$");
 cc.Integer = "Integer";
 cc.Float = "Float";
+0;
 cc.Boolean = "Boolean";
 cc.String = "String";
 n.exports = {
@@ -18351,6 +18521,7 @@ var u = function() {
 s.call(this);
 };
 c.extend(u, s);
+0;
 u.prototype.invoke = function(t, e, i, n, o, r) {
 var s = this._callbackTable[t];
 if (s) {
@@ -18402,6 +18573,7 @@ this.uuidObjList.length = 0;
 this.uuidPropList.length = 0;
 this.rawProp = "";
 };
+0;
 h.prototype.getUuidOf = function(t, e) {
 for (var i = 0; i < this.uuidObjList.length; i++) if (this.uuidObjList[i] === t && this.uuidPropList[i] === e) return this.uuidList[i];
 return "";
@@ -18423,6 +18595,7 @@ this.customEnv = n;
 this.deserializedList = [];
 this.deserializedData = null;
 this._classFinder = i;
+0;
 this._idList = [];
 this._idObjList = [];
 this._idPropList = [];
@@ -18434,6 +18607,7 @@ s = l(t, n);
 r.value(n, "__deserialize__", s, !0);
 }
 s(t, e, i, n, o);
+0;
 }
 var o = i.prototype;
 o.deserialize = function(t) {
@@ -18503,10 +18677,9 @@ this._idPropList.push(o);
 }
 };
 o._deserializePrimitiveObject = function(i, n) {
-var o = this;
-for (var r in n) if (n.hasOwnProperty(r)) {
-var s = n[r];
-"object" !== ("object" == (e = typeof s) ? t(s) : e) ? "__type__" !== r && (i[r] = s) : s ? o._deserializeObjField(i, s, r) : i[r] = null;
+for (var o in n) if (n.hasOwnProperty(o)) {
+var r = n[o];
+"object" !== ("object" == (e = typeof r) ? t(r) : e) ? "__type__" !== o && (i[o] = r) : r ? this._deserializeObjField(i, r, o) : i[o] = null;
 }
 };
 o._deserializeTypedObject = function(i, n, o) {
@@ -18619,6 +18792,7 @@ t.customEnv = null;
 t.deserializedList.length = 0;
 t.deserializedData = null;
 t._classFinder = null;
+0;
 t._idList.length = 0;
 t._idObjList.length = 0;
 t._idPropList.length = 0;
@@ -18628,6 +18802,7 @@ if (s) {
 s.result = t;
 s.customEnv = o;
 s._classFinder = n;
+0;
 return s;
 }
 return new i(t, e, n, o, r);
@@ -18636,6 +18811,7 @@ return i;
 })();
 cc.deserialize = function(i, n, o) {
 var s = (o = o || {}).classFinder || r._getClassById, c = o.createAssetRefs || cc.sys.platform === cc.sys.EDITOR_CORE, a = o.customEnv, u = o.ignoreEditorOnly;
+0;
 "string" === ("object" == (e = typeof i) ? t(i) : e) && (i = JSON.parse(i));
 var d = !n;
 n = n || h.pool.get();
@@ -18686,6 +18862,7 @@ t("./requiring-frame");
 t("./CCSys");
 t("./CCMacro");
 t("./CCAssetLibrary");
+0;
 }), {
 "./CCAssetLibrary": 131,
 "./CCClass": 132,
@@ -18851,10 +19028,12 @@ a.pool.put(o);
 w.enumerateCCClass = function(i, n, o) {
 for (var r = o.__props__, s = _.getClassAttrs(o), c = 0; c < r.length; c++) {
 var a = r[c];
+0;
 if (!1 !== s[a + m]) {
-var u = n[a], d = s[a + b];
-if (h(d, u)) continue;
+var u = n[a];
+if (h(d = s[a + b], u)) continue;
 if ("object" === ("object" == (e = typeof u) ? t(u) : e) && u instanceof cc.ValueType) {
+var d;
 if (((d = v.getDefault(d)) && d.constructor) === u.constructor) {
 var f = E + l(a);
 this.setValueType(i, d, u, f);
@@ -18939,6 +19118,7 @@ return new u(t, t instanceof cc._BaseNode && t).result;
 },
 equalsToDefault: h
 };
+0;
 }), {
 "./CCClass": 132,
 "./CCObject": 136,
@@ -18949,9 +19129,19 @@ equalsToDefault: h
 147: [ (function(i, n, o) {
 function r(i, n) {
 if (!n) {
-if ("object" !== ("object" == (e = typeof i) ? t(i) : e) || Array.isArray(i)) return null;
-if (!i) return null;
-if (!cc.isValid(i)) return null;
+if ("object" !== ("object" == (e = typeof i) ? t(i) : e) || Array.isArray(i)) {
+0;
+return null;
+}
+if (!i) {
+0;
+return null;
+}
+if (!cc.isValid(i)) {
+0;
+return null;
+}
+0;
 }
 var o;
 if (i instanceof h) {
@@ -18961,7 +19151,10 @@ o = i._instantiate();
 cc.game._isCloning = !1;
 return o;
 }
-if (i instanceof cc.Asset) return null;
+if (i instanceof cc.Asset) {
+0;
+return null;
+}
 }
 cc.game._isCloning = !0;
 o = s(i);
@@ -18969,7 +19162,11 @@ cc.game._isCloning = !1;
 return o;
 }
 function s(t, e) {
-if (Array.isArray(t)) return null;
+if (Array.isArray(t)) {
+0;
+return null;
+}
+0;
 var i;
 if (t._iN$t) i = t._iN$t; else if (t.constructor) {
 i = new (0, t.constructor)();
@@ -19113,6 +19310,7 @@ for (var c in r) s(c, r, i);
 return i;
 },
 extend: function(t, e) {
+0;
 for (var i in e) e.hasOwnProperty(i) && (t[i] = e[i]);
 t.prototype = Object.create(e.prototype, {
 constructor: {
@@ -19209,6 +19407,7 @@ if (i) {
 var o = e[i];
 if (o && o !== n) {
 var r = "A Class already exists with the same " + t + ' : "' + i + '".';
+0;
 cc.error(r);
 } else e[i] = n;
 }
@@ -19240,20 +19439,29 @@ return o[t];
 };
 u._getClassId = function(i, n) {
 n = "undefined" === ("object" == (e = typeof n) ? t(n) : e) || n;
-if ("function" === ("object" == (e = typeof i) ? t(i) : e) && i.prototype.hasOwnProperty("__cid__")) return i.prototype.__cid__;
+if ("function" === ("object" == (e = typeof i) ? t(i) : e) && i.prototype.hasOwnProperty("__cid__")) {
+0;
+return i.prototype.__cid__;
+}
 if (i && i.constructor) {
 var o = i.constructor.prototype;
-if (o && o.hasOwnProperty("__cid__")) return i.__cid__;
+if (o && o.hasOwnProperty("__cid__")) {
+0;
+return i.__cid__;
+}
 }
 return "";
 };
+0;
 })();
 u.obsolete = function(t, e, i, n) {
 function o() {
+0;
 return this[i];
 }
 var r = /([^.]+)$/.exec(e)[0];
 n ? u.getset(t, r, o, (function(t) {
+0;
 this[i] = t;
 })) : u.get(t, r, o);
 };
@@ -19364,7 +19572,7 @@ n.exports = u;
 } ],
 149: [ (function(i, n, o) {
 function r(t, e, i, n) {
-if (!t.get && !t.set && t.hasOwnProperty("default")) {
+if (t.get || t.set) 0; else if (t.hasOwnProperty("default")) {
 var o = "_N$" + e;
 t.get = function() {
 return this[o];
@@ -19383,10 +19591,11 @@ r[s] = t[s];
 c.canUsedInGet || delete t[s];
 }
 }
-}
+} else 0;
 }
 function s(t, e, i, n) {
 Array.isArray(n) && n.length > 0 && (n = n[0]);
+0;
 t.type = n;
 }
 function c(t, e, i, n) {
@@ -19399,8 +19608,11 @@ return;
 }
 t.type = e = e[0];
 }
+0;
 }
-function a(t, e, i, n) {}
+function a(t, e, i, n) {
+0;
+}
 var h = {
 url: {
 canUsedInGet: !0
@@ -19449,10 +19661,13 @@ d && r(l, h, d, t);
 }
 }
 };
+0;
 o.validateMethodWithProps = function(i, n, o, r, s) {
+0;
 if ("function" !== ("object" == (e = typeof i) ? t(i) : e) && null !== i) {
 return !1;
 }
+0;
 return !0;
 };
 }), {
@@ -19485,6 +19700,7 @@ peek: function() {
 return n[n.length - 1];
 }
 };
+0;
 }), {} ],
 151: [ (function(t, e, i) {
 var n = {};
@@ -19496,6 +19712,7 @@ normalize: function(t) {
 return t;
 },
 raw: function(t) {
+0;
 (t = this.normalize(t)).startsWith("resources/") || cc.errorID(7002, t);
 return this._rawAssets + t;
 },
@@ -19518,7 +19735,7 @@ contains: function(i, n) {
 if ("function" == ("object" == (e = typeof i.contains) ? t(i.contains) : e)) return i.contains(n);
 if ("function" == ("object" == (e = typeof i.compareDocumentPosition) ? t(i.compareDocumentPosition) : e)) return !!(16 & i.compareDocumentPosition(n));
 var o = n.parentNode;
-do {
+if (o) do {
 if (o === i) return !0;
 o = o.parentNode;
 } while (null !== o);
@@ -19535,6 +19752,8 @@ t(e, i);
 }));
 }
 };
+0;
+0;
 }), {} ],
 153: [ (function(t, e, i) {
 t("../platform/CCSys");
@@ -19662,6 +19881,7 @@ get: function() {
 return this._name;
 },
 set: function(t) {
+0;
 this._name = t;
 }
 },
@@ -19724,16 +19944,19 @@ return this._parent;
 },
 setParent: function(t) {
 if (this._parent !== t) {
+0;
 var e = this._parent;
 this._parent = t || null;
 this._onSetParent(t);
 if (t) {
+0;
 t._children.push(this);
 t.emit("child-added", this);
 }
 if (e) {
 if (!(e._objFlags & p)) {
 var i = e._children.indexOf(this);
+0;
 e._children.splice(i, 1);
 e.emit("child-removed", this);
 this._onHierarchyChanged(e);
@@ -19772,6 +19995,7 @@ for (var e = this._children, i = 0, n = e.length; i < n; i++) if (e[i]._name ===
 return null;
 },
 addChild: function(t) {
+0;
 cc.assertID(t, 1606);
 cc.assertID(null === t._parent, 1605);
 t.setParent(this);
@@ -19856,6 +20080,7 @@ return i;
 },
 _checkMultipleComp: !1,
 addComponent: function(i) {
+0;
 var n;
 if ("string" === ("object" == (e = typeof i) ? t(i) : e)) {
 if (!(n = f.getClassByName(i))) {
@@ -19878,6 +20103,7 @@ if (!cc.isChildClassOf(n, cc.Component)) {
 cc.errorID(3810);
 return null;
 }
+0;
 var o = n._requireComponent;
 if (o && !this.getComponent(o)) {
 if (!this.addComponent(o)) return null;
@@ -19925,7 +20151,10 @@ _onSetParent: function(t) {},
 _onPostActivated: function() {},
 _onHierarchyChanged: function(t) {
 var e = this._parent;
-!this._persistNode || e instanceof cc.Scene || cc.game.removePersistRootNode(this);
+if (this._persistNode && !(e instanceof cc.Scene)) {
+cc.game.removePersistRootNode(this);
+0;
+}
 var i = this._active && !(!e || !e._activeInHierarchy);
 this._activeInHierarchy !== i && cc.director._nodeActivator.activateNode(this, i);
 },
@@ -19937,6 +20166,7 @@ for (var e = this._children, i = 0, n = e.length; i < n; i++) e[i]._onBatchCreat
 _instantiate: function(t) {
 t || (t = cc.instantiate._clone(this, this));
 var e = this._prefab;
+0;
 e && this === e.root && e.sync && (t._prefab._synced = e._synced);
 t._parent = null;
 t._onBatchCreated();
@@ -19946,7 +20176,9 @@ _registerIfAttached: !1,
 _onPreDestroy: function() {
 var t, e;
 this._objFlags |= p;
-var i = this._parent, n = i && i._objFlags & p, o = this._children;
+var i = this._parent, n = i && i._objFlags & p;
+0;
+var o = this._children;
 for (t = 0, e = o.length; t < e; ++t) o[t]._destroyImmediate();
 for (t = 0, e = this._components.length; t < e; ++t) {
 this._components[t]._destroyImmediate();
@@ -19968,8 +20200,11 @@ return n;
 onRestore: !1
 });
 v.prototype._onPreDestroyBase = v.prototype._onPreDestroy;
+0;
 v.prototype._onHierarchyChangedBase = v.prototype._onHierarchyChanged;
+0;
 u.propertyDefine(v, [ "name", "children", "childrenCount" ], {});
+0;
 cc._BaseNode = n.exports = v;
 }), {
 "../platform/CCObject": 136,
@@ -20007,6 +20242,7 @@ s[c[i++]] = o[15 & a];
 }
 return s.join("");
 };
+0;
 }), {
 "./misc": 158
 } ],
@@ -20016,9 +20252,13 @@ if (null == t) {
 cc.errorID(5600);
 return null;
 }
-if (!e) {
+if (e) 0; else {
 var i = cc.director.getScene();
-if (!i) return null;
+if (!i) {
+0;
+return null;
+}
+0;
 e = i;
 }
 for (var n = e, o = "/" !== t[0] ? 0 : 1, r = t.split("/"), s = o; s < r.length; s++) {
@@ -20066,6 +20306,7 @@ t |= t >> 4;
 t |= t >> 8;
 return (t |= t >> 16) + 1;
 };
+0;
 r.imagePool = new n.Pool(function(t) {
 if (t instanceof HTMLImageElement) {
 t.src = this._smallImg;
@@ -20180,6 +20421,7 @@ t._entity && (t._entity = null);
 }
 }
 };
+0;
 e.exports = n;
 }), {} ],
 162: [ (function(t, e, i) {
@@ -21018,8 +21260,7 @@ this.a_undefined = !0;
 }
 };
 cc.WebGLColor.BYTES_PER_ELEMENT = 4;
-r = cc.WebGLColor.prototype;
-r._getR = function() {
+(r = cc.WebGLColor.prototype)._getR = function() {
 return this._view[0];
 };
 r._setR = function(t) {
@@ -21449,6 +21690,7 @@ function n() {}
 var o = t("../platform/js");
 o.setClassName("cc.ValueType", n);
 var r = n.prototype;
+0;
 r.toString = function() {
 return "" + {};
 };
@@ -21761,7 +22003,7 @@ reset: function() {
 this._motionStreak.reset();
 },
 __preload: function() {
-if (cc._renderType, cc.game.RENDER_TYPE_WEBGL, 1) {
+cc._renderType, cc.game.RENDER_TYPE_WEBGL, 0;
 this._root = new _ccsg.Node();
 var t = new _ccsg.MotionStreak();
 t.initWithFade(this._fadeTime, this._minSeg, this._stroke, this.node.color, this._texture || null);
@@ -21770,7 +22012,6 @@ this._root.addChild(t);
 var e = this.node._sgNode;
 e && e.addChild(this._root, -10);
 this._motionStreak = t;
-} else cc.warnID(5900);
 },
 onEnable: function() {
 this.node.on("position-changed", this._onNodePositionChanged, this);
@@ -21779,6 +22020,7 @@ onDisable: function() {
 this.node.off("position-changed", this._onNodePositionChanged, this);
 },
 _onNodePositionChanged: function() {
+0;
 if (this._motionStreak) {
 var t = this.node, e = t.getNodeToWorldTransform(), i = e.tx - (t.width / 2 + t.anchorX * t.width), n = e.ty - (t.height / 2 + t.anchorY * t.height);
 this._root.setPosition(-i, -n);
@@ -21824,9 +22066,11 @@ get: function() {
 return this._custom;
 },
 set: function(t) {
+0;
 if (this._custom !== t) {
 this._custom = t;
 t ? this._applyCustoms() : this._applyFile();
+0;
 }
 },
 animatable: !1,
@@ -21843,7 +22087,10 @@ return this._file;
 set: function(t, e) {
 if (this._file !== t) {
 this._file = t;
-t ? this._applyFile() : this.custom = !0;
+if (t) {
+this._applyFile();
+0;
+} else this.custom = !0;
 }
 },
 animatable: !1,
@@ -21978,13 +22225,15 @@ o.type = n;
 } else o.get = function() {
 return this[i];
 };
-cc.isChildClassOf(n, cc.ValueType) ? o.set = function(e) {
+if (cc.isChildClassOf(n, cc.ValueType)) o.set = function(e) {
 this[i] = new n(e);
 this._sgNode[t] = e;
-} : o.set = function(e) {
+}; else {
+o.set = function(e) {
 this[i] = e;
 this._sgNode[t] = e;
 };
+}
 })(n, t[n]);
 }
 return e;
@@ -22585,20 +22834,21 @@ n._sgNode && n._sgNode.setLocalZOrder(s);
 }
 },
 _applyFile: function() {
-var t = this._sgNode, e = this._tmxFile, i = this;
+var t = this._sgNode, e = this._tmxFile;
 if (e) {
-var n = cc.url._rawAssets + e.tmxFolderPath;
-n = cc.path.stripSep(n);
-if (t.initWithXML(e.tmxXmlStr, n)) {
-i._detachedChildren.length = 0;
-i._onMapLoaded();
+var i = cc.url._rawAssets + e.tmxFolderPath;
+i = cc.path.stripSep(i);
+0;
+if (t.initWithXML(e.tmxXmlStr, i)) {
+this._detachedChildren.length = 0;
+this._onMapLoaded();
 }
 } else {
-for (var o = t.allLayers(), r = 0, s = o.length; r < s; r++) t.removeChild(o[r]);
-var c = t.getObjectGroups();
-for (r = 0, s = c.length; r < s; r++) t.removeChild(c[r]);
+for (var n = t.allLayers(), o = 0, r = n.length; o < r; o++) t.removeChild(n[o]);
+var s = t.getObjectGroups();
+for (o = 0, r = s.length; o < r; o++) t.removeChild(s[o]);
 this._detachedChildren.length = 0;
-i._removeLayerEntities();
+this._removeLayerEntities();
 }
 }
 });
@@ -22719,6 +22969,7 @@ t("./cocos2d/motion-streak/CCMotionStreak");
 t("./cocos2d/core/components/CCStudioComponent");
 t("./extensions/ccpool/CCNodePool");
 t("./extensions/ccpool/CCPool");
+0;
 t("./extensions/spine");
 t("./extensions/dragonbones");
 t("./cocos2d/deprecated");
@@ -22855,6 +23106,7 @@ type: dragonBones.DragonBonesAsset,
 notify: function() {
 this._parseDragonAsset();
 this._refresh();
+0;
 },
 tooltip: !1
 },
@@ -22961,6 +23213,7 @@ _initSgNode: function() {
 var t = this._sgNode;
 t.animation().timeScale = this.timeScale;
 this.animationName && this.playAnimation(this.animationName, this.playTimes);
+0;
 },
 _removeSgNode: function() {
 var t = this._sgNode;
@@ -22983,30 +23236,31 @@ this._factory.parseTextureAtlasData(this.dragonAtlasAsset.atlasJson, this.dragon
 }
 },
 _refreshSgNode: function() {
-var t = this, e = null;
-if (t._sgNode) {
-e = t._sgNode._bubblingListeners;
-t.node._sizeProvider === t._sgNode && (t.node._sizeProvider = null);
-t._removeSgNode();
-t._sgNode = null;
+var t = null;
+if (this._sgNode) {
+t = this._sgNode._bubblingListeners;
+this.node._sizeProvider === this._sgNode && (this.node._sizeProvider = null);
+this._removeSgNode();
+this._sgNode = null;
 }
-var i = t._sgNode = t._createSgNode();
-if (i) {
-i.retain();
-t.enabledInHierarchy || i.setVisible(!1);
+var e = this._sgNode = this._createSgNode();
 if (e) {
-i._bubblingListeners = e;
-i.hasEventCallback() || i.setEventCallback((function(t) {
-i.emit(t.type, t);
+e.retain();
+this.enabledInHierarchy || e.setVisible(!1);
+if (t) {
+e._bubblingListeners = t;
+e.hasEventCallback() || e.setEventCallback((function(t) {
+e.emit(t.type, t);
 }));
 }
-t._initSgNode();
-t._appendSgNode(i);
-t._registSizeProvider();
+this._initSgNode();
+this._appendSgNode(e);
+this._registSizeProvider();
 }
 },
 _refresh: function() {
 this._refreshSgNode();
+0;
 },
 _updateAnimEnum: !1,
 _updateArmatureEnum: !1,
@@ -23063,7 +23317,9 @@ statics: {
 preventDeferredLoadDependents: !0
 },
 createNode: !1,
-reset: function() {},
+reset: function() {
+0;
+},
 getRuntimeData: !1,
 getArmatureEnum: !1,
 getAnimsEnum: !1
@@ -23137,6 +23393,7 @@ SameGroup: 2,
 SameLayerAndGroup: 3,
 All: 4
 };
+0;
 t("./DragonBonesAsset");
 t("./DragonBonesAtlasAsset");
 t("./ArmatureDisplay");
@@ -23277,7 +23534,10 @@ var e;
 this.skeletonData && (e = this.skeletonData.getSkinsEnum());
 if (!e) return cc.errorID("", this.name);
 var i = e[t];
-void 0 !== i ? this.defaultSkin = i : cc.errorID(7501, this.name);
+if (void 0 !== i) {
+this.defaultSkin = i;
+0;
+} else cc.errorID(7501, this.name);
 },
 type: r,
 visible: !0,
@@ -23395,6 +23655,7 @@ cc._throw(t);
 }
 t.setPremultipliedAlpha(this._premultipliedAlpha);
 this.animation = this.defaultAnimation;
+0;
 },
 _getLocalBounds: !1,
 updateWorldTransform: function() {
@@ -23438,6 +23699,7 @@ this._sgNode && this._sgNode.setAnimationListener(t, e);
 },
 setAnimation: function(t, e, i) {
 if (this._sgNode) {
+0;
 return this._sgNode.setAnimation(t, e, i);
 }
 return null;
@@ -23458,7 +23720,10 @@ clearTracks: function() {
 this._sgNode && this._sgNode.clearTracks();
 },
 clearTrack: function(t) {
-this._sgNode && this._sgNode.clearTrack(t);
+if (this._sgNode) {
+this._sgNode.clearTrack(t);
+0;
+}
 },
 _updateAnimEnum: !1,
 _updateSkinEnum: !1,
@@ -23508,21 +23773,21 @@ getState: function() {
 if (this._sgNode) return this._sgNode.getState();
 },
 _refresh: function() {
-var t = this;
-if (t._sgNode) {
-t.node._sizeProvider === t._sgNode && (t.node._sizeProvider = null);
-t._removeSgNode();
-t._sgNode = null;
+if (this._sgNode) {
+this.node._sizeProvider === this._sgNode && (this.node._sizeProvider = null);
+this._removeSgNode();
+this._sgNode = null;
 }
-var e = t._sgNode = t._createSgNode();
-if (e) {
-e.retain();
-t.enabledInHierarchy || e.setVisible(!1);
-e.setContentSize(0, 0);
-t._initSgNode();
-t._appendSgNode(e);
-t._registSizeProvider();
+var t = this._sgNode = this._createSgNode();
+if (t) {
+t.retain();
+this.enabledInHierarchy || t.setVisible(!1);
+t.setContentSize(0, 0);
+this._initSgNode();
+this._appendSgNode(t);
+this._registSizeProvider();
 }
+0;
 }
 });
 }), {} ],
@@ -23571,6 +23836,7 @@ createNode: !1,
 reset: function() {
 this._skeletonCache = null;
 this._atlasCache = null;
+0;
 },
 getRuntimeData: !1,
 getSkinsEnum: !1,
@@ -23605,6 +23871,7 @@ DISPOSE: 3,
 COMPLETE: 4,
 EVENT: 5
 });
+0;
 t("./SkeletonData");
 t("./Skeleton");
 }), {
@@ -23765,7 +24032,7 @@ _(e, 0, r);
 _(e, 1, 0 == s ? r : s);
 var c = new b(e[0], e[1]), h = new b(e[2], e[3]), l = t.length >> 1, u = v(i, e, 2, l - 2, c, h, c, 1) + 1;
 e.length = 2 * u;
-a(it(e), "Internal error: cpConvexHull() and cpPolyValidate() did not agree.Please report this error with as much info as you can.");
+a(et(e), "Internal error: cpConvexHull() and cpPolyValidate() did not agree.Please report this error with as much info as you can.");
 return e;
 };
 var y = function(t, e, i) {
@@ -23882,126 +24149,126 @@ return new b(Math.cos(t), Math.sin(t));
 return Math.atan2(t.y, t.x);
 }, cp.v.str = function(t) {
 return "(" + t.x.toFixed(3) + ", " + t.y.toFixed(3) + ")";
-}, 0), Y = cp.BB = function(t, e, i, n) {
+}, cp.BB = function(t, e, i, n) {
 this.l = t;
 this.b = e;
 this.r = i;
 this.t = n;
-U++;
-};
+0;
+});
 cp.bb = function(t, e, i, n) {
-return new Y(t, e, i, n);
+return new U(t, e, i, n);
 };
-var X = function(t, e) {
-return new Y(t.x - e, t.y - e, t.x + e, t.y + e);
-}, J = 0, q = (cp.NO_GROUP = 0, cp.ALL_LAYERS = -1);
+var Y = function(t, e) {
+return new U(t.x - e, t.y - e, t.x + e, t.y + e);
+}, X = 0, J = (cp.NO_GROUP = 0, cp.ALL_LAYERS = -1);
 cp.resetShapeIdCounter = function() {
-J = 0;
+X = 0;
 };
-var Q = cp.Shape = function(t) {
+var q = cp.Shape = function(t) {
 this.body = t;
 this.bb_l = this.bb_b = this.bb_r = this.bb_t = 0;
-this.hashid = J++;
+this.hashid = X++;
 this.sensor = !1;
 this.e = 0;
 this.u = 0;
 this.surface_v = C;
 this.collision_type = 0;
 this.group = 0;
-this.layers = q;
+this.layers = J;
 this.space = null;
 this.collisionCode = this.collisionCode;
 };
-Q.prototype.setElasticity = function(t) {
+q.prototype.setElasticity = function(t) {
 this.e = t;
 };
-Q.prototype.setFriction = function(t) {
+q.prototype.setFriction = function(t) {
 this.body.activate();
 this.u = t;
 };
-Q.prototype.setLayers = function(t) {
+q.prototype.setLayers = function(t) {
 this.body.activate();
 this.layers = t;
 };
-Q.prototype.setSensor = function(t) {
+q.prototype.setSensor = function(t) {
 this.body.activate();
 this.sensor = t;
 };
-Q.prototype.setCollisionType = function(t) {
+q.prototype.setCollisionType = function(t) {
 this.body.activate();
 this.collision_type = t;
 };
-Q.prototype.getBody = function() {
+q.prototype.getBody = function() {
 return this.body;
 };
-Q.prototype.active = function() {
+q.prototype.active = function() {
 return this.body && -1 !== this.body.shapeList.indexOf(this);
 };
-Q.prototype.setBody = function(t) {
+q.prototype.setBody = function(t) {
 c(!this.active(), "You cannot change the body on an active shape. You must remove the shape from the space before changing the body.");
 this.body = t;
 };
-Q.prototype.cacheBB = function() {
+q.prototype.cacheBB = function() {
 return this.update(this.body.p, this.body.rot);
 };
-Q.prototype.update = function(t, e) {
+q.prototype.update = function(t, e) {
 c(!isNaN(e.x), "Rotation is NaN");
 c(!isNaN(t.x), "Position is NaN");
 this.cacheData(t, e);
 };
-Q.prototype.pointQuery = function(t) {
+q.prototype.pointQuery = function(t) {
 var e = this.nearestPointQuery(t);
 if (e.d < 0) return e;
 };
-Q.prototype.getBB = function() {
-return new Y(this.bb_l, this.bb_b, this.bb_r, this.bb_t);
+q.prototype.getBB = function() {
+return new U(this.bb_l, this.bb_b, this.bb_r, this.bb_t);
 };
-var Z = function(t, e, i) {
+var Q = function(t, e, i) {
 this.shape = t;
 this.p = e;
 this.d = i;
-}, K = function(t, e, i) {
+}, Z = function(t, e, i) {
 this.shape = t;
 this.t = e;
 this.n = i;
 };
-K.prototype.hitPoint = function(t, e) {
+Z.prototype.hitPoint = function(t, e) {
 return j(t, e, this.t);
 };
-K.prototype.hitDist = function(t, e) {
+Z.prototype.hitDist = function(t, e) {
 return V(t, e) * this.t;
 };
-var $ = cp.CircleShape = function(t, e, i) {
+var K = cp.CircleShape = function(t, e, i) {
 this.c = this.tc = i;
 this.r = e;
 this.type = "circle";
-Q.call(this, t);
+q.call(this, t);
 };
-$.prototype = Object.create(Q.prototype);
-$.prototype.cacheData = function(t, e) {
+K.prototype = Object.create(q.prototype);
+K.prototype.cacheData = function(t, e) {
 var i = this.tc = B(this.c, e).add(t), n = this.r;
 this.bb_l = i.x - n;
 this.bb_b = i.y - n;
 this.bb_r = i.x + n;
 this.bb_t = i.y + n;
 };
-$.prototype.nearestPointQuery = function(t) {
+K.prototype.nearestPointQuery = function(t) {
 var e = t.x - this.tc.x, i = t.y - this.tc.y, n = A(e, i), o = this.r, r = new b(this.tc.x + e * o / n, this.tc.y + i * o / n);
-return new Z(this, r, n - o);
+return new Q(this, r, n - o);
 };
-var tt = function(t, e, i, n, o, r) {
+var $ = function(t, e, i, n, o, r) {
 n = w(n, e);
 o = w(o, e);
 var s = T(n, n) - 2 * T(n, o) + T(o, o), c = -2 * T(n, n) + 2 * T(n, o), a = c * c - 4 * s * (T(n, n) - i * i);
 if (a >= 0) {
 var h = (-c - Math.sqrt(a)) / (2 * s);
-if (0 <= h && h <= 1) return new K(t, h, z(j(n, o, h)));
+if (0 <= h && h <= 1) return new Z(t, h, z(j(n, o, h)));
 }
 };
-$.prototype.segmentQuery = function(t, e) {
-return tt(this, this.tc, this.r, t, e);
+K.prototype.segmentQuery = function(t, e) {
+return $(this, this.tc, this.r, t, e);
 };
-var et = cp.SegmentShape = function(t, e, i, n) {
+var tt = cp.SegmentShape = function(t, e, i, n) {
 this.a = e;
 this.b = i;
 this.n = P(z(w(i, e)));
@@ -24010,10 +24277,10 @@ this.r = n;
 this.a_tangent = C;
 this.b_tangent = C;
 this.type = "segment";
-Q.call(this, t);
+q.call(this, t);
 };
-et.prototype = Object.create(Q.prototype);
-et.prototype.cacheData = function(t, e) {
+tt.prototype = Object.create(q.prototype);
+tt.prototype.cacheData = function(t, e) {
 this.ta = x(t, B(this.a, e));
 this.tb = x(t, B(this.b, e));
 this.tn = B(this.n, e);
@@ -24038,55 +24305,55 @@ this.bb_b = o - s;
 this.bb_r = n + s;
 this.bb_t = r + s;
 };
-et.prototype.nearestPointQuery = function(t) {
+tt.prototype.nearestPointQuery = function(t) {
 var e = (function(t, e, i) {
 var n = w(e, i), o = m(T(n, w(t, i)) / M(n));
 return x(i, O(n, o));
 })(t, this.ta, this.tb), i = t.x - e.x, n = t.y - e.y, o = A(i, n), r = this.r, s = o ? x(e, O(new b(i, n), r / o)) : e;
-return new Z(this, s, o - r);
+return new Q(this, s, o - r);
 };
-et.prototype.segmentQuery = function(t, e) {
+tt.prototype.segmentQuery = function(t, e) {
 var i = this.tn, n = T(w(this.ta, t), i), o = this.r, r = n > 0 ? I(i) : i, s = w(O(r, o), t), c = x(this.ta, s), a = x(this.tb, s), h = w(e, t);
 if (N(h, c) * N(h, a) <= 0) {
 var l = n + (n > 0 ? -o : o), u = -l, d = T(h, i) - l;
-if (u * d < 0) return new K(this, u / (u - d), r);
+if (u * d < 0) return new Z(this, u / (u - d), r);
 } else if (0 !== o) {
-var f = tt(this, this.ta, this.r, t, e), p = tt(this, this.tb, this.r, t, e);
+var f = $(this, this.ta, this.r, t, e), p = $(this, this.tb, this.r, t, e);
 return f ? p && p.t < f.t ? p : f : p;
 }
 };
-et.prototype.setNeighbors = function(t, e) {
+tt.prototype.setNeighbors = function(t, e) {
 this.a_tangent = w(t, this.a);
 this.b_tangent = w(e, this.b);
 };
-et.prototype.setEndpoints = function(t, e) {
+tt.prototype.setEndpoints = function(t, e) {
 this.a = t;
 this.b = e;
 this.n = P(z(w(e, t)));
 };
-var it = function(t) {
+var et = function(t) {
 for (var e = t.length, i = 0; i < e; i += 2) {
 var n = t[i], o = t[i + 1], r = t[(i + 2) % e], s = t[(i + 3) % e], c = t[(i + 4) % e], a = t[(i + 5) % e];
 if (L(r - n, s - o, c - r, a - s) > 0) return !1;
 }
 return !0;
-}, nt = cp.PolyShape = function(t, e, i) {
+}, it = cp.PolyShape = function(t, e, i) {
 this.setVerts(e, i);
 this.type = "poly";
-Q.call(this, t);
+q.call(this, t);
 };
-nt.prototype = Object.create(Q.prototype);
-var ot = function(t, e) {
+it.prototype = Object.create(q.prototype);
+var nt = function(t, e) {
 this.n = t;
 this.d = e;
 };
-ot.prototype.compare = function(t) {
+nt.prototype.compare = function(t) {
 return T(this.n, t) - this.d;
 };
-nt.prototype.setVerts = function(i, n) {
+it.prototype.setVerts = function(i, n) {
 c(i.length >= 4, "Polygons require some verts");
 c("number" === ("object" == (e = typeof i[0]) ? t(i[0]) : e), "Polygon verticies should be specified in a flattened list (eg [x1,y1,x2,y2,x3,y3,...])");
-c(it(i), "Polygon is concave or has a reversed winding. Consider using cpConvexHull()");
+c(et(i), "Polygon is concave or has a reversed winding. Consider using cpConvexHull()");
 var o = i.length, r = o >> 1;
 this.verts = new Array(o);
 this.tVerts = new Array(o);
@@ -24096,19 +24363,19 @@ for (var s = 0; s < o; s += 2) {
 var a = i[s] + n.x, h = i[s + 1] + n.y, l = i[(s + 2) % o] + n.x, u = i[(s + 3) % o] + n.y, d = z(P(new b(l - a, u - h)));
 this.verts[s] = a;
 this.verts[s + 1] = h;
-this.planes[s >> 1] = new ot(d, S(d.x, d.y, a, h));
-this.tPlanes[s >> 1] = new ot(new b(0, 0), 0);
+this.planes[s >> 1] = new nt(d, S(d.x, d.y, a, h));
+this.tPlanes[s >> 1] = new nt(new b(0, 0), 0);
 }
 };
 cp.BoxShape = function(t, e, i) {
 var n = e / 2, o = i / 2;
-return rt(t, new Y(-n, -o, n, o));
+return ot(t, new U(-n, -o, n, o));
 };
-var rt = cp.BoxShape2 = function(t, e) {
+var ot = cp.BoxShape2 = function(t, e) {
 var i = [ e.l, e.b, e.l, e.t, e.r, e.t, e.r, e.b ];
-return new nt(t, i, C);
+return new it(t, i, C);
 };
-nt.prototype.transformVerts = function(t, e) {
+it.prototype.transformVerts = function(t, e) {
 for (var i = this.verts, n = this.tVerts, o = Infinity, c = -Infinity, a = Infinity, h = -Infinity, l = 0; l < i.length; l += 2) {
 var u = i[l], d = i[l + 1], f = t.x + u * e.x - d * e.y, p = t.y + u * e.y + d * e.x;
 n[l] = f;
@@ -24123,18 +24390,18 @@ this.bb_b = a;
 this.bb_r = c;
 this.bb_t = h;
 };
-nt.prototype.transformAxes = function(t, e) {
+it.prototype.transformAxes = function(t, e) {
 for (var i = this.planes, n = this.tPlanes, o = 0; o < i.length; o++) {
 var r = B(i[o].n, e);
 n[o].n = r;
 n[o].d = T(t, r) + i[o].d;
 }
 };
-nt.prototype.cacheData = function(t, e) {
+it.prototype.cacheData = function(t, e) {
 this.transformAxes(t, e);
 this.transformVerts(t, e);
 };
-nt.prototype.nearestPointQuery = function(t) {
+it.prototype.nearestPointQuery = function(t) {
 for (var e = this.tPlanes, i = this.tVerts, n = i[i.length - 2], o = i[i.length - 1], r = Infinity, s = C, c = !1, a = 0; a < e.length; a++) {
 e[a].compare(t) > 0 && (c = !0);
 var h = i[2 * a], l = i[2 * a + 1], u = f(t.x, t.y, n, o, h, l), d = V(t, u);
@@ -24145,32 +24412,32 @@ s = u;
 n = h;
 o = l;
 }
-return new Z(this, s, c ? r : -r);
+return new Q(this, s, c ? r : -r);
 };
-nt.prototype.segmentQuery = function(t, e) {
+it.prototype.segmentQuery = function(t, e) {
 for (var i = this.tPlanes, n = this.tVerts, o = i.length, r = 2 * o, s = 0; s < o; s++) {
 var c = i[s].n, a = T(t, c);
 if (!(i[s].d > a)) {
 var h = T(e, c), l = (i[s].d - a) / (h - a);
 if (!(l < 0 || 1 < l)) {
 var u = j(t, e, l), d = -N(c, u), f = -L(c.x, c.y, n[2 * s], n[2 * s + 1]), p = -L(c.x, c.y, n[(2 * s + 2) % r], n[(2 * s + 3) % r]);
-if (f <= d && d <= p) return new K(this, l, c);
+if (f <= d && d <= p) return new Z(this, l, c);
 }
 }
 }
 };
-nt.prototype.valueOnAxis = function(t, e) {
+it.prototype.valueOnAxis = function(t, e) {
 for (var i = this.tVerts, n = S(t.x, t.y, i[0], i[1]), o = 2; o < i.length; o += 2) n = r(n, S(t.x, t.y, i[o], i[o + 1]));
 return n - e;
 };
-nt.prototype.containsVert = function(t, e) {
+it.prototype.containsVert = function(t, e) {
 for (var i = this.tPlanes, n = 0; n < i.length; n++) {
 var o = i[n].n;
 if (S(o.x, o.y, t, e) - i[n].d > 0) return !1;
 }
 return !0;
 };
-nt.prototype.containsVertPartial = function(t, e, i) {
+it.prototype.containsVertPartial = function(t, e, i) {
 for (var n = this.tPlanes, o = 0; o < n.length; o++) {
 var r = n[o].n;
 if (!(T(r, i) < 0)) {
@@ -24179,13 +24446,13 @@ if (S(r.x, r.y, t, e) - n[o].d > 0) return !1;
 }
 return !0;
 };
-nt.prototype.getNumVerts = function() {
+it.prototype.getNumVerts = function() {
 return this.verts.length / 2;
 };
-nt.prototype.getVert = function(t) {
+it.prototype.getVert = function(t) {
 return new b(this.verts[2 * t], this.verts[2 * t + 1]);
 };
-var st = cp.Body = function(t, e) {
+var rt = cp.Body = function(t, e) {
 this.p = new b(0, 0);
 this.vx = this.vy = 0;
 this.f = new b(0, 0);
@@ -24208,12 +24475,12 @@ this.rot = new b(0, 0);
 this.setAngle(0);
 };
 cp.StaticBody = function() {
-var t = new st(Infinity, Infinity);
+var t = new rt(Infinity, Infinity);
 t.nodeIdleTime = Infinity;
 return t;
 };
 if ("undefined" !== ("object" == (e = typeof DEBUG) ? t(DEBUG) : e) && DEBUG) {
-var ct = function(t, e) {
+var st = function(t, e) {
 !(function(t, e) {
 c(t.x == t.x && t.y == t.y, e);
 })(t, e);
@@ -24221,92 +24488,92 @@ c(t.x == t.x && t.y == t.y, e);
 c(Infinity !== Math.abs(t.x) && Infinity !== Math.abs(t.y), e);
 })(t, e);
 };
-st.prototype.sanityCheck = function() {
+rt.prototype.sanityCheck = function() {
 c(this.m == this.m && this.m_inv == this.m_inv, "Body's mass is invalid.");
 c(this.i == this.i && this.i_inv == this.i_inv, "Body's moment is invalid.");
-ct(this.p, "Body's position is invalid.");
-ct(this.f, "Body's force is invalid.");
+st(this.p, "Body's position is invalid.");
+st(this.f, "Body's force is invalid.");
 c(this.vx == this.vx && Infinity !== Math.abs(this.vx), "Body's velocity is invalid.");
 c(this.vy == this.vy && Infinity !== Math.abs(this.vy), "Body's velocity is invalid.");
 c(this.a == this.a && Infinity !== Math.abs(this.a), "Body's angle is invalid.");
 c(this.w == this.w && Infinity !== Math.abs(this.w), "Body's angular velocity is invalid.");
 c(this.t == this.t && Infinity !== Math.abs(this.t), "Body's torque is invalid.");
-ct(this.rot, "Body's rotation vector is invalid.");
+st(this.rot, "Body's rotation vector is invalid.");
 c(this.v_limit == this.v_limit, "Body's velocity limit is invalid.");
 c(this.w_limit == this.w_limit, "Body's angular velocity limit is invalid.");
 };
-} else st.prototype.sanityCheck = function() {};
-st.prototype.getPos = function() {
+} else rt.prototype.sanityCheck = function() {};
+rt.prototype.getPos = function() {
 return this.p;
 };
-st.prototype.getVel = function() {
+rt.prototype.getVel = function() {
 return new b(this.vx, this.vy);
 };
-st.prototype.getAngVel = function() {
+rt.prototype.getAngVel = function() {
 return this.w;
 };
-st.prototype.isSleeping = function() {
+rt.prototype.isSleeping = function() {
 return null !== this.nodeRoot;
 };
-st.prototype.isStatic = function() {
+rt.prototype.isStatic = function() {
 return Infinity === this.nodeIdleTime;
 };
-st.prototype.isRogue = function() {
+rt.prototype.isRogue = function() {
 return null === this.space;
 };
-st.prototype.setMass = function(t) {
+rt.prototype.setMass = function(t) {
 c(t > 0, "Mass must be positive and non-zero.");
 this.activate();
 this.m = t;
 this.m_inv = 1 / t;
 };
-st.prototype.setMoment = function(t) {
+rt.prototype.setMoment = function(t) {
 c(t > 0, "Moment of Inertia must be positive and non-zero.");
 this.activate();
 this.i = t;
 this.i_inv = 1 / t;
 };
-st.prototype.addShape = function(t) {
+rt.prototype.addShape = function(t) {
 this.shapeList.push(t);
 };
-st.prototype.removeShape = function(t) {
+rt.prototype.removeShape = function(t) {
 d(this.shapeList, t);
 };
-var at = function(t, e, i) {
+var ct = function(t, e, i) {
 if (t === i) return t.next(e);
-t.a === e ? t.next_a = at(t.next_a, e, i) : t.next_b = at(t.next_b, e, i);
+t.a === e ? t.next_a = ct(t.next_a, e, i) : t.next_b = ct(t.next_b, e, i);
 return t;
 };
-st.prototype.removeConstraint = function(t) {
-this.constraintList = at(this.constraintList, this, t);
+rt.prototype.removeConstraint = function(t) {
+this.constraintList = ct(this.constraintList, this, t);
 };
-st.prototype.setPos = function(t) {
+rt.prototype.setPos = function(t) {
 this.activate();
 this.sanityCheck();
 t === C && (t = cp.v(0, 0));
 this.p = t;
 };
-st.prototype.setVel = function(t) {
+rt.prototype.setVel = function(t) {
 this.activate();
 this.vx = t.x;
 this.vy = t.y;
 };
-st.prototype.setAngVel = function(t) {
+rt.prototype.setAngVel = function(t) {
 this.activate();
 this.w = t;
 };
-st.prototype.setAngleInternal = function(t) {
+rt.prototype.setAngleInternal = function(t) {
 c(!isNaN(t), "Internal Error: Attempting to set body's angle to NaN");
 this.a = t;
 this.rot.x = Math.cos(t);
 this.rot.y = Math.sin(t);
 };
-st.prototype.setAngle = function(t) {
+rt.prototype.setAngle = function(t) {
 this.activate();
 this.sanityCheck();
 this.setAngleInternal(t);
 };
-st.prototype.velocity_func = function(t, e, i) {
+rt.prototype.velocity_func = function(t, e, i) {
 var n = this.vx * e + (t.x + this.f.x * this.m_inv) * i, o = this.vy * e + (t.y + this.f.y * this.m_inv) * i, r = this.v_limit, s = n * n + o * o, c = s > r * r ? r / Math.sqrt(s) : 1;
 this.vx = n * c;
 this.vy = o * c;
@@ -24314,7 +24581,7 @@ var a = this.w_limit;
 this.w = y(this.w * e + this.t * this.i_inv * i, -a, a);
 this.sanityCheck();
 };
-st.prototype.position_func = function(t) {
+rt.prototype.position_func = function(t) {
 this.p.x += (this.vx + this.v_biasx) * t;
 this.p.y += (this.vy + this.v_biasy) * t;
 this.setAngleInternal(this.a + (this.w + this.w_bias) * t);
@@ -24322,40 +24589,40 @@ this.v_biasx = this.v_biasy = 0;
 this.w_bias = 0;
 this.sanityCheck();
 };
-st.prototype.resetForces = function() {
+rt.prototype.resetForces = function() {
 this.activate();
 this.f = new b(0, 0);
 this.t = 0;
 };
-st.prototype.applyForce = function(t, e) {
+rt.prototype.applyForce = function(t, e) {
 this.activate();
 this.f = x(this.f, t);
 this.t += N(e, t);
 };
-st.prototype.applyImpulse = function(t, e) {
+rt.prototype.applyImpulse = function(t, e) {
 this.activate();
-ie(this, t.x, t.y, e);
+qt(this, t.x, t.y, e);
 };
-st.prototype.getVelAtPoint = function(t) {
+rt.prototype.getVelAtPoint = function(t) {
 return x(new b(this.vx, this.vy), O(P(t), this.w));
 };
-st.prototype.getVelAtWorldPoint = function(t) {
+rt.prototype.getVelAtWorldPoint = function(t) {
 return this.getVelAtPoint(w(t, this.p));
 };
-st.prototype.getVelAtLocalPoint = function(t) {
+rt.prototype.getVelAtLocalPoint = function(t) {
 return this.getVelAtPoint(B(t, this.rot));
 };
-st.prototype.eachShape = function(t) {
+rt.prototype.eachShape = function(t) {
 for (var e = 0, i = this.shapeList.length; e < i; e++) t(this.shapeList[e]);
 };
-st.prototype.eachConstraint = function(t) {
+rt.prototype.eachConstraint = function(t) {
 for (var e = this.constraintList; e; ) {
 var i = e.next(this);
 t(e);
 e = i;
 }
 };
-st.prototype.eachArbiter = function(t) {
+rt.prototype.eachArbiter = function(t) {
 for (var e = this.arbiterList; e; ) {
 var i = e.next(this);
 e.swappedColl = this === e.body_b;
@@ -24363,33 +24630,33 @@ t(e);
 e = i;
 }
 };
-st.prototype.local2World = function(t) {
+rt.prototype.local2World = function(t) {
 return x(this.p, B(t, this.rot));
 };
-st.prototype.world2Local = function(t) {
+rt.prototype.world2Local = function(t) {
 return D(w(t, this.p), this.rot);
 };
-st.prototype.kineticEnergy = function() {
+rt.prototype.kineticEnergy = function() {
 var t = this.vx * this.vx + this.vy * this.vy, e = this.w * this.w;
 return (t ? t * this.m : 0) + (e ? e * this.i : 0);
 };
-var ht = cp.SpatialIndex = function(t) {
+var at = cp.SpatialIndex = function(t) {
 this.staticIndex = t;
 if (t) {
 if (t.dynamicIndex) throw new Error("This static index is already associated with a dynamic index.");
 t.dynamicIndex = this;
 }
 };
-ht.prototype.collideStatic = function(t, e) {
+at.prototype.collideStatic = function(t, e) {
 if (t.count > 0) {
 var i = t.query;
 this.each((function(t) {
-i(t, new Y(t.bb_l, t.bb_b, t.bb_r, t.bb_t), e);
+i(t, new U(t.bb_l, t.bb_b, t.bb_r, t.bb_t), e);
 }));
 }
 };
-var lt = cp.BBTree = function(t) {
-ht.call(this, t);
+var ht = cp.BBTree = function(t) {
+at.call(this, t);
 this.velocityFunc = null;
 this.leaves = {};
 this.count = 0;
@@ -24398,8 +24665,8 @@ this.pooledNodes = null;
 this.pooledPairs = null;
 this.stamp = 0;
 };
-lt.prototype = Object.create(ht.prototype);
-var ut = 0, dt = function(t, e, i) {
+ht.prototype = Object.create(at.prototype);
+var lt = function(t, e, i) {
 this.obj = null;
 this.bb_l = r(e.bb_l, i.bb_l);
 this.bb_b = r(e.bb_b, i.bb_b);
@@ -24409,25 +24676,25 @@ this.parent = null;
 this.setA(e);
 this.setB(i);
 };
-lt.prototype.makeNode = function(t, e) {
+ht.prototype.makeNode = function(t, e) {
 var i = this.pooledNodes;
 if (i) {
 this.pooledNodes = i.parent;
 i.constructor(this, t, e);
 return i;
 }
-ut++;
-return new dt(this, t, e);
+0;
+return new lt(this, t, e);
 };
-var ft = 0, pt = function(t, e) {
+var ut = function(t, e) {
 this.obj = e;
 t.getBB(e, this);
 this.parent = null;
 this.stamp = 1;
 this.pairs = null;
-ft++;
+0;
 };
-lt.prototype.getBB = function(t, e) {
+ht.prototype.getBB = function(t, e) {
 var i = this.velocityFunc;
 if (i) {
 var n = .1 * (t.bb_r - t.bb_l), o = .1 * (t.bb_t - t.bb_b), c = O(i(t), .1);
@@ -24442,14 +24709,14 @@ e.bb_r = t.bb_r;
 e.bb_t = t.bb_t;
 }
 };
-lt.prototype.getStamp = function() {
+ht.prototype.getStamp = function() {
 var t = this.dynamicIndex;
 return t && t.stamp ? t.stamp : this.stamp;
 };
-lt.prototype.incrementStamp = function() {
+ht.prototype.incrementStamp = function() {
 this.dynamicIndex && this.dynamicIndex.stamp ? this.dynamicIndex.stamp++ : this.stamp++;
 };
-var _t = 0, gt = function(t, e, i, n) {
+var dt = function(t, e, i, n) {
 this.prevA = null;
 this.leafA = t;
 this.nextA = e;
@@ -24457,7 +24724,7 @@ this.prevB = null;
 this.leafB = i;
 this.nextB = n;
 };
-lt.prototype.makePair = function(t, e, i, n) {
+ht.prototype.makePair = function(t, e, i, n) {
 var o = this.pooledPairs;
 if (o) {
 this.pooledPairs = o.prevA;
@@ -24469,57 +24736,57 @@ o.leafB = i;
 o.nextB = n;
 return o;
 }
-_t++;
-return new gt(t, e, i, n);
+0;
+return new dt(t, e, i, n);
 };
-gt.prototype.recycle = function(t) {
+dt.prototype.recycle = function(t) {
 this.prevA = t.pooledPairs;
 t.pooledPairs = this;
 };
-var vt = function(t, e, i) {
+var ft = function(t, e, i) {
 i && (i.leafA === e ? i.prevA = t : i.prevB = t);
 t ? t.leafA === e ? t.nextA = i : t.nextB = i : e.pairs = i;
 };
-pt.prototype.clearPairs = function(t) {
+ut.prototype.clearPairs = function(t) {
 var e, i = this.pairs;
 this.pairs = null;
 for (;i; ) {
 if (i.leafA === this) {
 e = i.nextA;
-vt(i.prevB, i.leafB, i.nextB);
+ft(i.prevB, i.leafB, i.nextB);
 } else {
 e = i.nextB;
-vt(i.prevA, i.leafA, i.nextA);
+ft(i.prevA, i.leafA, i.nextA);
 }
 i.recycle(t);
 i = e;
 }
 };
-var yt = function(t, e, i) {
+var pt = function(t, e, i) {
 var n = t.pairs, o = e.pairs, r = i.makePair(t, n, e, o);
 t.pairs = e.pairs = r;
 n && (n.leafA === t ? n.prevA = r : n.prevB = r);
 o && (o.leafA === e ? o.prevA = r : o.prevB = r);
 };
-dt.prototype.recycle = function(t) {
+lt.prototype.recycle = function(t) {
 this.parent = t.pooledNodes;
 t.pooledNodes = this;
 };
-pt.prototype.recycle = function(t) {};
-dt.prototype.setA = function(t) {
+ut.prototype.recycle = function(t) {};
+lt.prototype.setA = function(t) {
 this.A = t;
 t.parent = this;
 };
-dt.prototype.setB = function(t) {
+lt.prototype.setB = function(t) {
 this.B = t;
 t.parent = this;
 };
-pt.prototype.isLeaf = !0;
-dt.prototype.isLeaf = !1;
-dt.prototype.otherChild = function(t) {
+ut.prototype.isLeaf = !0;
+lt.prototype.isLeaf = !1;
+lt.prototype.otherChild = function(t) {
 return this.A == t ? this.B : this.A;
 };
-dt.prototype.replaceChild = function(t, e, i) {
+lt.prototype.replaceChild = function(t, e, i) {
 a(t == this.A || t == this.B, "Node is not a child of parent.");
 if (this.A == t) {
 this.A.recycle(i);
@@ -24536,63 +24803,63 @@ n.bb_r = s(o.bb_r, c.bb_r);
 n.bb_t = s(o.bb_t, c.bb_t);
 }
 };
-dt.prototype.bbArea = pt.prototype.bbArea = function() {
+lt.prototype.bbArea = ut.prototype.bbArea = function() {
 return (this.bb_r - this.bb_l) * (this.bb_t - this.bb_b);
 };
-var mt = function(t, e) {
+var _t = function(t, e) {
 return (s(t.bb_r, e.bb_r) - r(t.bb_l, e.bb_l)) * (s(t.bb_t, e.bb_t) - r(t.bb_b, e.bb_b));
-}, bt = function(t, e) {
+}, gt = function(t, e) {
 return Math.abs(t.bb_l + t.bb_r - e.bb_l - e.bb_r) + Math.abs(t.bb_b + t.bb_t - e.bb_b - e.bb_t);
-}, Ct = function(t, e, i) {
+}, vt = function(t, e, i) {
 if (null == t) return e;
 if (t.isLeaf) return i.makeNode(e, t);
-var n = t.B.bbArea() + mt(t.A, e), o = t.A.bbArea() + mt(t.B, e);
+var n = t.B.bbArea() + _t(t.A, e), o = t.A.bbArea() + _t(t.B, e);
 if (n === o) {
-n = bt(t.A, e);
-o = bt(t.B, e);
+n = gt(t.A, e);
+o = gt(t.B, e);
 }
-o < n ? t.setB(Ct(t.B, e, i)) : t.setA(Ct(t.A, e, i));
+o < n ? t.setB(vt(t.B, e, i)) : t.setA(vt(t.A, e, i));
 t.bb_l = r(t.bb_l, e.bb_l);
 t.bb_b = r(t.bb_b, e.bb_b);
 t.bb_r = s(t.bb_r, e.bb_r);
 t.bb_t = s(t.bb_t, e.bb_t);
 return t;
 };
-dt.prototype.intersectsBB = pt.prototype.intersectsBB = function(t) {
+lt.prototype.intersectsBB = ut.prototype.intersectsBB = function(t) {
 return this.bb_l <= t.r && t.l <= this.bb_r && this.bb_b <= t.t && t.b <= this.bb_t;
 };
-var Tt = function(t, e, i) {
+var yt = function(t, e, i) {
 if (t.intersectsBB(e)) if (t.isLeaf) i(t.obj); else {
-Tt(t.A, e, i);
-Tt(t.B, e, i);
+yt(t.A, e, i);
+yt(t.B, e, i);
 }
-}, St = function(t, e, i) {
+}, mt = function(t, e, i) {
 var n = 1 / (i.x - e.x), o = t.bb_l == e.x ? -Infinity : (t.bb_l - e.x) * n, c = t.bb_r == e.x ? Infinity : (t.bb_r - e.x) * n, a = r(o, c), h = s(o, c), l = 1 / (i.y - e.y), u = t.bb_b == e.y ? -Infinity : (t.bb_b - e.y) * l, d = t.bb_t == e.y ? Infinity : (t.bb_t - e.y) * l, f = r(u, d), p = s(u, d);
 if (f <= h && a <= p) {
 var _ = s(a, f);
 if (0 <= r(h, p) && _ <= 1) return s(_, 0);
 }
 return Infinity;
-}, Et = function(t, e, i, n, o) {
+}, bt = function(t, e, i, n, o) {
 if (t.isLeaf) return o(t.obj);
-var s = St(t.A, e, i), c = St(t.B, e, i);
+var s = mt(t.A, e, i), c = mt(t.B, e, i);
 if (s < c) {
-s < n && (n = r(n, Et(t.A, e, i, n, o)));
-c < n && (n = r(n, Et(t.B, e, i, n, o)));
+s < n && (n = r(n, bt(t.A, e, i, n, o)));
+c < n && (n = r(n, bt(t.B, e, i, n, o)));
 } else {
-c < n && (n = r(n, Et(t.B, e, i, n, o)));
-s < n && (n = r(n, Et(t.A, e, i, n, o)));
+c < n && (n = r(n, bt(t.B, e, i, n, o)));
+s < n && (n = r(n, bt(t.A, e, i, n, o)));
 }
 return n;
 };
-lt.prototype.subtreeRecycle = function(t) {
+ht.prototype.subtreeRecycle = function(t) {
 if (t.isLeaf) {
 this.subtreeRecycle(t.A);
 this.subtreeRecycle(t.B);
 t.recycle(this);
 }
 };
-var At = function(t, e, i) {
+var Ct = function(t, e, i) {
 if (e == t) return null;
 var n = e.parent;
 if (n == t) {
@@ -24603,22 +24870,22 @@ return o;
 }
 n.parent.replaceChild(n, n.otherChild(e), i);
 return t;
-}, xt = function(t, e) {
+}, Tt = function(t, e) {
 return t.bb_l <= e.bb_r && e.bb_l <= t.bb_r && t.bb_b <= e.bb_t && e.bb_b <= t.bb_t;
 };
-pt.prototype.markLeafQuery = function(t, e, i, n) {
-if (xt(t, this)) if (e) yt(t, this, i); else {
-this.stamp < t.stamp && yt(this, t, i);
+ut.prototype.markLeafQuery = function(t, e, i, n) {
+if (Tt(t, this)) if (e) pt(t, this, i); else {
+this.stamp < t.stamp && pt(this, t, i);
 n && n(t.obj, this.obj);
 }
 };
-dt.prototype.markLeafQuery = function(t, e, i, n) {
-if (xt(t, this)) {
+lt.prototype.markLeafQuery = function(t, e, i, n) {
+if (Tt(t, this)) {
 this.A.markLeafQuery(t, e, i, n);
 this.B.markLeafQuery(t, e, i, n);
 }
 };
-pt.prototype.markSubtree = function(t, e, i) {
+ut.prototype.markSubtree = function(t, e, i) {
 if (this.stamp == t.getStamp()) {
 e && e.markLeafQuery(this, !1, t, i);
 for (var n = this; n.parent; n = n.parent) n == n.parent.A ? n.parent.B.markLeafQuery(this, !0, t, i) : n.parent.A.markLeafQuery(this, !1, t, i);
@@ -24627,26 +24894,26 @@ i && i(o.leafA.obj, this.obj);
 o = o.nextB;
 } else o = o.nextA;
 };
-dt.prototype.markSubtree = function(t, e, i) {
+lt.prototype.markSubtree = function(t, e, i) {
 this.A.markSubtree(t, e, i);
 this.B.markSubtree(t, e, i);
 };
-pt.prototype.containsObj = function(t) {
+ut.prototype.containsObj = function(t) {
 return this.bb_l <= t.bb_l && this.bb_r >= t.bb_r && this.bb_b <= t.bb_b && this.bb_t >= t.bb_t;
 };
-pt.prototype.update = function(t) {
+ut.prototype.update = function(t) {
 var e = t.root, i = this.obj;
 if (!this.containsObj(i)) {
 t.getBB(this.obj, this);
-e = At(e, this, t);
-t.root = Ct(e, this, t);
+e = Ct(e, this, t);
+t.root = vt(e, this, t);
 this.clearPairs(t);
 this.stamp = t.getStamp();
 return !0;
 }
 return !1;
 };
-pt.prototype.addPairs = function(t) {
+ut.prototype.addPairs = function(t) {
 var e = t.dynamicIndex;
 if (e) {
 var i = e.root;
@@ -24656,28 +24923,28 @@ var n = t.staticIndex.root;
 this.markSubtree(t, n, null);
 }
 };
-lt.prototype.insert = function(t, e) {
-var i = new pt(this, t);
+ht.prototype.insert = function(t, e) {
+var i = new ut(this, t);
 this.leaves[e] = i;
-this.root = Ct(this.root, i, this);
+this.root = vt(this.root, i, this);
 this.count++;
 i.stamp = this.getStamp();
 i.addPairs(this);
 this.incrementStamp();
 };
-lt.prototype.remove = function(t, e) {
+ht.prototype.remove = function(t, e) {
 var i = this.leaves[e];
 delete this.leaves[e];
-this.root = At(this.root, i, this);
+this.root = Ct(this.root, i, this);
 this.count--;
 i.clearPairs(this);
 i.recycle(this);
 };
-lt.prototype.contains = function(t, e) {
+ht.prototype.contains = function(t, e) {
 return null != this.leaves[e];
 };
-var wt = function(t, e) {};
-lt.prototype.reindexQuery = function(t) {
+var St = function(t, e) {};
+ht.prototype.reindexQuery = function(t) {
 if (this.root) {
 var e, i = this.leaves;
 for (e in i) i[e].update(this);
@@ -24687,35 +24954,35 @@ n && !o && this.collideStatic(this, n, t);
 this.incrementStamp();
 }
 };
-lt.prototype.reindex = function() {
-this.reindexQuery(wt);
+ht.prototype.reindex = function() {
+this.reindexQuery(St);
 };
-lt.prototype.reindexObject = function(t, e) {
+ht.prototype.reindexObject = function(t, e) {
 var i = this.leaves[e];
 if (i) {
 i.update(this) && i.addPairs(this);
 this.incrementStamp();
 }
 };
-lt.prototype.pointQuery = function(t, e) {
-this.query(new Y(t.x, t.y, t.x, t.y), e);
+ht.prototype.pointQuery = function(t, e) {
+this.query(new U(t.x, t.y, t.x, t.y), e);
 };
-lt.prototype.segmentQuery = function(t, e, i, n) {
-this.root && Et(this.root, t, e, i, n);
+ht.prototype.segmentQuery = function(t, e, i, n) {
+this.root && bt(this.root, t, e, i, n);
 };
-lt.prototype.query = function(t, e) {
-this.root && Tt(this.root, t, e);
+ht.prototype.query = function(t, e) {
+this.root && yt(this.root, t, e);
 };
-lt.prototype.count = function() {
+ht.prototype.count = function() {
 return this.count;
 };
-lt.prototype.each = function(t) {
+ht.prototype.each = function(t) {
 var e;
 for (e in this.leaves) t(this.leaves[e].obj);
 };
-var It = function(t, e, i, n, o) {
+var Et = function(t, e, i, n, o) {
 return (s(t.bb_r, n) - r(t.bb_l, e)) * (s(t.bb_t, o) - r(t.bb_b, i));
-}, Ot = function(t, e, i, n) {
+}, At = function(t, e, i, n) {
 if (1 == n) return e[i];
 if (2 == n) return t.makeNode(e[i], e[i + 1]);
 for (var o = (A = e[i]).bb_l, c = A.bb_b, a = A.bb_r, h = A.bb_t, l = i + n, u = i + 1; u < l; u++) {
@@ -24739,48 +25006,48 @@ return t - e;
 var p = .5 * (f[n - 1] + f[n]), _ = o, g = c, v = a, y = h, m = o, b = c, C = a, T = h;
 d ? v = m = p : y = b = p;
 for (var S = l, E = i; E < S; ) {
-A = e[E];
-if (It(A, m, b, C, T) < It(A, _, g, v, y)) {
+var A = e[E];
+if (Et(A, m, b, C, T) < Et(A, _, g, v, y)) {
 S--;
 e[E] = e[S];
 e[S] = A;
 } else E++;
 }
 if (S == n) {
-for (var A = null, u = i; u < l; u++) A = Ct(A, e[u], t);
+for (A = null, u = i; u < l; u++) A = vt(A, e[u], t);
 return A;
 }
-return NodeNew(t, Ot(t, e, i, S - i), Ot(t, e, S, l - S));
+return NodeNew(t, At(t, e, i, S - i), At(t, e, S, l - S));
 };
-lt.prototype.optimize = function() {
+ht.prototype.optimize = function() {
 var t = new Array(this.count), e = 0;
 for (var i in this.leaves) t[e++] = this.nodes[i];
 tree.subtreeRecycle(root);
-this.root = Ot(tree, t, t.length);
+this.root = At(tree, t, t.length);
 };
-var Nt = function(t, e) {
+var xt = function(t, e) {
 if (!t.isLeaf && e <= 10) {
-Nt(t.A, e + 1);
-Nt(t.B, e + 1);
+xt(t.A, e + 1);
+xt(t.B, e + 1);
 }
 for (var i = "", n = 0; n < e; n++) i += " ";
 console.log(i + t.bb_b + " " + t.bb_t);
 };
-lt.prototype.log = function() {
-this.root && Nt(this.root, 0);
+ht.prototype.log = function() {
+this.root && xt(this.root, 0);
 };
-var Lt = cp.CollisionHandler = function() {
+var wt = cp.CollisionHandler = function() {
 this.a = this.b = 0;
 };
-Lt.prototype.begin = function(t, e) {
+wt.prototype.begin = function(t, e) {
 return !0;
 };
-Lt.prototype.preSolve = function(t, e) {
+wt.prototype.preSolve = function(t, e) {
 return !0;
 };
-Lt.prototype.postSolve = function(t, e) {};
-Lt.prototype.separate = function(t, e) {};
-var Pt = function(t, e) {
+wt.prototype.postSolve = function(t, e) {};
+wt.prototype.separate = function(t, e) {};
+var It = function(t, e) {
 this.e = 0;
 this.u = 0;
 this.surface_vr = C;
@@ -24796,73 +25063,73 @@ this.handler = null;
 this.swappedColl = !1;
 this.state = "first coll";
 };
-Pt.prototype.getShapes = function() {
+It.prototype.getShapes = function() {
 return this.swappedColl ? [ this.b, this.a ] : [ this.a, this.b ];
 };
-Pt.prototype.totalImpulse = function() {
+It.prototype.totalImpulse = function() {
 for (var t = this.contacts, e = new b(0, 0), i = 0, n = t.length; i < n; i++) {
 var o = t[i];
 e.add(O(o.n, o.jnAcc));
 }
 return this.swappedColl ? e : e.neg();
 };
-Pt.prototype.totalImpulseWithFriction = function() {
+It.prototype.totalImpulseWithFriction = function() {
 for (var t = this.contacts, e = new b(0, 0), i = 0, n = t.length; i < n; i++) {
 var o = t[i];
 e.add(new b(o.jnAcc, o.jtAcc).rotate(o.n));
 }
 return this.swappedColl ? e : e.neg();
 };
-Pt.prototype.totalKE = function() {
+It.prototype.totalKE = function() {
 for (var t = (1 - this.e) / (1 + this.e), e = 0, i = this.contacts, n = 0, o = i.length; n < o; n++) {
 var r = i[n], s = r.jnAcc, c = r.jtAcc;
 e += t * s * s / r.nMass + c * c / r.tMass;
 }
 return e;
 };
-Pt.prototype.ignore = function() {
+It.prototype.ignore = function() {
 this.state = "ignore";
 };
-Pt.prototype.getA = function() {
+It.prototype.getA = function() {
 return this.swappedColl ? this.b : this.a;
 };
-Pt.prototype.getB = function() {
+It.prototype.getB = function() {
 return this.swappedColl ? this.a : this.b;
 };
-Pt.prototype.isFirstContact = function() {
+It.prototype.isFirstContact = function() {
 return "first coll" === this.state;
 };
-var Rt = function(t, e, i) {
+var Ot = function(t, e, i) {
 this.point = t;
 this.normal = e;
 this.dist = i;
 };
-Pt.prototype.getContactPointSet = function() {
+It.prototype.getContactPointSet = function() {
 var t, e = new Array(this.contacts.length);
-for (t = 0; t < e.length; t++) e[t] = new Rt(this.contacts[t].p, this.contacts[t].n, this.contacts[t].dist);
+for (t = 0; t < e.length; t++) e[t] = new Ot(this.contacts[t].p, this.contacts[t].n, this.contacts[t].dist);
 return e;
 };
-Pt.prototype.getNormal = function(t) {
+It.prototype.getNormal = function(t) {
 var e = this.contacts[t].n;
 return this.swappedColl ? I(e) : e;
 };
-Pt.prototype.getPoint = function(t) {
+It.prototype.getPoint = function(t) {
 return this.contacts[t].p;
 };
-Pt.prototype.getDepth = function(t) {
+It.prototype.getDepth = function(t) {
 return this.contacts[t].dist;
 };
-var Bt = function(t, e, i, n) {
+var Nt = function(t, e, i, n) {
 i ? i.body_a === e ? i.thread_a_next = n : i.thread_b_next = n : e.arbiterList = n;
 n && (n.body_a === e ? n.thread_a_prev = i : n.thread_b_prev = i);
 };
-Pt.prototype.unthread = function() {
-Bt(0, this.body_a, this.thread_a_prev, this.thread_a_next);
-Bt(0, this.body_b, this.thread_b_prev, this.thread_b_next);
+It.prototype.unthread = function() {
+Nt(0, this.body_a, this.thread_a_prev, this.thread_a_next);
+Nt(0, this.body_b, this.thread_b_prev, this.thread_b_next);
 this.thread_a_prev = this.thread_a_next = null;
 this.thread_b_prev = this.thread_b_next = null;
 };
-Pt.prototype.update = function(t, e, i, n) {
+It.prototype.update = function(t, e, i, n) {
 if (this.contacts) for (var o = 0; o < this.contacts.length; o++) for (var r = this.contacts[o], s = 0; s < t.length; s++) {
 var c = t[s];
 if (c.hash === r.hash) {
@@ -24882,29 +25149,28 @@ this.b = n;
 this.body_b = n.body;
 "cached" == this.state && (this.state = "first coll");
 };
-Pt.prototype.preStep = function(t, e, i) {
+It.prototype.preStep = function(t, e, i) {
 for (var n = this.body_a, o = this.body_b, s = 0; s < this.contacts.length; s++) {
 var c = this.contacts[s];
 c.r1 = w(c.p, n.p);
 c.r2 = w(c.p, o.p);
-c.nMass = 1 / se(n, o, c.r1, c.r2, c.n);
-c.tMass = 1 / se(n, o, c.r1, c.r2, P(c.n));
+c.nMass = 1 / $t(n, o, c.r1, c.r2, c.n);
+c.tMass = 1 / $t(n, o, c.r1, c.r2, P(c.n));
 c.bias = -i * r(0, c.dist + e) / t;
 c.jBias = 0;
-c.bounce = ee(n, o, c.r1, c.r2, c.n) * this.e;
+c.bounce = Jt(n, o, c.r1, c.r2, c.n) * this.e;
 }
 };
-Pt.prototype.applyCachedImpulse = function(t) {
+It.prototype.applyCachedImpulse = function(t) {
 if (!this.isFirstContact()) for (var e = this.body_a, i = this.body_b, n = 0; n < this.contacts.length; n++) {
 var o = this.contacts[n], r = o.n.x, s = o.n.y, c = r * o.jnAcc - s * o.jtAcc, a = r * o.jtAcc + s * o.jnAcc;
-ne(e, i, o.r1, o.r2, c * t, a * t);
+Qt(e, i, o.r1, o.r2, c * t, a * t);
 }
 };
-var Dt = 0, Mt = 0;
-Pt.prototype.applyImpulse = function() {
-Dt++;
+It.prototype.applyImpulse = function() {
+0;
 for (var t = this.body_a, e = this.body_b, i = this.surface_vr, n = this.u, o = 0; o < this.contacts.length; o++) {
-Mt++;
+0;
 var r = this.contacts[o], c = r.nMass, a = r.n, h = r.r1, l = r.r2, u = e.vx - l.y * e.w - (t.vx - h.y * t.w), d = e.vy + l.x * e.w - (t.vy + h.x * t.w), f = a.x * (e.v_biasx - l.y * e.w_bias - t.v_biasx + h.y * t.w_bias) + a.y * (l.x * e.w_bias + e.v_biasy - h.x * t.w_bias - t.v_biasy), p = S(u, d, a.x, a.y), _ = S(u + i.x, d + i.y, -a.y, a.x), g = (r.bias - f) * c, v = r.jBias;
 r.jBias = s(v + g, 0);
 var m = -(r.bounce + p) * c, b = r.jnAcc;
@@ -24912,19 +25178,19 @@ r.jnAcc = s(b + m, 0);
 var C = n * r.jnAcc, T = -_ * r.tMass, E = r.jtAcc;
 r.jtAcc = y(E + T, -C, C);
 var A = a.x * (r.jBias - v), x = a.y * (r.jBias - v);
-oe(t, -A, -x, h);
-oe(e, A, x, l);
+Zt(t, -A, -x, h);
+Zt(e, A, x, l);
 var w = r.jnAcc - b, I = r.jtAcc - E;
-ne(t, e, h, l, a.x * w - a.y * I, a.x * I + a.y * w);
+Qt(t, e, h, l, a.x * w - a.y * I, a.x * I + a.y * w);
 }
 };
-Pt.prototype.callSeparate = function(t) {
+It.prototype.callSeparate = function(t) {
 t.lookupHandler(this.a.collision_type, this.b.collision_type).separate(this, t);
 };
-Pt.prototype.next = function(t) {
+It.prototype.next = function(t) {
 return this.body_a == t ? this.thread_a_next : this.thread_b_next;
 };
-var Ft = 0, jt = function(t, e, i, n) {
+var Lt = function(t, e, i, n) {
 this.p = t;
 this.n = e;
 this.dist = i;
@@ -24932,14 +25198,14 @@ this.r1 = this.r2 = C;
 this.nMass = this.tMass = this.bounce = this.bias = 0;
 this.jnAcc = this.jtAcc = this.jBias = 0;
 this.hash = n;
-Ft++;
-}, zt = [], kt = function(t, e, i, n) {
+0;
+}, Pt = [], Rt = function(t, e, i, n) {
 var o = i + n, r = w(e, t), s = M(r);
 if (!(s >= o * o)) {
 var c = Math.sqrt(s);
-return new jt(x(t, O(r, .5 + (i - .5 * o) / (c || Infinity))), c ? O(r, 1 / c) : new b(1, 0), c - o, 0);
+return new Lt(x(t, O(r, .5 + (i - .5 * o) / (c || Infinity))), c ? O(r, 1 / c) : new b(1, 0), c - o, 0);
 }
-}, Wt = 0, Vt = function(t, e) {
+}, Bt = 0, Dt = function(t, e) {
 var i = 0, n = t.valueOnAxis(e[0].n, e[0].d);
 if (n > 0) return -1;
 for (var o = 1; o < e.length; o++) {
@@ -24950,123 +25216,125 @@ n = r;
 i = o;
 }
 }
-Wt = n;
+Bt = n;
 return i;
-}, Gt = function(t, e, i, n) {
+}, Mt = function(t, e, i, n) {
 for (var o = [], r = t.tVerts, s = 0; s < r.length; s += 2) {
 var c = r[s], a = r[s + 1];
-e.containsVert(c, a) && o.push(new jt(new b(c, a), i, n, u(t.hashid, s >> 1)));
+e.containsVert(c, a) && o.push(new Lt(new b(c, a), i, n, u(t.hashid, s >> 1)));
 }
-for (var h = e.tVerts, s = 0; s < h.length; s += 2) {
-var c = h[s], a = h[s + 1];
-t.containsVert(c, a) && o.push(new jt(new b(c, a), i, n, u(e.hashid, s >> 1)));
+var h = e.tVerts;
+for (s = 0; s < h.length; s += 2) {
+c = h[s], a = h[s + 1];
+t.containsVert(c, a) && o.push(new Lt(new b(c, a), i, n, u(e.hashid, s >> 1)));
 }
 return o.length ? o : (function(t, e, i, n) {
 for (var o = [], r = t.tVerts, s = 0; s < r.length; s += 2) {
 var c = r[s], a = r[s + 1];
-e.containsVertPartial(c, a, I(i)) && o.push(new jt(new b(c, a), i, n, u(t.hashid, s)));
+e.containsVertPartial(c, a, I(i)) && o.push(new Lt(new b(c, a), i, n, u(t.hashid, s)));
 }
-for (var h = e.tVerts, s = 0; s < h.length; s += 2) {
-var c = h[s], a = h[s + 1];
-t.containsVertPartial(c, a, i) && o.push(new jt(new b(c, a), i, n, u(e.hashid, s)));
+var h = e.tVerts;
+for (s = 0; s < h.length; s += 2) {
+c = h[s], a = h[s + 1];
+t.containsVertPartial(c, a, i) && o.push(new Lt(new b(c, a), i, n, u(e.hashid, s)));
 }
 return o;
 })(t, e, i, n);
-}, Ht = function(t, e, i) {
+}, Ft = function(t, e, i) {
 var n = T(e, t.ta) - t.r, o = T(e, t.tb) - t.r;
 return r(n, o) - i;
-}, Ut = function(t, e, i, n, o) {
+}, jt = function(t, e, i, n, o) {
 for (var r = N(e.tn, e.ta), s = N(e.tn, e.tb), c = O(e.tn, o), a = i.tVerts, h = 0; h < a.length; h += 2) {
 var l = a[h], d = a[h + 1];
 if (S(l, d, c.x, c.y) < T(e.tn, e.ta) * o + e.r) {
 var f = L(e.tn.x, e.tn.y, l, d);
-r >= f && f >= s && t.push(new jt(new b(l, d), c, n, u(i.hashid, h)));
+r >= f && f >= s && t.push(new Lt(new b(l, d), c, n, u(i.hashid, h)));
 }
 }
 };
-$.prototype.collisionCode = 0;
-et.prototype.collisionCode = 1;
-nt.prototype.collisionCode = 2;
-$.prototype.collisionTable = [ function(t, e) {
-var i = kt(t.tc, e.tc, t.r, e.r);
-return i ? [ i ] : zt;
+K.prototype.collisionCode = 0;
+tt.prototype.collisionCode = 1;
+it.prototype.collisionCode = 2;
+K.prototype.collisionTable = [ function(t, e) {
+var i = Rt(t.tc, e.tc, t.r, e.r);
+return i ? [ i ] : Pt;
 }, function(t, e) {
-var i = e.ta, n = e.tb, o = t.tc, r = w(n, i), s = m(T(r, w(o, i)) / M(r)), c = x(i, O(r, s)), a = kt(o, c, t.r, e.r);
+var i = e.ta, n = e.tb, o = t.tc, r = w(n, i), s = m(T(r, w(o, i)) / M(r)), c = x(i, O(r, s)), a = Rt(o, c, t.r, e.r);
 if (a) {
 var h = a.n;
-return 0 === s && T(h, e.a_tangent) < 0 || 1 === s && T(h, e.b_tangent) < 0 ? zt : [ a ];
+return 0 === s && T(h, e.a_tangent) < 0 || 1 === s && T(h, e.b_tangent) < 0 ? Pt : [ a ];
 }
-return zt;
+return Pt;
 }, function(t, e) {
 for (var i = e.tPlanes, n = 0, o = T(i[0].n, t.tc) - i[0].d - t.r, r = 0; r < i.length; r++) {
 var s = T(i[r].n, t.tc) - i[r].d - t.r;
-if (s > 0) return zt;
+if (s > 0) return Pt;
 if (s > o) {
 o = s;
 n = r;
 }
 }
 var c = i[n].n, a = e.tVerts, h = a.length, l = n << 1, u = a[l], d = a[l + 1], f = a[(l + 2) % h], p = a[(l + 3) % h], _ = L(c.x, c.y, u, d), g = L(c.x, c.y, f, p), v = N(c, t.tc);
-if (v < g) return (y = kt(t.tc, new b(f, p), t.r, 0)) ? [ y ] : zt;
-if (v < _) return [ new jt(w(t.tc, O(c, t.r + o / 2)), I(c), o, 0) ];
-var y = kt(t.tc, new b(u, d), t.r, 0);
-return y ? [ y ] : zt;
+if (v < g) return (y = Rt(t.tc, new b(f, p), t.r, 0)) ? [ y ] : Pt;
+if (v < _) return [ new Lt(w(t.tc, O(c, t.r + o / 2)), I(c), o, 0) ];
+var y;
+return (y = Rt(t.tc, new b(u, d), t.r, 0)) ? [ y ] : Pt;
 } ];
-et.prototype.collisionTable = [ null, function(t, e) {
-return zt;
+tt.prototype.collisionTable = [ null, function(t, e) {
+return Pt;
 }, function(t, e) {
 var i = [], n = e.tPlanes, o = n.length, r = T(t.tn, t.ta), s = e.valueOnAxis(t.tn, r) - t.r, c = e.valueOnAxis(I(t.tn), -r) - t.r;
-if (c > 0 || s > 0) return zt;
-var a = 0, h = Ht(t, n[0].n, n[0].d);
-if (h > 0) return zt;
+if (c > 0 || s > 0) return Pt;
+var a = 0, h = Ft(t, n[0].n, n[0].d);
+if (h > 0) return Pt;
 for (var l = 0; l < o; l++) {
-var d = Ht(t, n[l].n, n[l].d);
-if (d > 0) return zt;
+var d = Ft(t, n[l].n, n[l].d);
+if (d > 0) return Pt;
 if (d > h) {
 h = d;
 a = l;
 }
 }
 var f = I(n[a].n), p = x(t.ta, O(f, t.r)), _ = x(t.tb, O(f, t.r));
-e.containsVert(p.x, p.y) && i.push(new jt(p, f, h, u(t.hashid, 0)));
-e.containsVert(_.x, _.y) && i.push(new jt(_, f, h, u(t.hashid, 1)));
-(s >= h || c >= h) && (s > c ? Ut(i, t, e, s, 1) : Ut(i, t, e, c, -1));
+e.containsVert(p.x, p.y) && i.push(new Lt(p, f, h, u(t.hashid, 0)));
+e.containsVert(_.x, _.y) && i.push(new Lt(_, f, h, u(t.hashid, 1)));
+(s >= h || c >= h) && (s > c ? jt(i, t, e, s, 1) : jt(i, t, e, c, -1));
 if (0 === i.length) {
 var g, v = 2 * a, y = e.tVerts, m = new b(y[v], y[v + 1]);
-if (g = kt(t.ta, m, t.r, 0)) return [ g ];
-if (g = kt(t.tb, m, t.r, 0)) return [ g ];
+if (g = Rt(t.ta, m, t.r, 0)) return [ g ];
+if (g = Rt(t.tb, m, t.r, 0)) return [ g ];
 var C = 2 * o, S = new b(y[(v + 2) % C], y[(v + 3) % C]);
-if (g = kt(t.ta, S, t.r, 0)) return [ g ];
-if (g = kt(t.tb, S, t.r, 0)) return [ g ];
+if (g = Rt(t.ta, S, t.r, 0)) return [ g ];
+if (g = Rt(t.tb, S, t.r, 0)) return [ g ];
 }
 return i;
 } ];
-nt.prototype.collisionTable = [ null, null, function(t, e) {
-var i = Vt(e, t.tPlanes);
-if (-1 == i) return zt;
-var n = Wt, o = Vt(t, e.tPlanes);
-if (-1 == o) return zt;
-var r = Wt;
-return n > r ? Gt(t, e, t.tPlanes[i].n, n) : Gt(t, e, I(e.tPlanes[o].n), r);
+it.prototype.collisionTable = [ null, null, function(t, e) {
+var i = Dt(e, t.tPlanes);
+if (-1 == i) return Pt;
+var n = Bt, o = Dt(t, e.tPlanes);
+if (-1 == o) return Pt;
+var r = Bt;
+return n > r ? Mt(t, e, t.tPlanes[i].n, n) : Mt(t, e, I(e.tPlanes[o].n), r);
 } ];
-var Yt = cp.collideShapes = function(t, e) {
+var zt = cp.collideShapes = function(t, e) {
 c(t.collisionCode <= e.collisionCode, "Collided shapes must be sorted by type");
 return t.collisionTable[e.collisionCode](t, e);
-}, Xt = new Lt(), Jt = cp.Space = function() {
+}, kt = new wt(), Wt = cp.Space = function() {
 this.stamp = 0;
 this.curr_dt = 0;
 this.bodies = [];
 this.rousedBodies = [];
 this.sleepingComponents = [];
-this.staticShapes = new lt(null);
-this.activeShapes = new lt(this.staticShapes);
+this.staticShapes = new ht(null);
+this.activeShapes = new ht(this.staticShapes);
 this.arbiters = [];
 this.contactBuffersHead = null;
 this.cachedArbiters = {};
 this.constraints = [];
 this.locked = 0;
 this.collisionHandlers = {};
-this.defaultHandler = Xt;
+this.defaultHandler = kt;
 this.postStepCallbacks = [];
 this.iterations = 10;
 this.gravity = C;
@@ -25077,26 +25345,26 @@ this.collisionSlop = .1;
 this.collisionBias = Math.pow(.9, 60);
 this.collisionPersistence = 3;
 this.enableContactGraph = !1;
-this.staticBody = new st(Infinity, Infinity);
+this.staticBody = new rt(Infinity, Infinity);
 this.staticBody.nodeIdleTime = Infinity;
 this.collideShapes = this.makeCollideShapes();
 };
-Jt.prototype.getCurrentTimeStep = function() {
+Wt.prototype.getCurrentTimeStep = function() {
 return this.curr_dt;
 };
-Jt.prototype.setIterations = function(t) {
+Wt.prototype.setIterations = function(t) {
 this.iterations = t;
 };
-Jt.prototype.isLocked = function() {
+Wt.prototype.isLocked = function() {
 return this.locked;
 };
-var qt = function(t) {
+var Vt = function(t) {
 c(!t.locked, "This addition/removal cannot be done safely during a call to cpSpaceStep()  or during a query. Put these calls into a post-step callback.");
 };
-Jt.prototype.addCollisionHandler = function(t, e, i, n, o, r) {
-qt(this);
+Wt.prototype.addCollisionHandler = function(t, e, i, n, o, r) {
+Vt(this);
 this.removeCollisionHandler(t, e);
-var s = new Lt();
+var s = new wt();
 s.a = t;
 s.b = e;
 i && (s.begin = i);
@@ -25105,27 +25373,27 @@ o && (s.postSolve = o);
 r && (s.separate = r);
 this.collisionHandlers[u(t, e)] = s;
 };
-Jt.prototype.removeCollisionHandler = function(t, e) {
-qt(this);
+Wt.prototype.removeCollisionHandler = function(t, e) {
+Vt(this);
 delete this.collisionHandlers[u(t, e)];
 };
-Jt.prototype.setDefaultCollisionHandler = function(t, e, i, n) {
-qt(this);
-var o = new Lt();
+Wt.prototype.setDefaultCollisionHandler = function(t, e, i, n) {
+Vt(this);
+var o = new wt();
 t && (o.begin = t);
 e && (o.preSolve = e);
 i && (o.postSolve = i);
 n && (o.separate = n);
 this.defaultHandler = o;
 };
-Jt.prototype.lookupHandler = function(t, e) {
+Wt.prototype.lookupHandler = function(t, e) {
 return this.collisionHandlers[u(t, e)] || this.defaultHandler;
 };
-Jt.prototype.addShape = function(t) {
+Wt.prototype.addShape = function(t) {
 var e = t.body;
 if (e.isStatic()) return this.addStaticShape(t);
 c(!t.space, "This shape is already added to a space and cannot be added to another.");
-qt(this);
+Vt(this);
 e.activate();
 e.addShape(t);
 t.update(e.p, e.rot);
@@ -25133,9 +25401,9 @@ this.activeShapes.insert(t, t.hashid);
 t.space = this;
 return t;
 };
-Jt.prototype.addStaticShape = function(t) {
+Wt.prototype.addStaticShape = function(t) {
 c(!t.space, "This shape is already added to a space and cannot be added to another.");
-qt(this);
+Vt(this);
 var e = t.body;
 e.addShape(t);
 t.update(e.p, e.rot);
@@ -25143,17 +25411,17 @@ this.staticShapes.insert(t, t.hashid);
 t.space = this;
 return t;
 };
-Jt.prototype.addBody = function(t) {
+Wt.prototype.addBody = function(t) {
 c(!t.isStatic(), "Static bodies cannot be added to a space as they are not meant to be simulated.");
 c(!t.space, "This body is already added to a space and cannot be added to another.");
-qt(this);
+Vt(this);
 this.bodies.push(t);
 t.space = this;
 return t;
 };
-Jt.prototype.addConstraint = function(t) {
+Wt.prototype.addConstraint = function(t) {
 c(!t.space, "This shape is already added to a space and cannot be added to another.");
-qt(this);
+Vt(this);
 var e = t.a, i = t.b;
 e.activate();
 i.activate();
@@ -25165,7 +25433,7 @@ i.constraintList = t;
 t.space = this;
 return t;
 };
-Jt.prototype.filterArbiters = function(t, e) {
+Wt.prototype.filterArbiters = function(t, e) {
 for (var i in this.cachedArbiters) {
 var n = this.cachedArbiters[i];
 if (t === n.body_a && (e === n.a || null === e) || t === n.body_b && (e === n.b || null === e)) {
@@ -25176,11 +25444,11 @@ delete this.cachedArbiters[i];
 }
 }
 };
-Jt.prototype.removeShape = function(t) {
+Wt.prototype.removeShape = function(t) {
 var e = t.body;
 if (e.isStatic()) this.removeStaticShape(t); else {
 c(this.containsShape(t), "Cannot remove a shape that was not added to the space. (Removed twice maybe?)");
-qt(this);
+Vt(this);
 e.activate();
 e.removeShape(t);
 this.filterArbiters(e, t);
@@ -25188,9 +25456,9 @@ this.activeShapes.remove(t, t.hashid);
 t.space = null;
 }
 };
-Jt.prototype.removeStaticShape = function(t) {
+Wt.prototype.removeStaticShape = function(t) {
 c(this.containsShape(t), "Cannot remove a static or sleeping shape that was not added to the space. (Removed twice maybe?)");
-qt(this);
+Vt(this);
 var e = t.body;
 e.isStatic() && e.activateStatic(t);
 e.removeShape(t);
@@ -25198,16 +25466,16 @@ this.filterArbiters(e, t);
 this.staticShapes.remove(t, t.hashid);
 t.space = null;
 };
-Jt.prototype.removeBody = function(t) {
+Wt.prototype.removeBody = function(t) {
 c(this.containsBody(t), "Cannot remove a body that was not added to the space. (Removed twice maybe?)");
-qt(this);
+Vt(this);
 t.activate();
 d(this.bodies, t);
 t.space = null;
 };
-Jt.prototype.removeConstraint = function(t) {
+Wt.prototype.removeConstraint = function(t) {
 c(this.containsConstraint(t), "Cannot remove a constraint that was not added to the space. (Removed twice maybe?)");
-qt(this);
+Vt(this);
 t.a.activate();
 t.b.activate();
 d(this.constraints, t);
@@ -25215,41 +25483,42 @@ t.a.removeConstraint(t);
 t.b.removeConstraint(t);
 t.space = null;
 };
-Jt.prototype.containsShape = function(t) {
+Wt.prototype.containsShape = function(t) {
 return t.space === this;
 };
-Jt.prototype.containsBody = function(t) {
+Wt.prototype.containsBody = function(t) {
 return t.space == this;
 };
-Jt.prototype.containsConstraint = function(t) {
+Wt.prototype.containsConstraint = function(t) {
 return t.space == this;
 };
-Jt.prototype.uncacheArbiter = function(t) {
+Wt.prototype.uncacheArbiter = function(t) {
 delete this.cachedArbiters[u(t.a.hashid, t.b.hashid)];
 d(this.arbiters, t);
 };
-Jt.prototype.eachBody = function(t) {
+Wt.prototype.eachBody = function(t) {
 this.lock();
 for (var e = this.bodies, i = 0; i < e.length; i++) t(e[i]);
-for (var n = this.sleepingComponents, i = 0; i < n.length; i++) for (var o = n[i]; o; ) {
+var n = this.sleepingComponents;
+for (i = 0; i < n.length; i++) for (var o = n[i]; o; ) {
 var r = o.nodeNext;
 t(o);
 o = r;
 }
 this.unlock(!0);
 };
-Jt.prototype.eachShape = function(t) {
+Wt.prototype.eachShape = function(t) {
 this.lock();
 this.activeShapes.each(t);
 this.staticShapes.each(t);
 this.unlock(!0);
 };
-Jt.prototype.eachConstraint = function(t) {
+Wt.prototype.eachConstraint = function(t) {
 this.lock();
 for (var e = this.constraints, i = 0; i < e.length; i++) t(e[i]);
 this.unlock(!0);
 };
-Jt.prototype.reindexStatic = function() {
+Wt.prototype.reindexStatic = function() {
 c(!this.locked, "You cannot manually reindex objects while the space is locked. Wait until the current query or step is complete.");
 this.staticShapes.each((function(t) {
 var e = t.body;
@@ -25257,20 +25526,20 @@ t.update(e.p, e.rot);
 }));
 this.staticShapes.reindex();
 };
-Jt.prototype.reindexShape = function(t) {
+Wt.prototype.reindexShape = function(t) {
 c(!this.locked, "You cannot manually reindex objects while the space is locked. Wait until the current query or step is complete.");
 var e = t.body;
 t.update(e.p, e.rot);
 this.activeShapes.reindexObject(t, t.hashid);
 this.staticShapes.reindexObject(t, t.hashid);
 };
-Jt.prototype.reindexShapesForBody = function(t) {
+Wt.prototype.reindexShapesForBody = function(t) {
 for (var e = t.shapeList; e; e = e.next) this.reindexShape(e);
 };
-Jt.prototype.useSpatialHash = function(t, e) {
+Wt.prototype.useSpatialHash = function(t, e) {
 throw new Error("Spatial Hash not implemented.");
 };
-Jt.prototype.activateBody = function(t) {
+Wt.prototype.activateBody = function(t) {
 c(!t.isRogue(), "Internal error: Attempting to activate a rogue body.");
 if (this.locked) -1 === this.rousedBodies.indexOf(t) && this.rousedBodies.push(t); else {
 this.bodies.push(t);
@@ -25289,12 +25558,12 @@ this.arbiters.push(n);
 }
 }
 for (var s = t.constraintList; s; s = s.nodeNext) {
-var a = s.a;
-(t === a || a.isStatic()) && this.constraints.push(s);
+var a;
+(t === (a = s.a) || a.isStatic()) && this.constraints.push(s);
 }
 }
 };
-Jt.prototype.deactivateBody = function(t) {
+Wt.prototype.deactivateBody = function(t) {
 c(!t.isRogue(), "Internal error: Attempting to deactivate a rogue body.");
 d(this.bodies, t);
 for (var e = 0; e < t.shapeList.length; e++) {
@@ -25306,14 +25575,14 @@ for (var n = t.arbiterList; n; n = n.next(t)) {
 (t === (r = n.body_a) || r.isStatic()) && this.uncacheArbiter(n);
 }
 for (var o = t.constraintList; o; o = o.nodeNext) {
-var r = o.a;
-(t === r || r.isStatic()) && d(this.constraints, o);
+var r;
+(t === (r = o.a) || r.isStatic()) && d(this.constraints, o);
 }
 };
-var Qt = function(t) {
+var Gt = function(t) {
 return t ? t.nodeRoot : null;
 };
-st.prototype.activate = function() {
+rt.prototype.activate = function() {
 if (!this.isRogue()) {
 this.nodeIdleTime = 0;
 !(function(t) {
@@ -25329,14 +25598,14 @@ i = n;
 }
 d(e.sleepingComponents, t);
 }
-})(Qt(this));
+})(Gt(this));
 }
 };
-st.prototype.activateStatic = function(t) {
+rt.prototype.activateStatic = function(t) {
 c(this.isStatic(), "Body.activateStatic() called on a non-static body.");
 for (var e = this.arbiterList; e; e = e.next(this)) t && t != e.a && t != e.b || (e.body_a == this ? e.body_b : e.body_a).activate();
 };
-st.prototype.pushArbiter = function(t) {
+rt.prototype.pushArbiter = function(t) {
 a(null === (t.body_a === this ? t.thread_a_next : t.thread_b_next), "Internal Error: Dangling contact graph pointers detected. (A)");
 a(null === (t.body_a === this ? t.thread_a_prev : t.thread_b_prev), "Internal Error: Dangling contact graph pointers detected. (B)");
 var e = this.arbiterList;
@@ -25345,9 +25614,9 @@ t.body_a === this ? t.thread_a_next = e : t.thread_b_next = e;
 e && (e.body_a === this ? e.thread_a_prev = t : e.thread_b_prev = t);
 this.arbiterList = t;
 };
-var Zt = function(t, e) {
+var Ht = function(t, e) {
 if (!e.isRogue()) {
-var i = Qt(e);
+var i = Gt(e);
 if (null == i) {
 !(function(t, e) {
 e.nodeRoot = t;
@@ -25356,25 +25625,29 @@ e.nodeNext = t.nodeNext;
 t.nodeNext = e;
 }
 })(t, e);
-for (var n = e.arbiterList; n; n = n.next(e)) Zt(t, e == n.body_a ? n.body_b : n.body_a);
-for (var o = e.constraintList; o; o = o.next(e)) Zt(t, e == o.a ? o.b : o.a);
+for (var n = e.arbiterList; n; n = n.next(e)) Ht(t, e == n.body_a ? n.body_b : n.body_a);
+for (var o = e.constraintList; o; o = o.next(e)) Ht(t, e == o.a ? o.b : o.a);
 } else a(i === t, "Internal Error: Inconsistency detected in the contact graph.");
 }
-}, Kt = function(t, e) {
+}, Ut = function(t, e) {
 for (var i = t; i; i = i.nodeNext) if (i.nodeIdleTime < e) return !0;
 return !1;
 };
-Jt.prototype.processComponents = function(t) {
+Wt.prototype.processComponents = function(t) {
 for (var e = Infinity !== this.sleepTimeThreshold, i = this.bodies, n = 0; n < i.length; n++) {
-s = i[n];
-a(null === s.nodeNext, "Internal Error: Dangling next pointer detected in contact graph.");
-a(null === s.nodeRoot, "Internal Error: Dangling root pointer detected in contact graph.");
+var o = i[n];
+a(null === o.nodeNext, "Internal Error: Dangling next pointer detected in contact graph.");
+a(null === o.nodeRoot, "Internal Error: Dangling root pointer detected in contact graph.");
 }
-if (e) for (var o = this.idleSpeedThreshold, r = o ? o * o : M(this.gravity) * t * t, n = 0; n < i.length; n++) {
-var s = i[n], c = r ? s.m * r : 0;
-s.nodeIdleTime = s.kineticEnergy() > c ? 0 : s.nodeIdleTime + t;
+if (e) {
+var r = this.idleSpeedThreshold, s = r ? r * r : M(this.gravity) * t * t;
+for (n = 0; n < i.length; n++) {
+o = i[n];
+var c = s ? o.m * s : 0;
+o.nodeIdleTime = o.kineticEnergy() > c ? 0 : o.nodeIdleTime + t;
 }
-for (var h = this.arbiters, n = 0, l = h.length; n < l; n++) {
+}
+for (var h = this.arbiters, l = (n = 0, h.length); n < l; n++) {
 var u = h[n], d = u.body_a, f = u.body_b;
 if (e) {
 (f.isRogue() && !f.isStatic() || d.isSleeping()) && d.activate();
@@ -25384,41 +25657,43 @@ d.pushArbiter(u);
 f.pushArbiter(u);
 }
 if (e) {
-for (var p = this.constraints, n = 0; n < p.length; n++) {
-var _ = p[n], d = _.a;
+var p = this.constraints;
+for (n = 0; n < p.length; n++) {
+var _ = p[n];
+d = _.a;
 (f = _.b).isRogue() && !f.isStatic() && d.activate();
 d.isRogue() && !d.isStatic() && f.activate();
 }
 for (n = 0; n < i.length; ) {
-s = i[n];
-if (null === Qt(s)) {
-Zt(s, s);
-if (!Kt(s, this.sleepTimeThreshold)) {
-this.sleepingComponents.push(s);
-for (var g = s; g; g = g.nodeNext) this.deactivateBody(g);
+o = i[n];
+if (null === Gt(o)) {
+Ht(o, o);
+if (!Ut(o, this.sleepTimeThreshold)) {
+this.sleepingComponents.push(o);
+for (var g = o; g; g = g.nodeNext) this.deactivateBody(g);
 continue;
 }
 }
 n++;
-s.nodeRoot = null;
-s.nodeNext = null;
+o.nodeRoot = null;
+o.nodeNext = null;
 }
 }
 };
-st.prototype.sleep = function() {
+rt.prototype.sleep = function() {
 this.sleepWithGroup(null);
 };
-st.prototype.sleepWithGroup = function(t) {
+rt.prototype.sleepWithGroup = function(t) {
 c(!this.isStatic() && !this.isRogue(), "Rogue and static bodies cannot be put to sleep.");
 var e = this.space;
 c(e, "Cannot put a rogue body to sleep.");
 c(!e.locked, "Bodies cannot be put to sleep during a query or a call to cpSpaceStep(). Put these calls into a post-step callback.");
 c(null === t || t.isSleeping(), "Cannot use a non-sleeping body as a group identifier.");
-if (this.isSleeping()) c(Qt(this) === Qt(t), "The body is already sleeping and it's group cannot be reassigned."); else {
+if (this.isSleeping()) c(Gt(this) === Gt(t), "The body is already sleeping and it's group cannot be reassigned."); else {
 for (var i = 0; i < this.shapeList.length; i++) this.shapeList[i].update(this.p, this.rot);
 e.deactivateBody(this);
 if (t) {
-var n = Qt(t);
+var n = Gt(t);
 this.nodeRoot = n;
 this.nodeNext = n.nodeNext;
 this.nodeIdleTime = 0;
@@ -25432,51 +25707,51 @@ e.sleepingComponents.push(this);
 d(e.bodies, this);
 }
 };
-Jt.prototype.activateShapesTouchingShape = function(t) {
+Wt.prototype.activateShapesTouchingShape = function(t) {
 Infinity !== this.sleepTimeThreshold && this.shapeQuery(t, (function(t, e) {
 t.body.activate();
 }));
 };
-Jt.prototype.pointQuery = function(t, e, i, n) {
+Wt.prototype.pointQuery = function(t, e, i, n) {
 var o = function(o) {
 (!o.group || i !== o.group) && e & o.layers && o.pointQuery(t) && n(o);
-}, r = new Y(t.x, t.y, t.x, t.y);
+}, r = new U(t.x, t.y, t.x, t.y);
 this.lock();
 this.activeShapes.query(r, o);
 this.staticShapes.query(r, o);
 this.unlock(!0);
 };
-Jt.prototype.pointQueryFirst = function(t, e, i) {
+Wt.prototype.pointQueryFirst = function(t, e, i) {
 var n = null;
 this.pointQuery(t, e, i, (function(t) {
 t.sensor || (n = t);
 }));
 return n;
 };
-Jt.prototype.nearestPointQuery = function(t, e, i, n, o) {
+Wt.prototype.nearestPointQuery = function(t, e, i, n, o) {
 var r = function(r) {
 if ((!r.group || n !== r.group) && i & r.layers) {
 var s = r.nearestPointQuery(t);
 s.d < e && o(r, s.d, s.p);
 }
-}, s = X(t, e);
+}, s = Y(t, e);
 this.lock();
 this.activeShapes.query(s, r);
 this.staticShapes.query(s, r);
 this.unlock(!0);
 };
-Jt.prototype.nearestPointQueryNearest = function(t, e, i, n) {
+Wt.prototype.nearestPointQueryNearest = function(t, e, i, n) {
 var o, r = function(r) {
 if ((!r.group || n !== r.group) && i & r.layers && !r.sensor) {
 var s = r.nearestPointQuery(t);
 s.d < e && (!o || s.d < o.d) && (o = s);
 }
-}, s = X(t, e);
+}, s = Y(t, e);
 this.activeShapes.query(s, r);
 this.staticShapes.query(s, r);
 return o;
 };
-Jt.prototype.segmentQuery = function(t, e, i, n, o) {
+Wt.prototype.segmentQuery = function(t, e, i, n, o) {
 var r = function(r) {
 var s;
 (!r.group || n !== r.group) && i & r.layers && (s = r.segmentQuery(t, e)) && o(r, s.t, s.n);
@@ -25487,7 +25762,7 @@ this.staticShapes.segmentQuery(t, e, 1, r);
 this.activeShapes.segmentQuery(t, e, 1, r);
 this.unlock(!0);
 };
-Jt.prototype.segmentQueryFirst = function(t, e, i, n) {
+Wt.prototype.segmentQueryFirst = function(t, e, i, n) {
 var o = null, r = function(r) {
 var s;
 (!r.group || n !== r.group) && i & r.layers && !r.sensor && (s = r.segmentQuery(t, e)) && (null === o || s.t < o.t) && (o = s);
@@ -25497,7 +25772,7 @@ this.staticShapes.segmentQuery(t, e, 1, r);
 this.activeShapes.segmentQuery(t, e, o ? o.t : 1, r);
 return o;
 };
-Jt.prototype.bbQuery = function(t, e, i, n) {
+Wt.prototype.bbQuery = function(t, e, i, n) {
 var o = function(o) {
 (!o.group || i !== o.group) && e & o.layers && (function(t, e, i, n, o) {
 return t.l <= n && e <= t.r && t.b <= o && i <= t.t;
@@ -25508,22 +25783,23 @@ this.activeShapes.query(t, o);
 this.staticShapes.query(t, o);
 this.unlock(!0);
 };
-Jt.prototype.shapeQuery = function(t, e) {
+Wt.prototype.shapeQuery = function(t, e) {
 var i = t.body;
 i && t.update(i.p, i.rot);
-var n = new Y(t.bb_l, t.bb_b, t.bb_r, t.bb_t), o = !1, r = function(i) {
+var n = new U(t.bb_l, t.bb_b, t.bb_r, t.bb_t), o = !1, r = function(i) {
 var n = t;
 if ((!n.group || n.group !== i.group) && n.layers & i.layers && n !== i) {
 var r;
-if (n.collisionCode <= i.collisionCode) r = Yt(n, i); else {
-r = Yt(i, n);
-for (c = 0; c < r.length; c++) r[c].n = I(r[c].n);
+if (n.collisionCode <= i.collisionCode) r = zt(n, i); else {
+r = zt(i, n);
+for (var s = 0; s < r.length; s++) r[s].n = I(r[s].n);
 }
 if (r.length) {
 o = !(n.sensor || i.sensor);
 if (e) {
-for (var s = new Array(r.length), c = 0; c < r.length; c++) s[c] = new Rt(r[c].p, r[c].n, r[c].dist);
-e(i, s);
+var c = new Array(r.length);
+for (s = 0; s < r.length; s++) c[s] = new Ot(r[s].p, r[s].n, r[s].dist);
+e(i, c);
 }
 }
 }
@@ -25534,18 +25810,18 @@ this.staticShapes.query(n, r);
 this.unlock(!0);
 return o;
 };
-Jt.prototype.addPostStepCallback = function(t) {
+Wt.prototype.addPostStepCallback = function(t) {
 a(this.locked, "Adding a post-step callback when the space is not locked is unnecessary. Post-step callbacks will not called until the end of the next call to cpSpaceStep() or the next query.");
 this.postStepCallbacks.push(t);
 };
-Jt.prototype.runPostStepCallbacks = function() {
+Wt.prototype.runPostStepCallbacks = function() {
 for (var t = 0; t < this.postStepCallbacks.length; t++) this.postStepCallbacks[t]();
 this.postStepCallbacks = [];
 };
-Jt.prototype.lock = function() {
+Wt.prototype.lock = function() {
 this.locked++;
 };
-Jt.prototype.unlock = function(t) {
+Wt.prototype.unlock = function(t) {
 this.locked--;
 c(this.locked >= 0, "Internal Error: Space lock underflow.");
 if (0 === this.locked && t) {
@@ -25554,22 +25830,22 @@ e.length = 0;
 this.runPostStepCallbacks();
 }
 };
-Jt.prototype.makeCollideShapes = function() {
+Wt.prototype.makeCollideShapes = function() {
 var t = this;
 return function(e, i) {
 var n = t;
 if (e.bb_l <= i.bb_r && i.bb_l <= e.bb_r && e.bb_b <= i.bb_t && i.bb_b <= e.bb_t && e.body !== i.body && (!e.group || e.group !== i.group) && e.layers & i.layers) {
 var o = n.lookupHandler(e.collision_type, i.collision_type), r = e.sensor || i.sensor;
-if (!r || o !== Xt) {
+if (!r || o !== kt) {
 if (e.collisionCode > i.collisionCode) {
 var s = e;
 e = i;
 i = s;
 }
-var c = Yt(e, i);
+var c = zt(e, i);
 if (0 !== c.length) {
 var a = u(e.hashid, i.hashid), h = n.cachedArbiters[a];
-h || (h = n.cachedArbiters[a] = new Pt(e, i));
+h || (h = n.cachedArbiters[a] = new It(e, i));
 h.update(c, o, e, i);
 "first coll" != h.state || o.begin(h, n) || h.ignore();
 if ("ignore" !== h.state && o.preSolve(h, n) && !r) n.arbiters.push(h); else {
@@ -25582,7 +25858,7 @@ h.stamp = n.stamp;
 }
 };
 };
-Jt.prototype.arbiterSetFilter = function(t) {
+Wt.prototype.arbiterSetFilter = function(t) {
 var e = this.stamp - t.stamp, i = t.body_a, n = t.body_b;
 if ((i.isStatic() || i.isSleeping()) && (n.isStatic() || n.isSleeping())) return !0;
 if (e >= 1 && "cached" != t.state) {
@@ -25595,11 +25871,11 @@ return !1;
 }
 return !0;
 };
-var $t = function(t) {
+var Yt = function(t) {
 var e = t.body;
 t.update(e.p, e.rot);
 };
-Jt.prototype.step = function(t) {
+Wt.prototype.step = function(t) {
 if (0 !== t) {
 c(0 === C.x && 0 === C.y, "vzero is invalid");
 this.stamp++;
@@ -25614,7 +25890,7 @@ h.body_a.isSleeping() || h.body_b.isSleeping() || h.unthread();
 a.length = 0;
 this.lock();
 for (i = 0; i < r.length; i++) r[i].position_func(t);
-this.activeShapes.each($t);
+this.activeShapes.each(Yt);
 this.activeShapes.reindexQuery(this.collideShapes);
 this.unlock(!1);
 this.processComponents(t);
@@ -25641,31 +25917,31 @@ for (i = 0; i < a.length; i++) a[i].handler.postSolve(a[i], this);
 this.unlock(!0);
 }
 };
-var te = function(t, e, i, n) {
+var Xt = function(t, e, i, n) {
 var o = t.vx + -i.y * t.w, r = t.vy + i.x * t.w, s = e.vx + -n.y * e.w, c = e.vy + n.x * e.w;
 return new b(s - o, c - r);
-}, ee = function(t, e, i, n, o) {
+}, Jt = function(t, e, i, n, o) {
 var r = t.vx + -i.y * t.w, s = t.vy + i.x * t.w, c = e.vx + -n.y * e.w, a = e.vy + n.x * e.w;
 return S(c - r, a - s, o.x, o.y);
-}, ie = function(t, e, i, n) {
+}, qt = function(t, e, i, n) {
 t.vx += e * t.m_inv;
 t.vy += i * t.m_inv;
 t.w += t.i_inv * (n.x * i - n.y * e);
-}, ne = function(t, e, i, n, o, r) {
-ie(t, -o, -r, i);
-ie(e, o, r, n);
-}, oe = function(t, e, i, n) {
+}, Qt = function(t, e, i, n, o, r) {
+qt(t, -o, -r, i);
+qt(e, o, r, n);
+}, Zt = function(t, e, i, n) {
 t.v_biasx += e * t.m_inv;
 t.v_biasy += i * t.m_inv;
 t.w_bias += t.i_inv * L(n.x, n.y, e, i);
-}, re = function(t, e, i) {
+}, Kt = function(t, e, i) {
 var n = N(e, i);
 return t.m_inv + t.i_inv * n * n;
-}, se = function(t, e, i, n, o) {
-var r = re(t, i, o) + re(e, n, o);
+}, $t = function(t, e, i, n, o) {
+var r = Kt(t, i, o) + Kt(e, n, o);
 a(0 !== r, "Unsolvable collision or constraint.");
 return r;
-}, ce = function(t, e, i, n, o, r) {
+}, te = function(t, e, i, n, o, r) {
 var s, c, h, l, u = t.m_inv + e.m_inv;
 s = u;
 c = 0;
@@ -25683,11 +25959,11 @@ o.x = l * C;
 o.y = -c * C;
 r.x = -h * C;
 r.y = s * C;
-}, ae = function(t, e, i) {
+}, ee = function(t, e, i) {
 return new b(T(t, e), T(t, i));
-}, he = function(t, e) {
+}, ie = function(t, e) {
 return 1 - Math.pow(t, e);
-}, le = cp.Constraint = function(t, e) {
+}, ne = cp.Constraint = function(t, e) {
 this.a = t;
 this.b = e;
 this.space = null;
@@ -25697,23 +25973,23 @@ this.maxForce = Infinity;
 this.errorBias = Math.pow(.9, 60);
 this.maxBias = Infinity;
 };
-le.prototype.activateBodies = function() {
+ne.prototype.activateBodies = function() {
 this.a && this.a.activate();
 this.b && this.b.activate();
 };
-le.prototype.preStep = function(t) {};
-le.prototype.applyCachedImpulse = function(t) {};
-le.prototype.applyImpulse = function() {};
-le.prototype.getImpulse = function() {
+ne.prototype.preStep = function(t) {};
+ne.prototype.applyCachedImpulse = function(t) {};
+ne.prototype.applyImpulse = function() {};
+ne.prototype.getImpulse = function() {
 return 0;
 };
-le.prototype.preSolve = function(t) {};
-le.prototype.postSolve = function(t) {};
-le.prototype.next = function(t) {
+ne.prototype.preSolve = function(t) {};
+ne.prototype.postSolve = function(t) {};
+ne.prototype.next = function(t) {
 return this.a === t ? this.next_a : this.next_b;
 };
-var ue = cp.PinJoint = function(t, e, i, n) {
-le.call(this, t, e);
+var oe = cp.PinJoint = function(t, e, i, n) {
+ne.call(this, t, e);
 this.anchr1 = i;
 this.anchr2 = n;
 var o = t ? x(t.p, B(i, t.rot)) : i, r = e ? x(e.p, B(n, e.rot)) : n;
@@ -25725,33 +26001,33 @@ this.nMass = 0;
 this.jnAcc = this.jnMax = 0;
 this.bias = 0;
 };
-ue.prototype = Object.create(le.prototype);
-ue.prototype.preStep = function(t) {
+oe.prototype = Object.create(ne.prototype);
+oe.prototype.preStep = function(t) {
 var e = this.a, i = this.b;
 this.r1 = B(this.anchr1, e.rot);
 this.r2 = B(this.anchr2, i.rot);
 var n = w(x(i.p, this.r2), x(e.p, this.r1)), o = E(n);
 this.n = O(n, 1 / (o || Infinity));
-this.nMass = 1 / se(e, i, this.r1, this.r2, this.n);
+this.nMass = 1 / $t(e, i, this.r1, this.r2, this.n);
 var r = this.maxBias;
-this.bias = y(-he(this.errorBias, t) * (o - this.dist) / t, -r, r);
+this.bias = y(-ie(this.errorBias, t) * (o - this.dist) / t, -r, r);
 this.jnMax = this.maxForce * t;
 };
-ue.prototype.applyCachedImpulse = function(t) {
+oe.prototype.applyCachedImpulse = function(t) {
 var e = O(this.n, this.jnAcc * t);
-ne(this.a, this.b, this.r1, this.r2, e.x, e.y);
+Qt(this.a, this.b, this.r1, this.r2, e.x, e.y);
 };
-ue.prototype.applyImpulse = function() {
-var t = this.a, e = this.b, i = this.n, n = ee(t, e, this.r1, this.r2, i), o = (this.bias - n) * this.nMass, r = this.jnAcc;
+oe.prototype.applyImpulse = function() {
+var t = this.a, e = this.b, i = this.n, n = Jt(t, e, this.r1, this.r2, i), o = (this.bias - n) * this.nMass, r = this.jnAcc;
 this.jnAcc = y(r + o, -this.jnMax, this.jnMax);
 o = this.jnAcc - r;
-ne(t, e, this.r1, this.r2, i.x * o, i.y * o);
+Qt(t, e, this.r1, this.r2, i.x * o, i.y * o);
 };
-ue.prototype.getImpulse = function() {
+oe.prototype.getImpulse = function() {
 return Math.abs(this.jnAcc);
 };
-var de = cp.SlideJoint = function(t, e, i, n, o, r) {
-le.call(this, t, e);
+var re = cp.SlideJoint = function(t, e, i, n, o, r) {
+ne.call(this, t, e);
 this.anchr1 = i;
 this.anchr2 = n;
 this.min = o;
@@ -25761,8 +26037,8 @@ this.nMass = 0;
 this.jnAcc = this.jnMax = 0;
 this.bias = 0;
 };
-de.prototype = Object.create(le.prototype);
-de.prototype.preStep = function(t) {
+re.prototype = Object.create(ne.prototype);
+re.prototype.preStep = function(t) {
 var e = this.a, i = this.b;
 this.r1 = B(this.anchr1, e.rot);
 this.r2 = B(this.anchr2, i.rot);
@@ -25777,28 +26053,28 @@ this.n = I(k(n));
 this.n = C;
 this.jnAcc = 0;
 }
-this.nMass = 1 / se(e, i, this.r1, this.r2, this.n);
+this.nMass = 1 / $t(e, i, this.r1, this.r2, this.n);
 var s = this.maxBias;
-this.bias = y(-he(this.errorBias, t) * r / t, -s, s);
+this.bias = y(-ie(this.errorBias, t) * r / t, -s, s);
 this.jnMax = this.maxForce * t;
 };
-de.prototype.applyCachedImpulse = function(t) {
+re.prototype.applyCachedImpulse = function(t) {
 var e = this.jnAcc * t;
-ne(this.a, this.b, this.r1, this.r2, this.n.x * e, this.n.y * e);
+Qt(this.a, this.b, this.r1, this.r2, this.n.x * e, this.n.y * e);
 };
-de.prototype.applyImpulse = function() {
+re.prototype.applyImpulse = function() {
 if (0 !== this.n.x || 0 !== this.n.y) {
-var t = this.a, e = this.b, i = this.n, n = this.r1, o = this.r2, r = te(t, e, n, o), s = T(r, i), c = (this.bias - s) * this.nMass, a = this.jnAcc;
+var t = this.a, e = this.b, i = this.n, n = this.r1, o = this.r2, r = Xt(t, e, n, o), s = T(r, i), c = (this.bias - s) * this.nMass, a = this.jnAcc;
 this.jnAcc = y(a + c, -this.jnMax, 0);
 c = this.jnAcc - a;
-ne(t, e, this.r1, this.r2, i.x * c, i.y * c);
+Qt(t, e, this.r1, this.r2, i.x * c, i.y * c);
 }
 };
-de.prototype.getImpulse = function() {
+re.prototype.getImpulse = function() {
 return Math.abs(this.jnAcc);
 };
-var fe = cp.PivotJoint = function(i, n, o, r) {
-le.call(this, i, n);
+var se = cp.PivotJoint = function(i, n, o, r) {
+ne.call(this, i, n);
 if ("undefined" === ("object" == (e = typeof r) ? t(r) : e)) {
 var s = o;
 o = i ? i.world2Local(s) : s;
@@ -25813,29 +26089,29 @@ this.jAcc = C;
 this.jMaxLen = 0;
 this.bias = C;
 };
-fe.prototype = Object.create(le.prototype);
-fe.prototype.preStep = function(t) {
+se.prototype = Object.create(ne.prototype);
+se.prototype.preStep = function(t) {
 var e = this.a, i = this.b;
 this.r1 = B(this.anchr1, e.rot);
 this.r2 = B(this.anchr2, i.rot);
-ce(e, i, this.r1, this.r2, this.k1, this.k2);
+te(e, i, this.r1, this.r2, this.k1, this.k2);
 this.jMaxLen = this.maxForce * t;
 var n = w(x(i.p, this.r2), x(e.p, this.r1));
-this.bias = W(O(n, -he(this.errorBias, t) / t), this.maxBias);
+this.bias = W(O(n, -ie(this.errorBias, t) / t), this.maxBias);
 };
-fe.prototype.applyCachedImpulse = function(t) {
-ne(this.a, this.b, this.r1, this.r2, this.jAcc.x * t, this.jAcc.y * t);
+se.prototype.applyCachedImpulse = function(t) {
+Qt(this.a, this.b, this.r1, this.r2, this.jAcc.x * t, this.jAcc.y * t);
 };
-fe.prototype.applyImpulse = function() {
-var t = this.a, e = this.b, i = this.r1, n = this.r2, o = te(t, e, i, n), r = ae(w(this.bias, o), this.k1, this.k2), s = this.jAcc;
+se.prototype.applyImpulse = function() {
+var t = this.a, e = this.b, i = this.r1, n = this.r2, o = Xt(t, e, i, n), r = ee(w(this.bias, o), this.k1, this.k2), s = this.jAcc;
 this.jAcc = W(x(this.jAcc, r), this.jMaxLen);
-ne(t, e, this.r1, this.r2, this.jAcc.x - s.x, this.jAcc.y - s.y);
+Qt(t, e, this.r1, this.r2, this.jAcc.x - s.x, this.jAcc.y - s.y);
 };
-fe.prototype.getImpulse = function() {
+se.prototype.getImpulse = function() {
 return E(this.jAcc);
 };
-var pe = cp.GrooveJoint = function(t, e, i, n, o) {
-le.call(this, t, e);
+var ce = cp.GrooveJoint = function(t, e, i, n, o) {
+ne.call(this, t, e);
 this.grv_a = i;
 this.grv_b = n;
 this.grv_n = P(z(w(n, i)));
@@ -25849,8 +26125,8 @@ this.jAcc = C;
 this.jMaxLen = 0;
 this.bias = null;
 };
-pe.prototype = Object.create(le.prototype);
-pe.prototype.preStep = function(t) {
+ce.prototype = Object.create(ne.prototype);
+ce.prototype.preStep = function(t) {
 var e = this.a, i = this.b, n = e.local2World(this.grv_a), o = e.local2World(this.grv_b), r = B(this.grv_n, e.rot), s = T(n, r);
 this.grv_tn = r;
 this.r2 = B(this.anchr2, i.rot);
@@ -25865,90 +26141,90 @@ this.r1 = w(o, e.p);
 this.clamp = 0;
 this.r1 = w(x(O(P(r), -c), O(r, s)), e.p);
 }
-ce(e, i, this.r1, this.r2, this.k1, this.k2);
+te(e, i, this.r1, this.r2, this.k1, this.k2);
 this.jMaxLen = this.maxForce * t;
 var a = w(x(i.p, this.r2), x(e.p, this.r1));
-this.bias = W(O(a, -he(this.errorBias, t) / t), this.maxBias);
+this.bias = W(O(a, -ie(this.errorBias, t) / t), this.maxBias);
 };
-pe.prototype.applyCachedImpulse = function(t) {
-ne(this.a, this.b, this.r1, this.r2, this.jAcc.x * t, this.jAcc.y * t);
+ce.prototype.applyCachedImpulse = function(t) {
+Qt(this.a, this.b, this.r1, this.r2, this.jAcc.x * t, this.jAcc.y * t);
 };
-pe.prototype.grooveConstrain = function(t) {
+ce.prototype.grooveConstrain = function(t) {
 var e = this.grv_tn, i = this.clamp * N(t, e) > 0 ? t : R(t, e);
 return W(i, this.jMaxLen);
 };
-pe.prototype.applyImpulse = function() {
-var t = this.a, e = this.b, i = this.r1, n = this.r2, o = te(t, e, i, n), r = ae(w(this.bias, o), this.k1, this.k2), s = this.jAcc;
+ce.prototype.applyImpulse = function() {
+var t = this.a, e = this.b, i = this.r1, n = this.r2, o = Xt(t, e, i, n), r = ee(w(this.bias, o), this.k1, this.k2), s = this.jAcc;
 this.jAcc = this.grooveConstrain(x(s, r));
-ne(t, e, this.r1, this.r2, this.jAcc.x - s.x, this.jAcc.y - s.y);
+Qt(t, e, this.r1, this.r2, this.jAcc.x - s.x, this.jAcc.y - s.y);
 };
-pe.prototype.getImpulse = function() {
+ce.prototype.getImpulse = function() {
 return E(this.jAcc);
 };
-pe.prototype.setGrooveA = function(t) {
+ce.prototype.setGrooveA = function(t) {
 this.grv_a = t;
 this.grv_n = P(z(w(this.grv_b, t)));
 this.activateBodies();
 };
-pe.prototype.setGrooveB = function(t) {
+ce.prototype.setGrooveB = function(t) {
 this.grv_b = t;
 this.grv_n = P(z(w(t, this.grv_a)));
 this.activateBodies();
 };
-var _e = function(t, e) {
+var ae = function(t, e) {
 return (t.restLength - e) * t.stiffness;
-}, ge = cp.DampedSpring = function(t, e, i, n, o, r, s) {
-le.call(this, t, e);
+}, he = cp.DampedSpring = function(t, e, i, n, o, r, s) {
+ne.call(this, t, e);
 this.anchr1 = i;
 this.anchr2 = n;
 this.restLength = o;
 this.stiffness = r;
 this.damping = s;
-this.springForceFunc = _e;
+this.springForceFunc = ae;
 this.target_vrn = this.v_coef = 0;
 this.r1 = this.r2 = null;
 this.nMass = 0;
 this.n = null;
 };
-ge.prototype = Object.create(le.prototype);
-ge.prototype.preStep = function(t) {
+he.prototype = Object.create(ne.prototype);
+he.prototype.preStep = function(t) {
 var e = this.a, i = this.b;
 this.r1 = B(this.anchr1, e.rot);
 this.r2 = B(this.anchr2, i.rot);
 var n = w(x(i.p, this.r2), x(e.p, this.r1)), o = E(n);
 this.n = O(n, 1 / (o || Infinity));
-var r = se(e, i, this.r1, this.r2, this.n);
+var r = $t(e, i, this.r1, this.r2, this.n);
 a(0 !== r, "Unsolvable this.");
 this.nMass = 1 / r;
 this.target_vrn = 0;
 this.v_coef = 1 - Math.exp(-this.damping * t * r);
 var s = this.springForceFunc(this, o);
-ne(e, i, this.r1, this.r2, this.n.x * s * t, this.n.y * s * t);
+Qt(e, i, this.r1, this.r2, this.n.x * s * t, this.n.y * s * t);
 };
-ge.prototype.applyCachedImpulse = function(t) {};
-ge.prototype.applyImpulse = function() {
-var t = this.a, e = this.b, i = this.n, n = this.r1, o = this.r2, r = ee(t, e, n, o, i), s = (this.target_vrn - r) * this.v_coef;
+he.prototype.applyCachedImpulse = function(t) {};
+he.prototype.applyImpulse = function() {
+var t = this.a, e = this.b, i = this.n, n = this.r1, o = this.r2, r = Jt(t, e, n, o, i), s = (this.target_vrn - r) * this.v_coef;
 this.target_vrn = r + s;
 s *= this.nMass;
-ne(t, e, this.r1, this.r2, this.n.x * s, this.n.y * s);
+Qt(t, e, this.r1, this.r2, this.n.x * s, this.n.y * s);
 };
-ge.prototype.getImpulse = function() {
+he.prototype.getImpulse = function() {
 return 0;
 };
-var ve = function(t, e) {
+var le = function(t, e) {
 return (e - t.restAngle) * t.stiffness;
-}, ye = cp.DampedRotarySpring = function(t, e, i, n, o) {
-le.call(this, t, e);
+}, ue = cp.DampedRotarySpring = function(t, e, i, n, o) {
+ne.call(this, t, e);
 this.restAngle = i;
 this.stiffness = n;
 this.damping = o;
-this.springTorqueFunc = ve;
+this.springTorqueFunc = le;
 this.target_wrn = 0;
 this.w_coef = 0;
 this.iSum = 0;
 };
-ye.prototype = Object.create(le.prototype);
-ye.prototype.preStep = function(t) {
+ue.prototype = Object.create(ne.prototype);
+ue.prototype.preStep = function(t) {
 var e = this.a, i = this.b, n = e.i_inv + i.i_inv;
 a(0 !== n, "Unsolvable spring.");
 this.iSum = 1 / n;
@@ -25958,36 +26234,36 @@ var o = this.springTorqueFunc(this, e.a - i.a) * t;
 e.w -= o * e.i_inv;
 i.w += o * i.i_inv;
 };
-ye.prototype.applyImpulse = function() {
+ue.prototype.applyImpulse = function() {
 var t = this.a, e = this.b, i = t.w - e.w, n = (this.target_wrn - i) * this.w_coef;
 this.target_wrn = i + n;
 var o = n * this.iSum;
 t.w += o * t.i_inv;
 e.w -= o * e.i_inv;
 };
-var me = cp.RotaryLimitJoint = function(t, e, i, n) {
-le.call(this, t, e);
+var de = cp.RotaryLimitJoint = function(t, e, i, n) {
+ne.call(this, t, e);
 this.min = i;
 this.max = n;
 this.jAcc = 0;
 this.iSum = this.bias = this.jMax = 0;
 };
-me.prototype = Object.create(le.prototype);
-me.prototype.preStep = function(t) {
+de.prototype = Object.create(ne.prototype);
+de.prototype.preStep = function(t) {
 var e = this.a, i = this.b, n = i.a - e.a, o = 0;
 n > this.max ? o = this.max - n : n < this.min && (o = this.min - n);
 this.iSum = 1 / (1 / e.i + 1 / i.i);
 var r = this.maxBias;
-this.bias = y(-he(this.errorBias, t) * o / t, -r, r);
+this.bias = y(-ie(this.errorBias, t) * o / t, -r, r);
 this.jMax = this.maxForce * t;
 this.bias || (this.jAcc = 0);
 };
-me.prototype.applyCachedImpulse = function(t) {
+de.prototype.applyCachedImpulse = function(t) {
 var e = this.a, i = this.b, n = this.jAcc * t;
 e.w -= n * e.i_inv;
 i.w += n * i.i_inv;
 };
-me.prototype.applyImpulse = function() {
+de.prototype.applyImpulse = function() {
 if (this.bias) {
 var t = this.a, e = this.b, i = e.w - t.w, n = -(this.bias + i) * this.iSum, o = this.jAcc;
 this.bias < 0 ? this.jAcc = y(o + n, 0, this.jMax) : this.jAcc = y(o + n, -this.jMax, 0);
@@ -25996,33 +26272,33 @@ t.w -= n * t.i_inv;
 e.w += n * e.i_inv;
 }
 };
-me.prototype.getImpulse = function() {
+de.prototype.getImpulse = function() {
 return Math.abs(joint.jAcc);
 };
-var be = cp.RatchetJoint = function(t, e, i, n) {
-le.call(this, t, e);
+var fe = cp.RatchetJoint = function(t, e, i, n) {
+ne.call(this, t, e);
 this.angle = 0;
 this.phase = i;
 this.ratchet = n;
 this.angle = (e ? e.a : 0) - (t ? t.a : 0);
 this.iSum = this.bias = this.jAcc = this.jMax = 0;
 };
-be.prototype = Object.create(le.prototype);
-be.prototype.preStep = function(t) {
+fe.prototype = Object.create(ne.prototype);
+fe.prototype.preStep = function(t) {
 var e = this.a, i = this.b, n = this.angle, o = this.phase, r = this.ratchet, s = i.a - e.a, c = n - s, a = 0;
 c * r > 0 ? a = c : this.angle = Math.floor((s - o) / r) * r + o;
 this.iSum = 1 / (e.i_inv + i.i_inv);
 var h = this.maxBias;
-this.bias = y(-he(this.errorBias, t) * a / t, -h, h);
+this.bias = y(-ie(this.errorBias, t) * a / t, -h, h);
 this.jMax = this.maxForce * t;
 this.bias || (this.jAcc = 0);
 };
-be.prototype.applyCachedImpulse = function(t) {
+fe.prototype.applyCachedImpulse = function(t) {
 var e = this.a, i = this.b, n = this.jAcc * t;
 e.w -= n * e.i_inv;
 i.w += n * i.i_inv;
 };
-be.prototype.applyImpulse = function() {
+fe.prototype.applyImpulse = function() {
 if (this.bias) {
 var t = this.a, e = this.b, i = e.w - t.w, n = this.ratchet, o = -(this.bias + i) * this.iSum, r = this.jAcc;
 this.jAcc = y((r + o) * n, 0, this.jMax * Math.abs(n)) / n;
@@ -26031,69 +26307,69 @@ t.w -= o * t.i_inv;
 e.w += o * e.i_inv;
 }
 };
-be.prototype.getImpulse = function(t) {
+fe.prototype.getImpulse = function(t) {
 return Math.abs(t.jAcc);
 };
-var Ce = cp.GearJoint = function(t, e, i, n) {
-le.call(this, t, e);
+var pe = cp.GearJoint = function(t, e, i, n) {
+ne.call(this, t, e);
 this.phase = i;
 this.ratio = n;
 this.ratio_inv = 1 / n;
 this.jAcc = 0;
 this.iSum = this.bias = this.jMax = 0;
 };
-Ce.prototype = Object.create(le.prototype);
-Ce.prototype.preStep = function(t) {
+pe.prototype = Object.create(ne.prototype);
+pe.prototype.preStep = function(t) {
 var e = this.a, i = this.b;
 this.iSum = 1 / (e.i_inv * this.ratio_inv + this.ratio * i.i_inv);
 var n = this.maxBias;
-this.bias = y(-he(this.errorBias, t) * (i.a * this.ratio - e.a - this.phase) / t, -n, n);
+this.bias = y(-ie(this.errorBias, t) * (i.a * this.ratio - e.a - this.phase) / t, -n, n);
 this.jMax = this.maxForce * t;
 };
-Ce.prototype.applyCachedImpulse = function(t) {
+pe.prototype.applyCachedImpulse = function(t) {
 var e = this.a, i = this.b, n = this.jAcc * t;
 e.w -= n * e.i_inv * this.ratio_inv;
 i.w += n * i.i_inv;
 };
-Ce.prototype.applyImpulse = function() {
+pe.prototype.applyImpulse = function() {
 var t = this.a, e = this.b, i = e.w * this.ratio - t.w, n = (this.bias - i) * this.iSum, o = this.jAcc;
 this.jAcc = y(o + n, -this.jMax, this.jMax);
 n = this.jAcc - o;
 t.w -= n * t.i_inv * this.ratio_inv;
 e.w += n * e.i_inv;
 };
-Ce.prototype.getImpulse = function() {
+pe.prototype.getImpulse = function() {
 return Math.abs(this.jAcc);
 };
-Ce.prototype.setRatio = function(t) {
+pe.prototype.setRatio = function(t) {
 this.ratio = t;
 this.ratio_inv = 1 / t;
 this.activateBodies();
 };
-var Te = cp.SimpleMotor = function(t, e, i) {
-le.call(this, t, e);
+var _e = cp.SimpleMotor = function(t, e, i) {
+ne.call(this, t, e);
 this.rate = i;
 this.jAcc = 0;
 this.iSum = this.jMax = 0;
 };
-Te.prototype = Object.create(le.prototype);
-Te.prototype.preStep = function(t) {
+_e.prototype = Object.create(ne.prototype);
+_e.prototype.preStep = function(t) {
 this.iSum = 1 / (this.a.i_inv + this.b.i_inv);
 this.jMax = this.maxForce * t;
 };
-Te.prototype.applyCachedImpulse = function(t) {
+_e.prototype.applyCachedImpulse = function(t) {
 var e = this.a, i = this.b, n = this.jAcc * t;
 e.w -= n * e.i_inv;
 i.w += n * i.i_inv;
 };
-Te.prototype.applyImpulse = function() {
+_e.prototype.applyImpulse = function() {
 var t = this.a, e = this.b, i = -(e.w - t.w + this.rate) * this.iSum, n = this.jAcc;
 this.jAcc = y(n + i, -this.jMax, this.jMax);
 i = this.jAcc - n;
 t.w -= i * t.i_inv;
 e.w += i * e.i_inv;
 };
-Te.prototype.getImpulse = function() {
+_e.prototype.getImpulse = function() {
 return Math.abs(this.jAcc);
 };
 }), {} ],
@@ -26114,6 +26390,7 @@ r("CC_DEBUG", !0);
 r("CC_JSB", s("jsb"));
 r("CC_BUILD", !1);
 cc.ClassManager || (cc.ClassManager = window.ClassManager);
+0;
 i("../polyfill/misc");
 i("../polyfill/string");
 i("../polyfill/typescript");
@@ -26125,6 +26402,7 @@ i("../cocos2d/core/event");
 i("../cocos2d/core/event-manager/CCEvent");
 i("../cocos2d/core/event-manager/CCSystemEvent");
 i("../CCDebugger");
+0;
 var c = i("../cocos2d/core/platform/CCMacro");
 void 0 !== window.__ENABLE_GC_FOR_NATIVE_OBJECTS__ && (c.ENABLE_GC_FOR_NATIVE_OBJECTS = window.__ENABLE_GC_FOR_NATIVE_OBJECTS__);
 i("./jsb-game");
@@ -26280,23 +26558,22 @@ this._boundarySet = t;
 },
 initWithTarget: function(t, e) {
 if (!t) throw new Error("cc.Follow.initWithAction(): followedNode must be non nil");
-var i = this;
 e = e || cc.rect(0, 0, 0, 0);
-i._followedNode = t;
-i._worldRect = e;
-i._boundarySet = !cc._rectEqualToZero(e);
-i._boundaryFullyCovered = !1;
-var n = cc.director.getWinSize();
-i._fullScreenSize = cc.p(n.width, n.height);
-i._halfScreenSize = cc.pMult(i._fullScreenSize, .5);
-if (i._boundarySet) {
-i.leftBoundary = -(e.x + e.width - i._fullScreenSize.x);
-i.rightBoundary = -e.x;
-i.topBoundary = -e.y;
-i.bottomBoundary = -(e.y + e.height - i._fullScreenSize.y);
-i.rightBoundary < i.leftBoundary && (i.rightBoundary = i.leftBoundary = (i.leftBoundary + i.rightBoundary) / 2);
-i.topBoundary < i.bottomBoundary && (i.topBoundary = i.bottomBoundary = (i.topBoundary + i.bottomBoundary) / 2);
-i.topBoundary === i.bottomBoundary && i.leftBoundary === i.rightBoundary && (i._boundaryFullyCovered = !0);
+this._followedNode = t;
+this._worldRect = e;
+this._boundarySet = !cc._rectEqualToZero(e);
+this._boundaryFullyCovered = !1;
+var i = cc.director.getWinSize();
+this._fullScreenSize = cc.p(i.width, i.height);
+this._halfScreenSize = cc.pMult(this._fullScreenSize, .5);
+if (this._boundarySet) {
+this.leftBoundary = -(e.x + e.width - this._fullScreenSize.x);
+this.rightBoundary = -e.x;
+this.topBoundary = -e.y;
+this.bottomBoundary = -(e.y + e.height - this._fullScreenSize.y);
+this.rightBoundary < this.leftBoundary && (this.rightBoundary = this.leftBoundary = (this.leftBoundary + this.rightBoundary) / 2);
+this.topBoundary < this.bottomBoundary && (this.topBoundary = this.bottomBoundary = (this.topBoundary + this.bottomBoundary) / 2);
+this.topBoundary === this.bottomBoundary && this.leftBoundary === this.rightBoundary && (this._boundaryFullyCovered = !0);
 }
 return !0;
 },
@@ -27076,6 +27353,7 @@ cc.error("preloadScene: " + n);
 }
 },
 _loadSceneByUuid: function(t, e, i, n) {
+0;
 console.time("LoadScene " + t);
 cc.AssetLibrary.loadAsset(t, (function(n, o) {
 console.timeEnd("LoadScene " + t);
@@ -28391,7 +28669,10 @@ return t;
 window.__rest = function(i, n) {
 var o = {};
 for (var r in i) Object.prototype.hasOwnProperty.call(i, r) && n.indexOf(r) < 0 && (o[r] = i[r]);
-if (null != i && "function" === ("object" == (e = typeof Object.getOwnPropertySymbols) ? t(Object.getOwnPropertySymbols) : e)) for (var s = 0, r = Object.getOwnPropertySymbols(i); s < r.length; s++) n.indexOf(r[s]) < 0 && (o[r[s]] = i[r[s]]);
+if (null != i && "function" === ("object" == (e = typeof Object.getOwnPropertySymbols) ? t(Object.getOwnPropertySymbols) : e)) {
+var s = 0;
+for (r = Object.getOwnPropertySymbols(i); s < r.length; s++) n.indexOf(r[s]) < 0 && (o[r[s]] = i[r[s]]);
+}
 return o;
 };
 window.__decorate = function(i, n, o, r) {

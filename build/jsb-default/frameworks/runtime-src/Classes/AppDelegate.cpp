@@ -7,7 +7,6 @@
 #include "cocos/scripting/js-bindings/manual/jsb_global.h"
 #include "cocos/scripting/js-bindings/jswrapper/SeApi.h"
 
-#undef PACKAGE_AS
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS) && PACKAGE_AS
 #include "SDKManager.h"
 #include "jsb_anysdk_protocols_auto.hpp"
@@ -16,26 +15,6 @@ using namespace anysdk::framework;
 #endif
 
 USING_NS_CC;
-#ifdef SDKBOX_ENABLED
-#include "PluginShareJS.hpp"
-#include "PluginShareJSHelper.h"
-#endif
-#ifdef SDKBOX_ENABLED
-#include "PluginReviewJS.hpp"
-#include "PluginReviewJSHelper.h"
-#endif
-#ifdef SDKBOX_ENABLED
-#include "PluginAdMobJS.hpp"
-#include "PluginAdMobJSHelper.h"
-#endif
-#ifdef SDKBOX_ENABLED
-#include "PluginUnityAdsJS.hpp"
-#include "PluginUnityAdsJSHelper.h"
-#endif
-#ifdef SDKBOX_ENABLED
-#include "PluginFacebookJS.hpp"
-#include "PluginFacebookJSHelper.h"
-#endif
 
 AppDelegate::AppDelegate()
 {
@@ -52,7 +31,7 @@ AppDelegate::~AppDelegate()
 void AppDelegate::initGLContextAttrs()
 {
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
-
+    
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
@@ -72,7 +51,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 #endif
         director->setOpenGLView(glview);
     }
-
+    
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
@@ -95,26 +74,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     });
 
     jsb_register_all_modules();
-#ifdef SDKBOX_ENABLED
-    se->addRegisterCallback(register_all_PluginShareJS);
-    se->addRegisterCallback(register_all_PluginShareJS_helper);
-#endif
-#ifdef SDKBOX_ENABLED
-    se->addRegisterCallback(register_all_PluginReviewJS);
-    se->addRegisterCallback(register_all_PluginReviewJS_helper);
-#endif
-#ifdef SDKBOX_ENABLED
-    se->addRegisterCallback(register_all_PluginAdMobJS);
-    se->addRegisterCallback(register_all_PluginAdMobJS_helper);
-#endif
-#ifdef SDKBOX_ENABLED
-    se->addRegisterCallback(register_all_PluginUnityAdsJS);
-    se->addRegisterCallback(register_all_PluginUnityAdsJS_helper);
-#endif
-#ifdef SDKBOX_ENABLED
-    se->addRegisterCallback(register_all_PluginFacebookJS);
-    se->addRegisterCallback(register_all_PluginFacebookJS_helper);
-#endif
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID || CC_TARGET_PLATFORM == CC_PLATFORM_IOS) && PACKAGE_AS
     se->addRegisterCallback(register_all_anysdk_framework);

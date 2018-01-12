@@ -1,25 +1,25 @@
-require = function o(e, i, n) {
-function t(c, l) {
+require = function o(e, i, t) {
+function n(c, r) {
 if (!i[c]) {
 if (!e[c]) {
-var d = "function" == typeof require && require;
-if (!l && d) return d(c, !0);
+var l = "function" == typeof require && require;
+if (!r && l) return l(c, !0);
 if (s) return s(c, !0);
-var r = new Error("Cannot find module '" + c + "'");
-throw r.code = "MODULE_NOT_FOUND", r;
+var d = new Error("Cannot find module '" + c + "'");
+throw d.code = "MODULE_NOT_FOUND", d;
 }
 var a = i[c] = {
 exports: {}
 };
 e[c][0].call(a.exports, function(o) {
 var i = e[c][1][o];
-return t(i || o);
-}, a, a.exports, o, e, i, n);
+return n(i || o);
+}, a, a.exports, o, e, i, t);
 }
 return i[c].exports;
 }
-for (var s = "function" == typeof require && require, c = 0; c < n.length; c++) t(n[c]);
-return t;
+for (var s = "function" == typeof require && require, c = 0; c < t.length; c++) n(t[c]);
+return n;
 }({
 HelloWorld: [ function(o, e, i) {
 "use strict";
@@ -188,8 +188,8 @@ e.setListener({
 unityAdsDidClick: function(e) {
 o.showLog("unityAdsDidClick " + e);
 },
-unityAdsPlacementStateChanged: function(e, i, n) {
-o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + i + " newState:" + n);
+unityAdsPlacementStateChanged: function(e, i, t) {
+o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + i + " newState:" + t);
 },
 unityAdsReady: function(e) {
 o.showLog("unityAdsReady " + e);
@@ -259,5 +259,93 @@ sdkbox.PluginShare.nativeShare(o);
 }
 });
 cc._RF.pop();
+}, {} ],
+iap: [ function(o, e, i) {
+"use strict";
+cc._RF.push(e, "20e19P3ENRM0Zdsb5Hyr/GK", "iap");
+cc.Class({
+extends: cc.Component,
+properties: {
+logLable: {
+default: null,
+type: cc.Label
+}
+},
+start: function() {
+this.initIAP();
+},
+initIAP: function() {
+if ("undefined" != typeof sdkbox && "undefined" != typeof sdkbox.IAP) {
+this.log("init IAP");
+var o = this;
+sdkbox.IAP.init();
+sdkbox.IAP.setDebug(!0);
+sdkbox.IAP.setListener({
+onSuccess: function(e) {
+o.log("Purchase successful: " + e.name);
+},
+onFailure: function(e, i) {
+o.log("Purchase failed: " + e.name + " error: " + i);
+},
+onCanceled: function(e) {
+o.log("Purchase canceled: " + e.name);
+},
+onRestored: function(e) {
+o.log("Restored: " + e.name);
+},
+onProductRequestSuccess: function(e) {
+for (var i = 0; i < e.length; i++) o.logProduct(e[i]);
+},
+onProductRequestFailure: function(e) {
+o.log("Failed to get products");
+},
+onShouldAddStorePayment: function(e) {
+o.log("onShouldAddStorePayment:" + e);
+return !0;
+},
+onFetchStorePromotionOrder: function(e, i) {
+o.log("onFetchStorePromotionOrder:  e:" + i);
+},
+onFetchStorePromotionVisibility: function(e, i, t) {
+o.log("onFetchStorePromotionVisibility:" + e + " v:" + i + " e:" + t);
+},
+onUpdateStorePromotionOrder: function(e) {
+o.log("onUpdateStorePromotionOrder:" + e);
+},
+onUpdateStorePromotionVisibility: function(e) {
+o.log("onUpdateStorePromotionVisibility:" + e);
+}
+});
+this.iapEnable = !0;
+} else this.iapEnable = !1;
+},
+log: function(o) {
+cc.log(o);
+this.logLable.string = o;
+},
+logProduct: function(o) {
+var e = "Product: " + o.name + " " + o.title + " " + o.description + " " + o.price + " " + o.priceValue + " " + o.currencyCode + " " + o.receipt + " " + o.receiptCipheredPayload + " " + o.transactionID;
+this.log(e);
+},
+onIAPRefreshButton: function() {
+if (this.iapEnable) {
+this.log("onIAPRefreshButton");
+sdkbox.IAP.refresh();
+}
+},
+onIAPRestoreButton: function() {
+if (this.iapEnable) {
+this.log("onIAPRestoreButton");
+sdkbox.IAP.restore();
+}
+},
+onIAPPurchaseButton: function() {
+if (this.iapEnable) {
+this.log("onIAPPurchaseButton");
+sdkbox.IAP.purchase(name);
+}
+}
+});
+cc._RF.pop();
 }, {} ]
-}, {}, [ "HelloWorld" ]);
+}, {}, [ "HelloWorld", "iap" ]);
