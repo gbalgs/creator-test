@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		00054258978958B6ABEE1DEC /* UnityAds.framework */ = {isa = PBXBuildFile; fileRef = 02884DBEB1C7B974CECC35B7 /* UnityAds.framework */; };
+		00954951ADBC5868BD95ABAD /* GoogleInterchangeUtilities.framework */ = {isa = PBXBuildFile; fileRef = 17694930B67A4653F6422B8E /* GoogleInterchangeUtilities.framework */; };
 		010C4609ACAFFE3A4C9A6082 /* sdkbox.framework */ = {isa = PBXBuildFile; fileRef = 734C467DA242AA4702FF7958 /* sdkbox.framework */; };
 		03C248C597944B3007177BAB /* EventKitUI.framework */ = {isa = PBXBuildFile; fileRef = 953E4A17B6A7D465C81D65D8 /* EventKitUI.framework */; };
+		0F5049EFBF2C5BBC0160454E /* PluginFirebaseJS.cpp */ = {isa = PBXBuildFile; fileRef = 461640D4BA89FF7080E1D542 /* PluginFirebaseJS.cpp */; };
+		127947D0A1F2C0551F2C2A9A /* FirebaseCore.framework */ = {isa = PBXBuildFile; fileRef = F54042C3BAB9462148D99505 /* FirebaseCore.framework */; };
+		1415497FBDBDCCDA6667D2A7 /* libz.tbd */ = {isa = PBXBuildFile; fileRef = 069F4751A78008EA3C43FF26 /* libz.tbd */; };
 		1A499EA91F0CD97F004E6AEC /* libicucore.A.tbd */ = {isa = PBXBuildFile; fileRef = 1A499EA81F0CD97F004E6AEC /* libicucore.A.tbd */; };
 		1A499EB11F0CDCDD004E6AEC /* CFNetwork.framework */ = {isa = PBXBuildFile; fileRef = 1A499EB01F0CDCDD004E6AEC /* CFNetwork.framework */; };
 		1A499EB31F0CDCE9004E6AEC /* libicucore.A.tbd */ = {isa = PBXBuildFile; fileRef = 1A499EB21F0CDCE9004E6AEC /* libicucore.A.tbd */; };
@@ -31,6 +35,7 @@
 		1FE4486B93D54ED130E966EB /* FBSDKShareKit.framework */ = {isa = PBXBuildFile; fileRef = 1C0D4038A5EA8D278355DBCF /* FBSDKShareKit.framework */; };
 		25D14B858BB7955B20E04601 /* PluginAdMobJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = B516498FA070506E55B14442 /* PluginAdMobJSHelper.cpp */; };
 		294D7D7C1D0D667B002CE7B7 /* CoreText.framework */ = {isa = PBXBuildFile; fileRef = 294D7D7B1D0D667B002CE7B7 /* CoreText.framework */; };
+		3D8245279E7B430A1AE962B2 /* PluginFirebaseJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = 1F11457E948814FAAD762619 /* PluginFirebaseJSHelper.cpp */; };
 		44CE493DB476A701C4B57B50 /* CoreMedia.framework */ = {isa = PBXBuildFile; fileRef = 9A554AF5B36897E5F443038E /* CoreMedia.framework */; };
 		45994B6FAD804EB4EBA75251 /* CoreBluetooth.framework */ = {isa = PBXBuildFile; fileRef = 3B474BB5A0F6CD0AE8F79590 /* CoreBluetooth.framework */; };
 		459D4450B4A0410C5EFD4BE1 /* PluginFacebookJS.cpp */ = {isa = PBXBuildFile; fileRef = 51E44744BA9658A7BDC64011 /* PluginFacebookJS.cpp */; };
@@ -43,6 +48,7 @@
 		4DFE4217BFF64A7E9FD2367D /* TwitterKit.framework */ = {isa = PBXBuildFile; fileRef = BF124212811FA44E443C1171 /* TwitterKit.framework */; };
 		4F314AE880C94B64CC5CEF76 /* Accounts.framework */ = {isa = PBXBuildFile; fileRef = 7B9148869498A3E277CD4D24 /* Accounts.framework */; };
 		502380DC17EBB88200990C9B /* libcurl.dylib */ = {isa = PBXBuildFile; fileRef = 502380DB17EBB88200990C9B /* libcurl.dylib */; };
+		503146B8906D082C7C494E5E /* PluginFirebase.framework */ = {isa = PBXBuildFile; fileRef = 3594444291B70B37C0069162 /* PluginFirebase.framework */; };
 		509D4A8117EBB24E00697056 /* AppDelegate.cpp */ = {isa = PBXBuildFile; fileRef = D4545215156E28EF00887EB5 /* AppDelegate.cpp */; };
 		509D4A8817EBB24E00697056 /* libsqlite3.dylib */ = {isa = PBXBuildFile; fileRef = 1A82F5FA169AC92500C4B13A /* libsqlite3.dylib */; };
 		509D4A8917EBB24E00697056 /* libz.dylib */ = {isa = PBXBuildFile; fileRef = D454520B156E22BD00887EB5 /* libz.dylib */; };
@@ -60,6 +66,7 @@
 		509D4AE917EBB82000697056 /* AppKit.framework */ = {isa = PBXBuildFile; fileRef = 509D4AE817EBB82000697056 /* AppKit.framework */; };
 		509D4AEB17EBB82600697056 /* IOKit.framework */ = {isa = PBXBuildFile; fileRef = 509D4AEA17EBB82600697056 /* IOKit.framework */; };
 		519A4BECA2297AF86643F90E /* Localizable.strings */ = {isa = PBXBuildFile; fileRef = EC0942E983A0280834261CD7 /* Localizable.strings */; };
+		526C44E5A1E2424F2623FA9F /* FirebaseInstanceID.framework */ = {isa = PBXBuildFile; fileRef = D66A45A683509DBDFA2780A4 /* FirebaseInstanceID.framework */; };
 		5C53400A851A25CE5EC164E4 /* Social.framework */ = {isa = PBXBuildFile; fileRef = EA844FF8A9DBB9CD8AD28973 /* Social.framework */; };
 		735D423E8CC3CE687A2278F5 /* PluginAdMob.framework */ = {isa = PBXBuildFile; fileRef = 08AC4E6DAC73BC827E8F724F /* PluginAdMob.framework */; };
 		7EF74425A35FB7511487E4CB /* PluginFacebookJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = 07A342FEB5F4B782C6A86028 /* PluginFacebookJSHelper.cpp */; };
@@ -67,9 +74,12 @@
 		8AC04E55AF5ED77DA9FAEF24 /* AdSupport.framework */ = {isa = PBXBuildFile; fileRef = 26DB4A12936430A681EF212E /* AdSupport.framework */; };
 		8AFB4005B8A44F25C75093E0 /* PluginGoogleAnalytics.framework */ = {isa = PBXBuildFile; fileRef = 322E473DB622269D50B0B2C8 /* PluginGoogleAnalytics.framework */; };
 		927945ACA381318E8B446687 /* TwitterCore.framework */ = {isa = PBXBuildFile; fileRef = 345943EDAF72BC6F438DED9F /* TwitterCore.framework */; };
+		9B6446379EBF2D27E629C81F /* GoogleToolboxForMac.framework */ = {isa = PBXBuildFile; fileRef = FBB54F5C8FD9A3C44B59C49F /* GoogleToolboxForMac.framework */; };
 		9D6745388ADB9D2AFAA8C905 /* StoreKit.framework */ = {isa = PBXBuildFile; fileRef = A58644C6B0412346980BCB03 /* StoreKit.framework */; };
 		A6134DFB812559838D722183 /* Bolts.framework */ = {isa = PBXBuildFile; fileRef = E9224335A668E0282458D818 /* Bolts.framework */; };
+		A6BB479BBD8CC2B8AE663FE2 /* FirebaseAnalytics.framework */ = {isa = PBXBuildFile; fileRef = DC734195AD4BF6AE8952588A /* FirebaseAnalytics.framework */; };
 		A727484C81E2E824C3FFA3A3 /* MessageUI.framework */ = {isa = PBXBuildFile; fileRef = 65724FD4BE9F19DB3A92803D /* MessageUI.framework */; };
+		A77749E389C89B0D7B5DE86F /* libsqlite3.0.tbd */ = {isa = PBXBuildFile; fileRef = 7D38430AA45020DF21846790 /* libsqlite3.0.tbd */; };
 		A92275421517C094001B78AA /* QuartzCore.framework */ = {isa = PBXBuildFile; fileRef = A92275411517C094001B78AA /* QuartzCore.framework */; };
 		A92275441517C094001B78AA /* OpenGLES.framework */ = {isa = PBXBuildFile; fileRef = A92275431517C094001B78AA /* OpenGLES.framework */; };
 		A92275461517C094001B78AA /* OpenAL.framework */ = {isa = PBXBuildFile; fileRef = A92275451517C094001B78AA /* OpenAL.framework */; };
@@ -115,6 +125,7 @@
 		ED494E6EBC9D5B7D53C14DC5 /* CoreVideo.framework */ = {isa = PBXBuildFile; fileRef = 627B4308B55BBF676066449A /* CoreVideo.framework */; };
 		F06C458F8BB145D4C904DFB5 /* PluginUnityAdsJSHelper.cpp */ = {isa = PBXBuildFile; fileRef = B12244F0B1AD1259A8E9BCEE /* PluginUnityAdsJSHelper.cpp */; };
 		F5034021975A4FA158560D1A /* CoreTelephony.framework */ = {isa = PBXBuildFile; fileRef = 3D604A548D9B7927E693B1BA /* CoreTelephony.framework */; };
+		F65845A3A2B9C49967D62379 /* GoogleSymbolUtilities.framework */ = {isa = PBXBuildFile; fileRef = 035A47B5ABD981C64BBCD41A /* GoogleSymbolUtilities.framework */; };
 		F8A64300B9615C65B66DF71A /* PluginShareJS.cpp */ = {isa = PBXBuildFile; fileRef = 680B4770A10571A30044A50C /* PluginShareJS.cpp */; };
 		FA676C761C71AFA200E091E3 /* libiconv.dylib */ = {isa = PBXBuildFile; fileRef = FA676C751C71AFA200E091E3 /* libiconv.dylib */; };
 		FA676C781C71AFAB00E091E3 /* libiconv.dylib */ = {isa = PBXBuildFile; fileRef = FA676C771C71AFAB00E091E3 /* libiconv.dylib */; };
@@ -125,8 +136,10 @@
 		02694D068D5C93DDAAE70858 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/it.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		027D4D1A9C3165218C8A2DCD /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/pt.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		02884DBEB1C7B974CECC35B7 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = UnityAds.framework; sourceTree = SOURCE_ROOT; };
+		035A47B5ABD981C64BBCD41A /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleSymbolUtilities.framework; path = Firebase/Analytics/GoogleSymbolUtilities.framework; sourceTree = SOURCE_ROOT; };
 		044846A8BB32BCD9B6909649 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/EventKit.framework; sourceTree = DEVELOPER_DIR; };
 		05BE44DCA295667BF0045EB7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt-BR; path = plugin_review_res_bundle/pt-BR.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		069F4751A78008EA3C43FF26 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = file.tbd; name = libz.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		07A342FEB5F4B782C6A86028 /* PluginFacebookJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginFacebookJSHelper.cpp; path = ../Classes/PluginFacebookJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		07D8452ABAE1C7447ACF4C1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = plugin_review_res_bundle/fr.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		08AC4E6DAC73BC827E8F724F /* PluginAdMob.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginAdMob.framework; path = PluginAdMob.framework; sourceTree = SOURCE_ROOT; };
@@ -136,6 +149,7 @@
 		14684F219B52F56E4F1C8A35 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/id.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		15DE4A199D7F080D4365B204 /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = plugin_review_res_bundle/pt.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		16954D64A4F58DA1C64CA86A /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/nl.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		17694930B67A4653F6422B8E /* GoogleInterchangeUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleInterchangeUtilities.framework; path = Firebase/Analytics/GoogleInterchangeUtilities.framework; sourceTree = SOURCE_ROOT; };
 		17E940449B09B189DEFCC2B4 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = GoogleMobileAds.framework; sourceTree = SOURCE_ROOT; };
 		19B940939D08479F7FEDC977 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = plugin_review_res_bundle/nl.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		1A1A081B18C9DF05005C6854 /* project.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = project.json; path = ../../../project.json; sourceTree = "<group>"; };
@@ -153,6 +167,7 @@
 		1AFFCD841F7A5DCD00628F2C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ios/Images.xcassets; sourceTree = "<group>"; };
 		1C0D4038A5EA8D278355DBCF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = FBSDKShareKit.framework; sourceTree = SOURCE_ROOT; };
 		1E6749128F401216C18D2F36 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = plugin_review_res_bundle/de.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		1F11457E948814FAAD762619 /* PluginFirebaseJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginFirebaseJSHelper.cpp; path = ../Classes/PluginFirebaseJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		21B64C3AA6035EB47F993AAF /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/th.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		26DB4A12936430A681EF212E /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		271D40528884F3D5CC71A3D7 /* PluginAdMobJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginAdMobJS.hpp; path = ../Classes/PluginAdMobJS.hpp; sourceTree = SOURCE_ROOT; };
@@ -163,12 +178,14 @@
 		322E473DB622269D50B0B2C8 /* PluginGoogleAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginGoogleAnalytics.framework; path = PluginGoogleAnalytics.framework; sourceTree = SOURCE_ROOT; };
 		345943EDAF72BC6F438DED9F /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TwitterCore.framework; path = TwitterCore.framework; sourceTree = SOURCE_ROOT; };
 		34FE4BA39195F064A7021E17 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/es.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		3594444291B70B37C0069162 /* PluginFirebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginFirebase.framework; path = PluginFirebase.framework; sourceTree = SOURCE_ROOT; };
 		39DD4BD78DD461B970FFC4B7 /* PluginFacebookJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginFacebookJSHelper.h; path = ../Classes/PluginFacebookJSHelper.h; sourceTree = SOURCE_ROOT; };
 		3B474BB5A0F6CD0AE8F79590 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
 		3D604A548D9B7927E693B1BA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
 		3EB54056A494632670A1D3A4 /* PluginShareJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginShareJSHelper.h; path = ../Classes/PluginShareJSHelper.h; sourceTree = SOURCE_ROOT; };
 		41AE437DA3913DF794FF5B0C /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/he.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		43B04280B97E0C83874CA3B8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = plugin_review_res_bundle/ru.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		461640D4BA89FF7080E1D542 /* PluginFirebaseJS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginFirebaseJS.cpp; path = ../Classes/PluginFirebaseJS.cpp; sourceTree = SOURCE_ROOT; };
 		4D3EB2571F8F4A6C007DA644 /* jsb_module_register.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = jsb_module_register.cpp; sourceTree = "<group>"; };
 		4D697BD91CBD301C00A5AF29 /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = ../../cocos2d-x/external/ios/libs/libjs_static.a; sourceTree = "<group>"; };
 		4D697BDC1CBD303100A5AF29 /* libjs_static.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libjs_static.a; path = ../../cocos2d-x/external/mac/libs/libjs_static.a; sourceTree = "<group>"; };
@@ -213,8 +230,11 @@
 		771841AB86AA650D69A5D365 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/de.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		7B7A487A956060D8847AAF81 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = FBSDKLoginKit.framework; sourceTree = SOURCE_ROOT; };
 		7B9148869498A3E277CD4D24 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/Accounts.framework; sourceTree = DEVELOPER_DIR; };
+		7D38430AA45020DF21846790 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = file.tbd; name = libsqlite3.0.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/usr/lib/libsqlite3.0.tbd; sourceTree = DEVELOPER_DIR; };
+		7ED6449B9ABB4A4CBD188517 /* PluginFirebaseJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginFirebaseJS.hpp; path = ../Classes/PluginFirebaseJS.hpp; sourceTree = SOURCE_ROOT; };
 		7F584519BB77D80D05BE4424 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = plugin_review_res_bundle/tr.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		7F7044EA8525B5AB860D9964 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = plugin_review_res_bundle/nb.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		837545F2AFF3BE092A91A32E /* PluginFirebaseJSHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginFirebaseJSHelper.h; path = ../Classes/PluginFirebaseJSHelper.h; sourceTree = SOURCE_ROOT; };
 		83964B86923A7090D4FD4280 /* hy */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hy; path = plugin_review_res_bundle/hy.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		84234A06A1BACD7887F747AB /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
 		853647E982BBCCFC7C2166C6 /* ur */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ur; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/ur.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
@@ -295,8 +315,10 @@
 		D4545216156E28EF00887EB5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D49F4C21B0AE289F3B76A8F0 /* PluginShareJS.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PluginShareJS.hpp; path = ../Classes/PluginShareJS.hpp; sourceTree = SOURCE_ROOT; };
 		D5814418B409C579F54180F4 /* SDKBoxJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = SDKBoxJSHelper.cpp; path = ../Classes/SDKBoxJSHelper.cpp; sourceTree = SOURCE_ROOT; };
+		D66A45A683509DBDFA2780A4 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Firebase/Analytics/FirebaseInstanceID.framework; sourceTree = SOURCE_ROOT; };
 		D6B061231803AB9F0077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		D8264E2288EC144502E69A56 /* sr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sr; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/sr.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
+		DC734195AD4BF6AE8952588A /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Firebase/Analytics/FirebaseAnalytics.framework; sourceTree = SOURCE_ROOT; };
 		DF3542718FC0130FC3E4319B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh-Hans; path = plugin_review_res_bundle/zh-Hans.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		E26942B88242C02A62E98093 /* PluginFacebook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PluginFacebook.framework; path = PluginFacebook.framework; sourceTree = SOURCE_ROOT; };
 		E45D458BB1E15E691A0E7A31 /* bn */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = bn; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/bn.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
@@ -308,11 +330,13 @@
 		F1D04CC0BFE883F32A7174FB /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/vi.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		F35749B296D42F693C2DECDF /* PluginShareJSHelper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = PluginShareJSHelper.cpp; path = ../Classes/PluginShareJSHelper.cpp; sourceTree = SOURCE_ROOT; };
 		F3B947049E5D41DA4B737D00 /* th */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = th; path = plugin_review_res_bundle/th.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		F54042C3BAB9462148D99505 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Firebase/Analytics/FirebaseCore.framework; sourceTree = SOURCE_ROOT; };
 		F78242E7AE1CA4476267EEC3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = plugin_review_res_bundle/en.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 		FA676C751C71AFA200E091E3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
 		FA676C771C71AFAB00E091E3 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = compiled.mach-o.dylib; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		FAE34AC09D8DC89E8D26EB1A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh-Hans; path = TwitterKit.framework/Resources/TwitterKitResources.bundle/zh-Hans.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		FB2A4DDFB7849FE18310AA90 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = plugin_review_res_bundle/uk.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
+		FBB54F5C8FD9A3C44B59C49F /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleToolboxForMac.framework; path = Firebase/Analytics/GoogleToolboxForMac.framework; sourceTree = SOURCE_ROOT; };
 		FF8344CBB8E10623E3FE8DAC /* ca */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ca; path = plugin_review_res_bundle/ca.lproj/SdkboxReviewResLocalizable.strings; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -402,6 +426,15 @@
 				BBBF434D937D24F0C05F0116 /* CoreData.framework */,
 				5C53400A851A25CE5EC164E4 /* Social.framework */,
 				8AFB4005B8A44F25C75093E0 /* PluginGoogleAnalytics.framework */,
+				503146B8906D082C7C494E5E /* PluginFirebase.framework */,
+				A77749E389C89B0D7B5DE86F /* libsqlite3.0.tbd */,
+				1415497FBDBDCCDA6667D2A7 /* libz.tbd */,
+				A6BB479BBD8CC2B8AE663FE2 /* FirebaseAnalytics.framework */,
+				526C44E5A1E2424F2623FA9F /* FirebaseInstanceID.framework */,
+				F65845A3A2B9C49967D62379 /* GoogleSymbolUtilities.framework */,
+				127947D0A1F2C0551F2C2A9A /* FirebaseCore.framework */,
+				00954951ADBC5868BD95ABAD /* GoogleInterchangeUtilities.framework */,
+				9B6446379EBF2D27E629C81F /* GoogleToolboxForMac.framework */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +576,15 @@
 				6BF24C2A952BA7492FA8A29D /* CoreData.framework */,
 				EA844FF8A9DBB9CD8AD28973 /* Social.framework */,
 				322E473DB622269D50B0B2C8 /* PluginGoogleAnalytics.framework */,
+				3594444291B70B37C0069162 /* PluginFirebase.framework */,
+				7D38430AA45020DF21846790 /* libsqlite3.0.tbd */,
+				069F4751A78008EA3C43FF26 /* libz.tbd */,
+				DC734195AD4BF6AE8952588A /* FirebaseAnalytics.framework */,
+				D66A45A683509DBDFA2780A4 /* FirebaseInstanceID.framework */,
+				035A47B5ABD981C64BBCD41A /* GoogleSymbolUtilities.framework */,
+				F54042C3BAB9462148D99505 /* FirebaseCore.framework */,
+				17694930B67A4653F6422B8E /* GoogleInterchangeUtilities.framework */,
+				FBB54F5C8FD9A3C44B59C49F /* GoogleToolboxForMac.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -603,6 +645,10 @@
 				3EB54056A494632670A1D3A4 /* PluginShareJSHelper.h */,
 				9734403D8AF21F594A31D5E1 /* PluginGoogleAnalyticsJS.cpp */,
 				B19B465898DD5DEC71250A04 /* PluginGoogleAnalyticsJS.hpp */,
+				461640D4BA89FF7080E1D542 /* PluginFirebaseJS.cpp */,
+				7ED6449B9ABB4A4CBD188517 /* PluginFirebaseJS.hpp */,
+				1F11457E948814FAAD762619 /* PluginFirebaseJSHelper.cpp */,
+				837545F2AFF3BE092A91A32E /* PluginFirebaseJSHelper.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -756,6 +802,8 @@
 				F8A64300B9615C65B66DF71A /* PluginShareJS.cpp */,
 				1F49413BAAE38F1A5A183012 /* PluginShareJSHelper.cpp */,
 				1CF545E384C49A65B74DD502 /* PluginGoogleAnalyticsJS.cpp */,
+				0F5049EFBF2C5BBC0160454E /* PluginFirebaseJS.cpp */,
+				3D8245279E7B430A1AE962B2 /* PluginFirebaseJSHelper.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -868,6 +916,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Firebase/Analytics\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
@@ -901,6 +950,13 @@
 					"\"TwitterCore.framework\"",
 					"\"TwitterKit.framework\"",
 					"\"PluginGoogleAnalytics.framework\"",
+					"\"PluginFirebase.framework\"",
+					"\"Firebase/Analytics/FirebaseAnalytics.framework\"",
+					"\"Firebase/Analytics/FirebaseInstanceID.framework\"",
+					"\"Firebase/Analytics/GoogleSymbolUtilities.framework\"",
+					"\"Firebase/Analytics/FirebaseCore.framework\"",
+					"\"Firebase/Analytics/GoogleInterchangeUtilities.framework\"",
+					"\"Firebase/Analytics/GoogleToolboxForMac.framework\"",
 				);
 				OTHER_CFLAGS = (
 					-DSDKBOX_ENABLED,
@@ -925,6 +981,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/Firebase/Analytics\"",
 				);
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -957,6 +1014,13 @@
 					"\"TwitterCore.framework\"",
 					"\"TwitterKit.framework\"",
 					"\"PluginGoogleAnalytics.framework\"",
+					"\"PluginFirebase.framework\"",
+					"\"Firebase/Analytics/FirebaseAnalytics.framework\"",
+					"\"Firebase/Analytics/FirebaseInstanceID.framework\"",
+					"\"Firebase/Analytics/GoogleSymbolUtilities.framework\"",
+					"\"Firebase/Analytics/FirebaseCore.framework\"",
+					"\"Firebase/Analytics/GoogleInterchangeUtilities.framework\"",
+					"\"Firebase/Analytics/GoogleToolboxForMac.framework\"",
 				);
 				OTHER_CFLAGS = (
 					-DSDKBOX_ENABLED,

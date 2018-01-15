@@ -21,9 +21,9 @@ namespace sdkbox {
 
         void invokeJSFun(const std::string& funName, const se::ValueArray& params = se::EmptyValueArray);
 
-    protected:
+    private:
         se::Value _JSDelegate;
     };
-
+    
     se::Value getPluginValue(se::Object* obj, const std::string& name);
 }

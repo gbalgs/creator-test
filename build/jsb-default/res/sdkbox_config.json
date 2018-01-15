@@ -18,14 +18,14 @@
         }, 
         "Share": {
             "platforms": {
-                "Facebook": {}, 
+                "SMS": {}, 
                 "Twitter": {
                     "params": {
                         "secret": "nlmUdPNcFGLWhyLu9cD794EDuDrVQnjd0YjTpB6sX8oHIQRrne", 
                         "key": "EuovpLL0UhSGB7Jv5eKFJNMqO"
                     }
                 }, 
-                "SMS": {}, 
+                "Facebook": {}, 
                 "Mail": {}
             }
         }, 
@@ -58,6 +58,7 @@
                 }
             }
         }, 
+        "Firebase": {}, 
         "Facebook": {
             "debug": false
         }
@@ -83,14 +84,14 @@
         }, 
         "Share": {
             "platforms": {
-                "Facebook": {}, 
+                "SMS": {}, 
                 "Twitter": {
                     "params": {
                         "secret": "haVcKarM96Sr4390XLQoHjyRUSyuHdkMX6letcc38h8TOWyiR9", 
                         "key": "BUJTV6NEM7BAhhm82B12VbKGy"
                     }
                 }, 
-                "SMS": {}, 
+                "Facebook": {}, 
                 "Mail": {}
             }
         }, 
@@ -124,6 +125,7 @@
                 }
             }
         }, 
+        "Firebase": {}, 
         "Facebook": {
             "debug": true
         }
@@ -132,11 +134,11 @@
         "Review": {
             "LaunchLimit": 3, 
             "DayForReminding": 1, 
-            "market": "amazon", 
+            "UserEventLimit": 0, 
             "tryPromptWhenInit": true, 
             "DayLimit": 0, 
             "LaunchForReminding": 2, 
-            "UserEventLimit": 0
+            "market": "amazon"
         }
     }
 }

@@ -329,14 +329,14 @@ cc.Class({
         sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo);
 
 
-        const ecommerceInfo = {
+        const ecommerceInfo2 = {
             // transaction info
             action: 'refund',
             transaction: 'T12345',
         };
-        sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo);
+        sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo2);
 
-        const ecommerceInfo = {
+        const ecommerceInfo3 = {
             // transaction info
             action: 'refund',
             transaction: 'T12345',
@@ -345,7 +345,19 @@ cc.Class({
             productID: 'P12345',
             quantity: '1',
         };
-        sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo);
+        sdkbox.PluginGoogleAnalytics.logECommerce(ecommerceInfo3);
+    },
+
+    // firebase
+    testFirebase: function () {
+        sdkbox.firebase.Analytics.init();
+
+        const evt = {}
+        evt[sdkbox.firebase.Analytics.Param.kFIRParameterItemID] = 'id123456';
+        evt[sdkbox.firebase.Analytics.Param.kFIRParameterItemName] = 'name123456';
+        evt[sdkbox.firebase.Analytics.Param.kFIRParameterItemCategory] = 'category123456';
+        evt[sdkbox.firebase.Analytics.Param.kFIRParameterPrice] = '123.4';
+        sdkbox.firebase.Analytics.logEvent(sdkbox.firebase.Analytics.Event.kFIREventViewItem, evt);
     }
 
 

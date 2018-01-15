@@ -1,25 +1,25 @@
-require = function o(e, i, n) {
-function t(c, l) {
+require = function o(e, i, t) {
+function n(c, a) {
 if (!i[c]) {
 if (!e[c]) {
-var d = "function" == typeof require && require;
-if (!l && d) return d(c, !0);
+var r = "function" == typeof require && require;
+if (!a && r) return r(c, !0);
 if (s) return s(c, !0);
-var r = new Error("Cannot find module '" + c + "'");
-throw r.code = "MODULE_NOT_FOUND", r;
+var l = new Error("Cannot find module '" + c + "'");
+throw l.code = "MODULE_NOT_FOUND", l;
 }
-var a = i[c] = {
+var d = i[c] = {
 exports: {}
 };
-e[c][0].call(a.exports, function(o) {
+e[c][0].call(d.exports, function(o) {
 var i = e[c][1][o];
-return t(i || o);
-}, a, a.exports, o, e, i, n);
+return n(i || o);
+}, d, d.exports, o, e, i, t);
 }
 return i[c].exports;
 }
-for (var s = "function" == typeof require && require, c = 0; c < n.length; c++) t(n[c]);
-return t;
+for (var s = "function" == typeof require && require, c = 0; c < t.length; c++) n(t[c]);
+return n;
 }({
 HelloWorld: [ function(o, e, i) {
 "use strict";
@@ -51,6 +51,7 @@ this.testAdMob();
 this.testUnityAds();
 this.testReview();
 this.testShare();
+this.testGoogleAnalytics();
 },
 testFB: function() {
 var o = this;
@@ -188,8 +189,8 @@ e.setListener({
 unityAdsDidClick: function(e) {
 o.showLog("unityAdsDidClick " + e);
 },
-unityAdsPlacementStateChanged: function(e, i, n) {
-o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + i + " newState:" + n);
+unityAdsPlacementStateChanged: function(e, i, t) {
+o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + i + " newState:" + t);
 },
 unityAdsReady: function(e) {
 o.showLog("unityAdsReady " + e);
@@ -256,6 +257,49 @@ o.text = "#sdkbox(www.sdkbox.com) - the cure for sdk fatigue ";
 o.title = "sdkbox";
 o.link = "http://www.sdkbox.com";
 sdkbox.PluginShare.nativeShare(o);
+},
+testGoogleAnalytics: function() {
+sdkbox.PluginGoogleAnalytics.init();
+var o = {
+action: "purchase",
+transaction: "T12345",
+affiliation: "Google Store - Online",
+transactionCouponCode: "SUMMER2017",
+revenue: "37.39",
+tax: "2.85",
+shipping: "5.34",
+productID: "P12345",
+productName: "Android Warhol T-Shirt",
+category: "Apparel/T-Shirts",
+brand: "SDKBox",
+productVariant: "black",
+productCouponCode: "APPARELSALE",
+price: "29.20",
+quantity: "1",
+currencyCode: "EUR"
+};
+sdkbox.PluginGoogleAnalytics.logECommerce(o);
+var e = {
+action: "refund",
+transaction: "T12345"
+};
+sdkbox.PluginGoogleAnalytics.logECommerce(e);
+var i = {
+action: "refund",
+transaction: "T12345",
+productID: "P12345",
+quantity: "1"
+};
+sdkbox.PluginGoogleAnalytics.logECommerce(i);
+},
+testFirebase: function() {
+sdkbox.firebase.Analytics.init();
+var o = {};
+o[sdkbox.firebase.Analytics.Param.kFIRParameterItemID] = "id123456";
+o[sdkbox.firebase.Analytics.Param.kFIRParameterItemName] = "name123456";
+o[sdkbox.firebase.Analytics.Param.kFIRParameterItemCategory] = "category123456";
+o[sdkbox.firebase.Analytics.Param.kFIRParameterPrice] = "123.4";
+sdkbox.firebase.Analytics.logEvent(sdkbox.firebase.Analytics.Event.kFIREventViewItem, o);
 }
 });
 cc._RF.pop();
