@@ -24,6 +24,8 @@ THE SOFTWARE.
  ****************************************************************************/
 package org.cocos2dx.lib;
 
+import android.content.Intent;
+import com.sdkbox.plugin.SDKBox;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -248,6 +250,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
             ApplicationInfo ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = ai.metaData;
             String libName = bundle.getString("android.app.lib_name");
+            System.loadLibrary("js");System.loadLibrary("adcolony");
             System.loadLibrary(libName);
         } catch (Exception e) {
             e.printStackTrace();
@@ -277,6 +280,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
         CAAgent.enableDebug(false);
 
         onLoadNativeLibraries();
+        SDKBox.init(this);
 
         sContext = this;
         this.mHandler = new Cocos2dxHandler(this);
@@ -310,14 +314,31 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     // Getter & Setter
     // ===========================================================
 
-    // ===========================================================
-    // Methods for/from SuperClass/Interfaces
-    // ===========================================================
+   // ===========================================================
+   // Methods for/from SuperClass/Interfaces
+   // ===========================================================
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SDKBox.onStart();
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        SDKBox.onStop();
+    }
+    @Override
+    public void onBackPressed() {
+        if(!SDKBox.onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
     @Override
     protected void onResume() {
     	Log.d(TAG, "onResume()");
         super.onResume();
+        SDKBox.onResume();
         Cocos2dxAudioFocusManager.registerAudioFocusListener(this);
         this.hideVirtualButton();
        	resumeIfHasFocus();
@@ -344,6 +365,7 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
     protected void onPause() {
         Log.d(TAG, "onPause()");
         super.onPause();
+        SDKBox.onPause();
         Cocos2dxAudioFocusManager.unregisterAudioFocusListener(this);
         Cocos2dxHelper.onPause();
         mGLSurfaceView.onPause();
@@ -376,7 +398,9 @@ public abstract class Cocos2dxActivity extends Activity implements Cocos2dxHelpe
             listener.onActivityResult(requestCode, resultCode, data);
         }
 
-        super.onActivityResult(requestCode, resultCode, data);
+        if(!SDKBox.onActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
 

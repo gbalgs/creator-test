@@ -1,27 +1,27 @@
-require = function o(e, i, t) {
-function n(c, r) {
-if (!i[c]) {
-if (!e[c]) {
-var l = "function" == typeof require && require;
-if (!r && l) return l(c, !0);
-if (s) return s(c, !0);
-var d = new Error("Cannot find module '" + c + "'");
-throw d.code = "MODULE_NOT_FOUND", d;
+require = function o(e, n, i) {
+function t(l, c) {
+if (!n[l]) {
+if (!e[l]) {
+var d = "function" == typeof require && require;
+if (!c && d) return d(l, !0);
+if (s) return s(l, !0);
+var a = new Error("Cannot find module '" + l + "'");
+throw a.code = "MODULE_NOT_FOUND", a;
 }
-var a = i[c] = {
+var r = n[l] = {
 exports: {}
 };
-e[c][0].call(a.exports, function(o) {
-var i = e[c][1][o];
-return n(i || o);
-}, a, a.exports, o, e, i, t);
+e[l][0].call(r.exports, function(o) {
+var n = e[l][1][o];
+return t(n || o);
+}, r, r.exports, o, e, n, i);
 }
-return i[c].exports;
+return n[l].exports;
 }
-for (var s = "function" == typeof require && require, c = 0; c < t.length; c++) n(t[c]);
-return n;
+for (var s = "function" == typeof require && require, l = 0; l < i.length; l++) t(i[l]);
+return t;
 }({
-HelloWorld: [ function(o, e, i) {
+HelloWorld: [ function(o, e, n) {
 "use strict";
 cc._RF.push(e, "280c3rsZJJKnZ9RqbALVwtK", "HelloWorld");
 cc.Class({
@@ -56,7 +56,7 @@ testFB: function() {
 var o = this;
 sdkbox.PluginFacebook.init();
 sdkbox.PluginFacebook.setListener({
-onLogin: function(e, i) {
+onLogin: function(e, n) {
 e ? o.showLog("login successful") : o.showLog("login failed");
 },
 onSharedSuccess: function(e) {
@@ -79,14 +79,14 @@ console.log("Facebook > ", e.picture);
 console.log("Facebook > ", e.picture_url);
 console.log("Facebook > ", e.score);
 },
-onAPI: function(e, i) {
-o.showLog(e + i);
+onAPI: function(e, n) {
+o.showLog(e + n);
 },
-onFetchFriends: function(e, i) {
-o.showLog("onFetchFriends" + i);
+onFetchFriends: function(e, n) {
+o.showLog("onFetchFriends" + n);
 },
-onPermission: function(e, i) {
-o.showLog("onPermission" + i);
+onPermission: function(e, n) {
+o.showLog("onPermission" + n);
 }
 });
 sdkbox.PluginFacebook.isLoggedIn() ? this.fbLoginText.string = "logout" : this.fbLoginText.string = "login";
@@ -147,7 +147,7 @@ o.rewarded = !0;
 }
 sdkbox.PluginAdMob.show(e);
 },
-adViewDidFailToReceiveAdWithError: function(e, i) {
+adViewDidFailToReceiveAdWithError: function(e, n) {
 o.showLog("AdMob adViewDidFailToReceiveAdWithError " + e);
 },
 adViewWillPresentScreen: function(e) {
@@ -188,20 +188,20 @@ e.setListener({
 unityAdsDidClick: function(e) {
 o.showLog("unityAdsDidClick " + e);
 },
-unityAdsPlacementStateChanged: function(e, i, t) {
-o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + i + " newState:" + t);
+unityAdsPlacementStateChanged: function(e, n, i) {
+o.showLog("unityAdsPlacementStateChanged:" + e + " oldState:" + n + " newState:" + i);
 },
 unityAdsReady: function(e) {
 o.showLog("unityAdsReady " + e);
 },
-unityAdsDidError: function(e, i) {
-o.showLog("unityAdsDidError:" + e + " message:" + i);
+unityAdsDidError: function(e, n) {
+o.showLog("unityAdsDidError:" + e + " message:" + n);
 },
 unityAdsDidStart: function(e) {
 o.showLog("unityAdsDidStart=" + e);
 },
-unityAdsDidFinish: function(e, i) {
-o.showLog("unityAdsDidFinish " + e + " state:" + i);
+unityAdsDidFinish: function(e, n) {
+o.showLog("unityAdsDidFinish " + e + " state:" + n);
 }
 });
 e.init();
@@ -260,92 +260,67 @@ sdkbox.PluginShare.nativeShare(o);
 });
 cc._RF.pop();
 }, {} ],
-iap: [ function(o, e, i) {
+adcolony: [ function(o, e, n) {
 "use strict";
-cc._RF.push(e, "20e19P3ENRM0Zdsb5Hyr/GK", "iap");
+cc._RF.push(e, "252a5eQDyNEzI3GzwDTl8R2", "adcolony");
 cc.Class({
 extends: cc.Component,
 properties: {
-logLable: {
+statusLabel: {
+default: null,
+type: cc.Label
+},
+logLabel: {
 default: null,
 type: cc.Label
 }
 },
 start: function() {
-this.initIAP();
+this.initAdcolony();
 },
-initIAP: function() {
-if ("undefined" != typeof sdkbox && "undefined" != typeof sdkbox.IAP) {
-this.log("init IAP");
+initAdcolony: function() {
+if ("undefined" != typeof sdkbox && "undefined" != typeof sdkbox.PluginAdColony) {
+this.log("init AdColony");
 var o = this;
-sdkbox.IAP.init();
-sdkbox.IAP.setDebug(!0);
-sdkbox.IAP.setListener({
-onSuccess: function(e) {
-o.log("Purchase successful: " + e.name);
+sdkbox.PluginAdColony.init();
+sdkbox.PluginAdColony.setListener({
+onAdColonyChange: function(e, n) {
+o.log("onAdColonyChange");
+o.statusLabel.string = "Status: onAdColonyChange " + e.name;
 },
-onFailure: function(e, i) {
-o.log("Purchase failed: " + e.name + " error: " + i);
+onAdColonyReward: function(e, n, i, t) {
+o.log("onAdColonyReward " + n.toString() + i.toString() + t.toString());
 },
-onCanceled: function(e) {
-o.log("Purchase canceled: " + e.name);
+onAdColonyStarted: function(e) {
+o.log("onAdColonyStarted");
 },
-onRestored: function(e) {
-o.log("Restored: " + e.name);
-},
-onProductRequestSuccess: function(e) {
-for (var i = 0; i < e.length; i++) o.logProduct(e[i]);
-},
-onProductRequestFailure: function(e) {
-o.log("Failed to get products");
-},
-onShouldAddStorePayment: function(e) {
-o.log("onShouldAddStorePayment:" + e);
-return !0;
-},
-onFetchStorePromotionOrder: function(e, i) {
-o.log("onFetchStorePromotionOrder:  e:" + i);
-},
-onFetchStorePromotionVisibility: function(e, i, t) {
-o.log("onFetchStorePromotionVisibility:" + e + " v:" + i + " e:" + t);
-},
-onUpdateStorePromotionOrder: function(e) {
-o.log("onUpdateStorePromotionOrder:" + e);
-},
-onUpdateStorePromotionVisibility: function(e) {
-o.log("onUpdateStorePromotionVisibility:" + e);
+onAdColonyFinished: function(e) {
+o.log("onAdColonyFinished");
 }
 });
-this.iapEnable = !0;
-} else this.iapEnable = !1;
+this.AdColonyEnable = !0;
+} else {
+this.log("AdColony is disable");
+this.AdColonyEnable = !1;
+}
 },
 log: function(o) {
-cc.log(o);
-this.logLable.string = o;
+console.log(o);
+this.logLabel.string = o;
 },
-logProduct: function(o) {
-var e = "Product: " + o.name + " " + o.title + " " + o.description + " " + o.price + " " + o.priceValue + " " + o.currencyCode + " " + o.receipt + " " + o.receiptCipheredPayload + " " + o.transactionID;
-this.log(e);
+onAdcolonyShowAdButton: function() {
+if (this.AdColonyEnable) {
+this.log("onAdcolonyShowAdButton");
+sdkbox.PluginAdColony.show("video");
+} else this.log("AdColony is disable");
 },
-onIAPRefreshButton: function() {
-if (this.iapEnable) {
-this.log("onIAPRefreshButton");
-sdkbox.IAP.refresh();
-}
-},
-onIAPRestoreButton: function() {
-if (this.iapEnable) {
-this.log("onIAPRestoreButton");
-sdkbox.IAP.restore();
-}
-},
-onIAPPurchaseButton: function() {
-if (this.iapEnable) {
-this.log("onIAPPurchaseButton");
-sdkbox.IAP.purchase(name);
-}
+onAdcolonyShowV4VCButton: function() {
+if (this.AdColonyEnable) {
+this.log("onAdcolonyShowV4VCButton");
+sdkbox.PluginAdColony.show("v4vc");
+} else this.log("AdColony is disable");
 }
 });
 cc._RF.pop();
 }, {} ]
-}, {}, [ "HelloWorld", "iap" ]);
+}, {}, [ "HelloWorld", "adcolony" ]);
